@@ -1,21 +1,22 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.BeforeEach;
 
 public class TicketSystemTest {
-    private Adder adderObj;
-    public AdderTest() {
+    private TicketSystem ticketSystem;
+    public TicketSystemTest() {
     }
 
     @BeforeEach
     void setUp() {
-        adderObj = new Adder();
+        ticketSystem = new TicketSystem();
     }
-    
+
     @Test
-    public void testBuyTicket() throws Exception {
-        BuyTicket buyTicket0 = new BuyTicket();
-        int int0 = buyTicket0.buyTicket(0);
-        assertEquals(0, int0);
+    void testInvalidTicketId() {
+        Throwable exception = assertThrows(RuntimeException.class, () -> {
+            ticketSystem.buyTicket(0);
+        });
+        assertEquals("This ticket does not exist.", exception.getMessage());
     }
 }

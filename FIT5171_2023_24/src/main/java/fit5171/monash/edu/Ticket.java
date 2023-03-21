@@ -1,3 +1,5 @@
+package fit5171.monash.edu;
+
 public class Ticket
 {
     private int ticket_id;

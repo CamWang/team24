@@ -12,19 +12,20 @@ public class Flight {
     private Timestamp dateFrom;
     private Timestamp dateTo;
     Airplane airplane;
-    
-    public Flight(){}
 
-    public Flight(int flight_id, String departTo, String departFrom, String code, String company, Timestamp dateFrom,Timestamp dateTo, Airplane airplane)
-    {
-            this.flightID=flight_id;
-            this.departTo = departTo;
-            this.departFrom = departFrom;
-            this.code = code;
-            this.company = company;
-            this.airplane = airplane;
-            this.dateTo = dateTo;
-            this.dateFrom = dateFrom;
+    public Flight() {
+    }
+
+    public Flight(int flight_id, String departTo, String departFrom, String code, String company, Timestamp dateFrom,
+            Timestamp dateTo, Airplane airplane) {
+        this.flightID = flight_id;
+        this.departTo = departTo;
+        this.departFrom = departFrom;
+        this.code = code;
+        this.company = company;
+        this.airplane = airplane;
+        this.dateTo = dateTo;
+        this.dateFrom = dateFrom;
     }
 
     public int getFlightID() {
@@ -91,16 +92,15 @@ public class Flight {
         return airplane;
     }
 
-    public String toString()
-    {
-            return "Flight{" + airplane.toString() +
-                    ", date to=" +  getDateTo() + ", " + '\'' +
-                    ", date from='" + getDateFrom() + '\'' +
-                    ", depart from='" + getDepartFrom() + '\'' +
-                    ", depart to='" + getDepartTo() + '\'' +
-                    ", code=" + getCode() + '\'' +
-                    ", company=" + getCompany() + '\'' +
-                    ", code=" + getCode() + '\'' +
-                    '}';
+    public String toString() {
+        return "Flight{" + airplane.toString() +
+                ", date to=" + getDateTo() + ", " + '\'' +
+                ", date from='" + getDateFrom() + '\'' +
+                ", depart from='" + getDepartFrom() + '\'' +
+                ", depart to='" + getDepartTo() + '\'' +
+                ", code=" + getCode() + '\'' +
+                ", company=" + getCompany() + '\'' +
+                ", code=" + getCode() + '\'' +
+                '}';
     }
 }

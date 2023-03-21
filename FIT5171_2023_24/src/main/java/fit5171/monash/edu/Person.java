@@ -1,19 +1,20 @@
 package fit5171.monash.edu;
 
-public abstract class Person //abstract class Person
+public abstract class Person // abstract class Person
 {
     private String firstName;
     private String secondName;
     private int age;
     private String gender;
 
-    public Person(){}
+    public Person() {
+    }
 
-    public Person(String firstName, String secondName, int age, String gender){
-        this.age=age;
-        this.firstName=firstName;
-        this.secondName=secondName;
-        this.gender=gender;
+    public Person(String firstName, String secondName, int age, String gender) {
+        this.age = age;
+        this.firstName = firstName;
+        this.secondName = secondName;
+        this.gender = gender;
     }
 
     public int getAge() {
@@ -49,8 +50,7 @@ public abstract class Person //abstract class Person
     }
 
     @Override
-    public String toString()
-    {
+    public String toString() {
         return "Person{" +
                 "firstName='" + firstName + '\'' +
                 ", secondName='" + secondName + '\'' +

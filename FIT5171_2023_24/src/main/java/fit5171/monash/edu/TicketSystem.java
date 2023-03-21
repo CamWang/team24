@@ -8,8 +8,8 @@ import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 import java.util.Scanner;
 
-
-public class TicketSystem<T> {
+// public class TicketSystem<T> {
+public class TicketSystem {
     Passenger passenger = new Passenger();
     Ticket ticket = new Ticket();
     Flight flight = new Flight();
@@ -19,16 +19,6 @@ public class TicketSystem<T> {
         passenger = new Passenger();
         ticket = new Ticket();
         flight = new Flight();
-    }
-
-    public void showTicket() {
-        try {
-            System.out.println("You have bought a ticket for flight " + ticket.flight.getDepartFrom() + " - "
-                    + ticket.flight.getDepartTo() + "\n\nDetails:");
-            System.out.println(this.ticket.toString());
-        } catch (NullPointerException e) {
-            return;
-        }
     }
 
     public void buyTicket(int ticket_id) throws Exception
@@ -43,7 +33,7 @@ public class TicketSystem<T> {
         // message
         if (validTicket == null) {
             throw new RuntimeException("This ticket does not exist.");
-//            return;
+            // return;
         } else {
             // select flight_id from ticket where ticket_id=" + ticket_id
 
@@ -254,20 +244,18 @@ public class TicketSystem<T> {
 
     }
 
-    public void chooseTicket(String city1, String city2) throws Exception
-    {
+    public void chooseTicket(String city1, String city2) throws Exception {
         int counter = 1;
         int idFirst = 0;
         int idSecond = 0;
 
         Flight flight = new Flight();
 
-        //search for direct flight from city1 to city2
+        // search for direct flight from city1 to city2
 
         flight = FlightCollection.getFlightInfo(city1, city2);
 
-
-        if(flight != null) {
+        if (flight != null) {
 
             TicketCollection.getAllTickets();
 
@@ -275,48 +263,57 @@ public class TicketSystem<T> {
 
             int ticket_id = in.nextInt();
 
-            //validate ticker here
+            // validate ticker here
 
-            //buy ticket here
+            // buy ticket here
             buyTicket(ticket_id);
-        }
-        else
-        //in case there is no direct ticket from city1 to city2
+        } else
+        // in case there is no direct ticket from city1 to city2
         {
-            //SELECT a flight where depart_to = city2
+            // SELECT a flight where depart_to = city2
 
             Flight depart_to = FlightCollection.getFlightInfo(city2);
 
-            //and search for city with depart_from as connector city
+            // and search for city with depart_from as connector city
 
             String connectCity = depart_to.getDepartFrom();
 
-            //SELECT * from flight where depart_to = '" + connectCity + "' and depart_from = '" + city1+"'"
+            // SELECT * from flight where depart_to = '" + connectCity + "' and depart_from
+            // = '" + city1+"'"
 
             Flight flightConnectingTwoCities = FlightCollection.getFlightInfo(city1, connectCity);
 
-            if(flightConnectingTwoCities != null){
+            if (flightConnectingTwoCities != null) {
 
-                System.out.println("There is special way to go there. And it is transfer way, like above. Way №" + counter);
+                System.out.println(
+                        "There is special way to go there. And it is transfer way, like above. Way №" + counter);
 
                 idFirst = depart_to.getFlightID();
 
                 idSecond = flightConnectingTwoCities.getFlightID();
 
-
             }
 
             counter++;
 
-            buyTicket(idFirst, idSecond); //pass two tickets and buy them
+            buyTicket(idFirst, idSecond); // pass two tickets and buy them
 
-            if(counter == 1)
-            {
+            if (counter == 1) {
                 System.out.println("There is no possible variants.");
             }
             return;
         }
 
+    }
+
+    public void showTicket() {
+        try {
+            System.out.println("You have bought a ticket for flight " + ticket.flight.getDepartFrom() + " - "
+                    + ticket.flight.getDepartTo() + "\n\nDetails:");
+            System.out.println(this.ticket.toString());
+        } catch (NullPointerException e) {
+            return;
+        }
     }
 
 }

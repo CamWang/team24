@@ -1,23 +1,23 @@
 package fit5171.monash.edu;
 
-public class Passenger extends Person
-{
+public class Passenger extends Person {
     private String email;
     private String phoneNumber;
     private String cardNumber;
     private int securityCode;
     private String passport;
 
-    public Passenger(){}
+    public Passenger() {
+    }
 
-    public Passenger(String firstName, String secondName, int age, String gender,String email, String phoneNumber, String passport, String cardNumber,int securityCode)
-    {
+    public Passenger(String firstName, String secondName, int age, String gender, String email, String phoneNumber,
+            String passport, String cardNumber, int securityCode) {
         super();
-        this.securityCode=securityCode;
-        this.cardNumber=cardNumber;
-        this.passport=passport;
-        this.email=email;
-        this.phoneNumber=phoneNumber;
+        this.securityCode = securityCode;
+        this.cardNumber = cardNumber;
+        this.passport = passport;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getEmail() {
@@ -96,9 +96,8 @@ public class Passenger extends Person
     }
 
     @Override
-    public String toString()
-    {
-        return "Passenger{" + " Fullname= "+ super.getFirstName()+" "+super.getSecondName()+
+    public String toString() {
+        return "Passenger{" + " Fullname= " + super.getFirstName() + " " + super.getSecondName() +
                 " ,email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", passport='" + passport +

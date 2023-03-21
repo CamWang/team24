@@ -1,16 +1,15 @@
 package fit5171.monash.edu;
 
-public class Airplane
-{
+public class Airplane {
     private int airplaneID;
     private String airplaneModel;
     private int businessSitsNumber;
     private int economySitsNumber;
     private int crewSitsNumber;
 
-    public Airplane(int airplaneID, String airplaneModel, int businessSitsNumber, int economySitsNumber, int crewSitsNumber)
-    {
-        this.airplaneID=airplaneID;
+    public Airplane(int airplaneID, String airplaneModel, int businessSitsNumber, int economySitsNumber,
+            int crewSitsNumber) {
+        this.airplaneID = airplaneID;
         this.airplaneModel = airplaneModel;
         this.businessSitsNumber = businessSitsNumber;
         this.economySitsNumber = economySitsNumber;
@@ -57,8 +56,7 @@ public class Airplane
         this.crewSitsNumber = crewSitsNumber;
     }
 
-    public String toString()
-    {
+    public String toString() {
         return "Airplane{" +
                 "model=" + getAirplaneModel() + '\'' +
                 ", business sits=" + getBusinessSitsNumber() + '\'' +
@@ -67,8 +65,8 @@ public class Airplane
                 '}';
     }
 
-	public static Airplane getAirPlaneInfo(int airplane_id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    public static Airplane getAirPlaneInfo(int airplane_id) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 }

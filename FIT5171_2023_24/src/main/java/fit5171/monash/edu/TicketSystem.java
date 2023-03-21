@@ -316,4 +316,13 @@ public class TicketSystem {
         }
     }
 
+
+    public int test() throws Exception
+    {
+        System.out.println("Enter your age:");
+        int age = in.nextInt();
+        return age;
+
+    }
+
 }

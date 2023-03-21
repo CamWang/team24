@@ -10,11 +10,11 @@ public class Ticket {
 
     public Ticket(int ticket_id, int price, Flight flight, boolean classVip, Passenger passenger) {
         this.ticket_id = ticket_id;
-        this.price = price;
         this.flight = flight;
         this.classVip = classVip;
         this.status = false;
         this.passenger = passenger;
+        this.setPrice(price);
     }
 
     public Ticket() {

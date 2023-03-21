@@ -10,9 +10,9 @@ public class PassengerTest {
 
     @BeforeEach
     void setUp() {
-        passenger1 = new Passenger("Wells", "Yu", 27, "male", "cyuu0052@student.monash.edu", "0450 000 000",
+        passenger1 = new Passenger("Wells", "Yu", 27, "male", "cyuu0052@student.monash.edu", "0450000000",
                 "123456789", "123456789", 123);
-        passenger2 = new Passenger("Wells", "Yu", 27, "male", "cyuu0052@student.monash.edu", "0450 000 000",
+        passenger2 = new Passenger("Wells", "Yu", 27, "male", "cyuu0052@student.monash.edu", "0450000000",
                 "123456789", "123456789", 123);
     }
 
@@ -23,7 +23,7 @@ public class PassengerTest {
         assertEquals(27, passenger1.getAge());
         assertEquals("male", passenger1.getGender());
         assertEquals("cyuu0052@student.monash.edu", passenger1.getEmail());
-        assertEquals("0450 000 000", passenger1.getPhoneNumber());
+        assertEquals("0450000000", passenger1.getPhoneNumber());
         assertEquals("123456789", passenger1.getPassport());
         assertEquals("123456789", passenger1.getCardNumber());
         assertEquals(123, passenger1.getSecurityCode());
@@ -36,7 +36,7 @@ public class PassengerTest {
         passenger2.setAge(28);
         passenger2.setGender("female");
         passenger2.setEmail("mlii0181@student.monash.edu");
-        passenger2.setPhoneNumber("0450 000 001");
+        passenger2.setPhoneNumber("0450000001");
         passenger2.setPassport("987654321");
         passenger2.setCardNumber("987654321");
         passenger2.setSecurityCode(321);
@@ -46,7 +46,7 @@ public class PassengerTest {
         assertEquals(28, passenger2.getAge());
         assertEquals("female", passenger2.getGender());
         assertEquals("mlii0181@student.monash.edu", passenger2.getEmail());
-        assertEquals("0450 000 001", passenger2.getPhoneNumber());
+        assertEquals("0450000001", passenger2.getPhoneNumber());
         assertEquals("987654321", passenger2.getPassport());
         assertEquals("987654321", passenger2.getCardNumber());
         assertEquals(321, passenger2.getSecurityCode());

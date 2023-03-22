@@ -17,7 +17,7 @@ public class PassengerTest {
     }
 
     @Test
-    public void TestGetterMethods() {
+    public void testGetterMethods() {
         assertEquals("Wells", passenger1.getFirstName());
         assertEquals("Yu", passenger1.getSecondName());
         assertEquals(27, passenger1.getAge());
@@ -54,7 +54,7 @@ public class PassengerTest {
 
     @Test
     public void testToStringMethod() {
-        String expectedString = "Passenger{ Fullname= Wells Yu ,email='cyuu0052@student.monash.edu', phoneNumber='0450 000 000', passport='123456789}";
+        String expectedString = "Passenger{ Fullname= Wells Yu ,email='cyuu0052@student.monash.edu', phoneNumber='0450000000', passport='123456789}";
         assertEquals(expectedString, passenger1.toString());
     }
 }

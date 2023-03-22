@@ -14,6 +14,7 @@ public class TicketTest {
     private Passenger passenger2;
     private Ticket ticket1;
     private Ticket ticket2;
+    private Ticket ticket3;
 
     @BeforeEach
     void setUp() {
@@ -28,10 +29,11 @@ public class TicketTest {
                 "987654321", "987654321", 124);
         ticket1 = new Ticket(1, 1000, flight1, true, passenger1);
         ticket2 = new Ticket(2, 1000, flight1, true, passenger1);
+        ticket3 = new Ticket(2, 1000, flight1, true, passenger1);
     }
 
     @Test
-    public void TestGetterMethods() {
+    public void testGetterMethods() {
         assertEquals(1, ticket1.getTicket_id());
         assertEquals(1120, ticket1.getPrice());
         assertEquals(flight1, ticket1.getFlight());
@@ -55,6 +57,18 @@ public class TicketTest {
         assertEquals(false, ticket2.getClassVip());
         assertEquals(true, ticket2.ticketStatus());
         assertEquals(passenger2, ticket2.getPassenger());
+    }
+
+    @Test
+    public void testSaleByAgeWithJunior() {
+        ticket3.saleByAge(passenger1.getAge());
+        assertEquals(1120, ticket3.getPrice());
+    }
+
+    @Test
+    public void testSaleByAgeWithSenior() {
+        ticket3.saleByAge(passenger2.getAge());
+        assertEquals(0, ticket3.getPrice());
     }
 
     @Test

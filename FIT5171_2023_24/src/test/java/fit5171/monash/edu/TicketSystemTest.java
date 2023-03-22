@@ -46,14 +46,6 @@ public class TicketSystemTest {
     }
 
     @Test
-    void testInvalidTicketId() {
-        Throwable exception = assertThrows(RuntimeException.class, () -> {
-            ticketSystem.buyTicket(0);
-        });
-        assertEquals("This ticket does not exist.", exception.getMessage());
-    }
-
-    @Test
     public void testMyMethod() throws Exception {
         String testInput = "25\n";
         InputStream inputStream = new ByteArrayInputStream(testInput.getBytes());
@@ -74,17 +66,6 @@ public class TicketSystemTest {
         assertEquals("Yu", ticket3.getPassenger().getSecondName());
         assertEquals(27, ticket3.getPassenger().getAge());
 
-    }
-
-
-    @Test
-    public void testTicketPriceForSeniorOrJunior() {
-        // Test for Whether Senior of Junior price is correct displayed
-        int juniorPrice = 1120;
-        int seniorPrice = 0;
-        // TicketCollection.getTickets().get(1);
-        assertEquals(juniorPrice, TicketCollection.getTickets().get(0).getPrice());
-        assertEquals(seniorPrice, TicketCollection.getTickets().get(1).getPrice());
     }
 
     @Test

@@ -15,7 +15,7 @@ public class AirplaneTest {
     }
 
     @Test
-    public void TestGetterMethods() {
+    public void testGetterMethods() {
         assertEquals(1, airplane1.getAirplaneID());
         assertEquals("Boeing 747", airplane1.getAirplaneModel());
         assertEquals(10, airplane1.getBusinessSitsNumber());

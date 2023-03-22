@@ -6,8 +6,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -89,6 +91,44 @@ public class TicketSystemTest {
         // Need new method for available ticket
         assertEquals(maxAvailableNoOfTicket, maxNoOfTicketPurchased);
 
+    }
+
+    @Test
+    void testShowTicket() {
+        // Create timestamp objects
+        Timestamp dateFrom = new Timestamp(123, 0, 0, 0, 0, 0, 0);
+        Timestamp dateTo = new Timestamp(123, 0, 1, 0, 0, 0, 0);
+
+        // Create Airplane, Flight, Passenger, Ticket objects
+        Airplane airplane = new Airplane(1, "Boeing 747", 10, 100, 10);
+        Flight flight = new Flight(1, "Melbourne", "Sydney", "SM001", "MonashAir", dateFrom, dateTo, airplane);
+        Passenger passenger = new Passenger("Ping", "He", 22, "Female", "phee0011@student.monash.edu", "0421111111", "CN001", "46221111", 111);
+        Ticket ticket = new Ticket(1, 200, flight, false, passenger);
+
+        // Add the ticket to the TicketCollection
+        TicketCollection ticketCollection = new TicketCollection();
+        ArrayList<Ticket> tickets = new ArrayList<>();
+        tickets.add(ticket);
+        ticketCollection.addTickets(tickets);
+
+        //ticketCollection.getAllTickets();
+
+        // Redirect console output to a ByteArrayOutputStream for testing
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+
+        // Call the showTicket() method on the Ticket object
+        TicketSystem ticketSystem = new TicketSystem();
+        // Pass the objects to the TicketSystem object
+        ticketSystem.passenger = passenger;
+        ticketSystem.ticket = ticket;
+        ticketSystem.flight = flight;
+        ticketSystem.showTicket();
+
+        // Check if the console output matches the expected output
+        // line separator is different from "\n" in comparison, although they look the same in output
+        String expectedOutput = "You have bought a ticket for flight Sydney - Melbourne\n\nDetails:" + System.lineSeparator() + ticket.toString() + System.lineSeparator();
+        assertEquals(expectedOutput, output.toString());
     }
 
 }

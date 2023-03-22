@@ -65,8 +65,8 @@ public class Airplane {
                 '}';
     }
 
-    public static Airplane getAirPlaneInfo(int airplane_id) {
+    public static Airplane getAirPlaneInfo(int flight_id) {
         // TODO Auto-generated method stub
-        return null;
+        return FlightCollection.getFlightInfo(flight_id).getAirplane();
     }
 }

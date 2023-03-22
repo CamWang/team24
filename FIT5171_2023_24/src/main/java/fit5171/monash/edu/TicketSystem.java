@@ -41,36 +41,35 @@ public class TicketSystem {
 
             try {
                 System.out.println("Enter your First Name: ");
-                String firstName = "";
+                String firstName = in.nextLine();
                 passenger.setFirstName(firstName);
 
                 System.out.println("Enter your Second name:");
-                String secondName = "";
-                passenger.setSecondName(secondName); // setting passengers info
+                String secondName = in.nextLine();
+                passenger.setSecondName(secondName);
 
                 System.out.println("Enter your age:");
-                Integer age = 0;
-                in.nextLine();
+                Integer age = Integer.parseInt(in.nextLine());
                 passenger.setAge(age);
 
                 System.out.println("Enter your gender: ");
-                String gender = "";
+                String gender = in.nextLine();
                 passenger.setGender(gender);
 
                 System.out.println("Enter your e-mail address");
-                String email = "";
+                String email = in.nextLine();
                 passenger.setEmail(email);
 
                 System.out.println("Enter your phone number (+7):");
-                String phoneNumber = "";
+                String phoneNumber = in.nextLine();
                 passenger.setPhoneNumber(phoneNumber);
 
                 System.out.println("Enter your passport number:");
-                String passportNumber = "";
+                String passportNumber = in.nextLine();
                 passenger.setPassport(passportNumber);
 
                 System.out.println("Do you want to purchase?\n 1-YES 0-NO");
-                int purch = in.nextInt();
+                int purch = Integer.parseInt(in.nextLine());
                 if (purch == 0) {
                     return;
                 } else {
@@ -79,7 +78,7 @@ public class TicketSystem {
 
                     int airplane_id = flight.getAirplane().getAirplaneID();
 
-                    Airplane airplane = Airplane.getAirPlaneInfo(airplane_id);
+                    Airplane airplane = Airplane.getAirPlaneInfo(flight_id);
 
                     ticket = TicketCollection.getTicketInfo(ticket_id);
 
@@ -99,11 +98,11 @@ public class TicketSystem {
                 System.out.println("Your bill: " + ticket.getPrice() + "\n");
 
                 System.out.println("Enter your card number:");
-                String cardNumber = "";
+                String cardNumber = in.nextLine();
                 passenger.setCardNumber(cardNumber);
 
                 System.out.println("Enter your security code:");
-                Integer securityCode = 0;
+                Integer securityCode = Integer.parseInt(in.nextLine());
                 passenger.setSecurityCode(securityCode);
 
             } catch (PatternSyntaxException patternException) {
@@ -314,15 +313,6 @@ public class TicketSystem {
         } catch (NullPointerException e) {
             return;
         }
-    }
-
-
-    public int test() throws Exception
-    {
-        System.out.println("Enter your age:");
-        int age = in.nextInt();
-        return age;
-
     }
 
 }

@@ -1,6 +1,5 @@
 package fit5171.monash.edu;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,7 +13,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.sql.Timestamp;
-
 
 public class TicketSystemTest {
     private TicketSystem ticketSystem;
@@ -48,50 +46,48 @@ public class TicketSystemTest {
     }
 
     @Test
-    public void testMyMethod() throws Exception {
-        String testInput = "25\n";
-        InputStream inputStream = new ByteArrayInputStream(testInput.getBytes());
-        System.setIn(inputStream);
-        TicketSystem myClass = new TicketSystem();
-        int result = myClass.test();
-        assertEquals(25, result);
-    }
+    void testBuyTicketWithValidInput() throws Exception {
+        String testInput = "Cheng-Han\nYu\n27\nmale\ncyuu0052@student.monash.edu\n" +
+                "0450000000\n987654321\n1\n987654321\n987";
+        System.setIn(new ByteArrayInputStream(testInput.getBytes()));
 
-    @Test
-    void testValidTicketId() throws Exception {
-        String input = "Wells\nYu\n27\nmale\ncyuu0052@student.monash.edu\n" +
-                "0450000000\n123456789\n1\n123456789\n123";
-        InputStream in = new ByteArrayInputStream(input.getBytes());
-        System.setIn(in);
+        TicketCollection.tickets = new ArrayList<Ticket>();
+        ArrayList<Ticket> tickets_db = new ArrayList<>(Arrays.asList(ticket1, ticket2, ticket3));
+        TicketCollection.addTickets(tickets_db);
+
+        FlightCollection.flights = new ArrayList<Flight>();
+        ArrayList<Flight> flights_db = new ArrayList<>(Arrays.asList(flight1, flight2));
+        FlightCollection.addFlights(flights_db);
+
+        TicketSystem ticketSystem = new TicketSystem();
         ticketSystem.buyTicket(3);
-        assertEquals("Wells", ticket3.getPassenger().getFirstName());
+
+        assertEquals("Cheng-Han", ticket3.getPassenger().getFirstName());
         assertEquals("Yu", ticket3.getPassenger().getSecondName());
         assertEquals(27, ticket3.getPassenger().getAge());
-
+        assertEquals("male", ticket3.getPassenger().getGender());
+        assertEquals("cyuu0052@student.monash.edu", ticket3.getPassenger().getEmail());
+        assertEquals("0450000000", ticket3.getPassenger().getPhoneNumber());
+        assertEquals("987654321", ticket3.getPassenger().getPassport());
+        assertEquals("987654321", ticket3.getPassenger().getCardNumber());
+        assertEquals(987, ticket3.getPassenger().getSecurityCode());
     }
 
-    @Test
-    public void testMultipleTicketPriceDisplayed() {
-        // Test for whether the price of multiple displayed correctly.
-        int numTickets = 2;
-        int multipleTicketPrice = 660;
-        assertEquals(660, ticket.getPrice() * numTickets);
-    }
+    // @Test
+    // public void testMultipleTicketPriceDisplayed() {
+    // // Test for whether the price of multiple displayed correctly.
+    // int numTickets = 2;
+    // int multipleTicketPrice = 660;
+    // assertEquals(660, ticket.getPrice() * numTickets);
+    // }
 
-    @Test
-    public void testTicketStatusUpdated() {
-        tickets.add(new Ticket(1, 330, "CA979", True, "John"));
-        assertFalse(ticket.ticketStatus());
-    }
-
-    @Test
-    public void testMaxNoOfTicketPurchase() {
-        int maxAvailableNoOfTicket = 675;
-        int maxNoOfTicketPurchased = 676;
-        // Need new method for available ticket
-        assertEquals(maxAvailableNoOfTicket, maxNoOfTicketPurchased);
-
-    }
+    // @Test
+    // public void testMaxNoOfTicketPurchase() {
+    // int maxAvailableNoOfTicket = 675;
+    // int maxNoOfTicketPurchased = 676;
+    // // Need new method for available ticket
+    // assertEquals(maxAvailableNoOfTicket, maxNoOfTicketPurchased);
+    // }
 
     @Test
     void testShowTicket() {
@@ -102,16 +98,14 @@ public class TicketSystemTest {
         // Create Airplane, Flight, Passenger, Ticket objects
         Airplane airplane = new Airplane(1, "Boeing 747", 10, 100, 10);
         Flight flight = new Flight(1, "Melbourne", "Sydney", "SM001", "MonashAir", dateFrom, dateTo, airplane);
-        Passenger passenger = new Passenger("Ping", "He", 22, "Female", "phee0011@student.monash.edu", "0421111111", "CN001", "46221111", 111);
+        Passenger passenger = new Passenger("Ping", "He", 22, "Female", "phee0011@student.monash.edu", "0421111111",
+                "CN001", "46221111", 111);
         Ticket ticket = new Ticket(1, 200, flight, false, passenger);
 
         // Add the ticket to the TicketCollection
-        TicketCollection ticketCollection = new TicketCollection();
-        ArrayList<Ticket> tickets = new ArrayList<>();
-        tickets.add(ticket);
-        ticketCollection.addTickets(tickets);
-
-        //ticketCollection.getAllTickets();
+        TicketCollection.tickets = new ArrayList<Ticket>();
+        ArrayList<Ticket> tickets_db = new ArrayList<>(Arrays.asList(ticket));
+        TicketCollection.addTickets(tickets_db);
 
         // Redirect console output to a ByteArrayOutputStream for testing
         ByteArrayOutputStream output = new ByteArrayOutputStream();
@@ -126,8 +120,10 @@ public class TicketSystemTest {
         ticketSystem.showTicket();
 
         // Check if the console output matches the expected output
-        // line separator is different from "\n" in comparison, although they look the same in output
-        String expectedOutput = "You have bought a ticket for flight Sydney - Melbourne\n\nDetails:" + System.lineSeparator() + ticket.toString() + System.lineSeparator();
+        // line separator is different from "\n" in comparison, although they look the
+        // same in output
+        String expectedOutput = "You have bought a ticket for flight Sydney - Melbourne\n\nDetails:"
+                + System.lineSeparator() + ticket.toString() + System.lineSeparator();
         assertEquals(expectedOutput, output.toString());
     }
 

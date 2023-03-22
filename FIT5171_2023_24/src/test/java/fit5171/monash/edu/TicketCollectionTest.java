@@ -55,9 +55,8 @@ public class TicketCollectionTest {
     }
     @Test
     public void testGetAllTickets() {
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        PrintStream printStream = new PrintStream(baos);
-        System.setOut(printStream);
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
         TicketCollection.tickets = new ArrayList<Ticket>();
         ArrayList<Ticket> tickets_db = new ArrayList<>(Arrays.asList(ticket1));
         TicketCollection.addTickets(tickets_db);
@@ -68,8 +67,7 @@ public class TicketCollectionTest {
             "Vip status=true" + '\n' +
             "Passenger{ Fullname= Wells Yu ,email='cyuu0052@student.monash.edu', phoneNumber='0450 000 000', passport='123456789}" + '\n' + 
             "Ticket was purchased=false" + "\n}\n";
-        String actualOutput = baos.toString();
-        assertEquals(expectedString, actualOutput);
+        assertEquals(expectedString, output.toString());
     }
 
     @Test

@@ -66,7 +66,7 @@ public class TicketCollectionTest {
             "Flight{Airplane{model=Boeing 747', business sits=10', economy sits=200', crew sits=5'}, date to=2023-06-08 15:00:00.0, ', date from='2023-06-08 12:00:00.0', depart from='Melbourne', depart to='Sydney', code=QF001', company=Qantas', code=QF001'}" + '\n' + 
             "Vip status=true" + '\n' +
             "Passenger{ Fullname= Wells Yu ,email='cyuu0052@student.monash.edu', phoneNumber='0450 000 000', passport='123456789}" + '\n' + 
-            "Ticket was purchased=false" + "\n}\n";
+            "Ticket was purchased=false" + "\n}" + System.lineSeparator();
         assertEquals(expectedString, output.toString());
     }
 

@@ -32,8 +32,8 @@ public class Flight {
         return flightID;
     }
 
-    public void setFlightID(int flightid) {
-        this.flightID = flightid;
+    public void setFlightID(int flight_id) {
+        this.flightID = flight_id;
     }
 
     public String getDepartTo() {
@@ -98,7 +98,6 @@ public class Flight {
                 ", date from='" + getDateFrom() + '\'' +
                 ", depart from='" + getDepartFrom() + '\'' +
                 ", depart to='" + getDepartTo() + '\'' +
-                ", code=" + getCode() + '\'' +
                 ", company=" + getCompany() + '\'' +
                 ", code=" + getCode() + '\'' +
                 '}';

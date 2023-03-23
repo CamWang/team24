@@ -120,7 +120,7 @@ public class TicketSystem {
 
         System.out.println(ticket_id_first + " " + ticket_id_second);
 
-        Ticket validTicketfirst = TicketCollection.getTicketInfo(ticket_id_first);
+        Ticket validTicketFirst = TicketCollection.getTicketInfo(ticket_id_first);
 
         Ticket validTicketSecond = TicketCollection.getTicketInfo(ticket_id_first);
 
@@ -129,15 +129,15 @@ public class TicketSystem {
         // if there is a valid ticket id was input then we buy it, otherwise show
         // message
 
-        if (validTicketfirst != null || validTicketSecond != null) {
+        if (validTicketFirst != null || validTicketSecond != null) {
             System.out.println("This ticket does not exist.");
             return;
         }
 
         else {
-            flight_id_first = validTicketfirst.getFlight().getFlightID();
+            flight_id_first = validTicketFirst.getFlight().getFlightID();
 
-            flight_id_second = validTicketfirst.getFlight().getFlightID();
+            flight_id_second = validTicketFirst.getFlight().getFlightID();
 
             try {
                 System.out.println("Enter your First Name: ");

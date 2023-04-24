@@ -36,7 +36,13 @@ public class Airplane {
         return businessSitsNumber;
     }
 
-    public void setBusinessSitsNumber(int businessSitsNumber) {
+    public void setBusinessSitsNumber(int businessSitsNumber) throws IllegalArgumentException{
+        if (businessSitsNumber < 1) {
+            throw new IllegalArgumentException("Business sits number cannot be less than 1");
+        }
+        else if (businessSitsNumber > 300) {
+            throw new IllegalArgumentException("Business sits number cannot be greater than 300");
+        }
         this.businessSitsNumber = businessSitsNumber;
     }
 
@@ -44,7 +50,13 @@ public class Airplane {
         return economySitsNumber;
     }
 
-    public void setEconomySitsNumber(int economSitsNumber) {
+    public void setEconomySitsNumber(int economSitsNumber) throws IllegalArgumentException{
+        if (economSitsNumber < 1) {
+            throw new IllegalArgumentException("Economy sits number cannot be less than 1");
+        }
+        else if (economSitsNumber > 300) {
+            throw new IllegalArgumentException("Economy sits number cannot be greater than 300");
+        }
         this.economySitsNumber = economSitsNumber;
     }
 
@@ -52,7 +64,13 @@ public class Airplane {
         return crewSitsNumber;
     }
 
-    public void setCrewSitsNumber(int crewSitsNumber) {
+    public void setCrewSitsNumber(int crewSitsNumber) throws IllegalArgumentException{
+        if (crewSitsNumber < 1) {
+            throw new IllegalArgumentException("Crew sits number cannot be less than 1");
+        }
+        else if (crewSitsNumber > 300) {
+            throw new IllegalArgumentException("Crew sits number cannot be greater than 300");
+        }
         this.crewSitsNumber = crewSitsNumber;
     }
 
@@ -65,8 +83,8 @@ public class Airplane {
                 '}';
     }
 
-    public static Airplane getAirPlaneInfo(int flight_id) {
+    public static Airplane getAirPlaneInfo(int airplaneID) {
         // TODO Auto-generated method stub
-        return FlightCollection.getFlightInfo(flight_id).getAirplane();
+        return null;
     }
 }

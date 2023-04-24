@@ -1,7 +1,11 @@
 package fit5171.monash.edu;
 
 import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class Flight {
     private int flightID;
@@ -17,7 +21,10 @@ public class Flight {
     }
 
     public Flight(int flight_id, String departTo, String departFrom, String code, String company, Timestamp dateFrom,
-            Timestamp dateTo, Airplane airplane) {
+            Timestamp dateTo, Airplane airplane) throws IllegalArgumentException {
+        if (FlightCollection.getFlightInfo(flight_id)!=null) {
+            throw new IllegalArgumentException("Flight ID already exists");
+        }
         this.flightID = flight_id;
         this.departTo = departTo;
         this.departFrom = departFrom;
@@ -26,6 +33,7 @@ public class Flight {
         this.airplane = airplane;
         this.dateTo = dateTo;
         this.dateFrom = dateFrom;
+
     }
 
     public int getFlightID() {
@@ -72,16 +80,34 @@ public class Flight {
         return dateFrom;
     }
 
-    public void setDateFrom(Timestamp dateFrom) {
-        this.dateFrom = dateFrom;
+    public void setDateFrom(String dateFrom) throws IllegalArgumentException, ParseException {
+        String[] dateString = dateFrom.split(" ");
+        if (!dateString[0].matches("\\d{2}\\/\\d{2}\\/\\d{2}")) {
+            throw new IllegalArgumentException("Date format must be DD/MM/YY");
+        } else if (!dateString[1].matches("\\d{2}\\:\\d{2}\\:\\d{2}")){
+            throw new IllegalArgumentException("Time format must be HH:MM:SS");
+        }
+        SimpleDateFormat inputFormat = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+        Date date = inputFormat.parse(dateFrom);
+        Timestamp timestamp = new Timestamp(date.getTime());
+        this.dateFrom = timestamp;
     }
 
     public Timestamp getDateTo() {
         return dateTo;
     }
 
-    public void setDateTo(Timestamp dateTo) {
-        this.dateTo = dateTo;
+    public void setDateTo(String dateTo) throws IllegalArgumentException, ParseException {
+        String[] dateString = dateTo.split(" ");
+        if (!dateString[0].matches("\\d{2}\\/\\d{2}\\/\\d{2}")) {
+            throw new IllegalArgumentException("Date format must be DD/MM/YY");
+        } else if (!dateString[1].matches("\\d{2}\\:\\d{2}\\:\\d{2}")){
+            throw new IllegalArgumentException("Time format must be HH:MM:SS");
+        }
+        SimpleDateFormat inputFormat = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+        Date date = inputFormat.parse(dateTo);
+        Timestamp timestamp = new Timestamp(date.getTime());
+        this.dateTo = timestamp;
     }
 
     public void setAirplane(Airplane airplane) {

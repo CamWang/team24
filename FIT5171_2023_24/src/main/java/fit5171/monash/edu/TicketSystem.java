@@ -78,7 +78,7 @@ public class TicketSystem {
 
                     int airplane_id = flight.getAirplane().getAirplaneID();
 
-                    Airplane airplane = Airplane.getAirPlaneInfo(flight_id);
+                    Airplane airplane = Airplane.getAirPlaneInfo(airplane_id);
 
                     ticket = TicketCollection.getTicketInfo(ticket_id);
 
@@ -187,7 +187,7 @@ public class TicketSystem {
 
                     int airplane_id_second = flight_second.getAirplane().getAirplaneID();
 
-                    Airplane airpairplane_second = Airplane.getAirPlaneInfo(airplane_id_second);
+                    Airplane airplane_second = Airplane.getAirPlaneInfo(airplane_id_second);
 
                     Ticket ticket_first = TicketCollection.getTicketInfo(ticket_id_first);
 
@@ -215,9 +215,9 @@ public class TicketSystem {
                     ticket_second.setClassVip(ticket_second.getClassVip());
                     ticket_second.setTicketStatus(true);
                     if (ticket_second.getClassVip() == true) {
-                        airpairplane_second.setBusinessSitsNumber(airpairplane_second.getBusinessSitsNumber() - 1);
+                        airplane_second.setBusinessSitsNumber(airplane_second.getBusinessSitsNumber() - 1);
                     } else {
-                        airpairplane_second.setEconomySitsNumber(airpairplane_second.getEconomySitsNumber() - 1);
+                        airplane_second.setEconomySitsNumber(airplane_second.getEconomySitsNumber() - 1);
                     }
 
                     System.out.println("--*-*-");

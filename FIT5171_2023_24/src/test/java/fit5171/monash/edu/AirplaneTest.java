@@ -52,4 +52,18 @@ public class AirplaneTest {
         assertEquals(airplane, airplane.getAirPlaneInfo(1));
     }
 
+    @Test
+    public void seatNumberInRange() {
+        Airplane airplane = new Airplane(1, "Boeing 747", 10, 200, 5);
+
+        assertTrue((airplane.getBusinessSitsNumber() + airplane.getCrewSitsNumber() + airplane.getEconomySitsNumber()) <= 300);
+    }
+
+    @Test
+    public void seatNumberNotInRange() {
+        Airplane airplane = new Airplane(1, "Boeing 747", 100, 200, 5);
+
+        assertFalse((airplane.getBusinessSitsNumber() + airplane.getCrewSitsNumber() + airplane.getEconomySitsNumber()) <= 300);
+    }
+
 }

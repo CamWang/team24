@@ -35,11 +35,8 @@ public class PersonTest
     @Test
     public void testValidGender()
     {
-        try {
-            person.setGender("Male");
-        } catch (IllegalArgumentException e) {
-            assertEquals("Gender option: Woman, Man, Non-binary|gender diverse, Prefer not to say and Other.", e.getMessage());
-        }
+        person.setGender("Man");
+        assertEquals("Man",person.getGender());
     }
     @Test
     public void testInvalidGender()

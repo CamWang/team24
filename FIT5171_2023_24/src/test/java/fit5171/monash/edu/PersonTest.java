@@ -7,15 +7,47 @@ import static org.mockito.Mockito.when;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class PersonTest {
-
+public class PersonTest
+{
+    private Person person;
     @BeforeEach
-    void setUp() {
+    void setUp()
+    {
+        person = new Passenger();
     }
 
     @Test
-    public void testConstructor() {
-        Person person = new Passenger();
+    public void testConstructor()
+    {
         assertNotNull(person);
+    }
+
+    @Test
+    public void testAllFields()
+    {
+        Person person = new Passenger("Wells","Yu",27, "male", "cyuu0052@student.monash.edu", "0450000000",
+                "123456789", "123456789", 123);
+        assertEquals("Wells",person.getFirstName());
+        assertEquals("Yu",person.getSecondName());
+        assertEquals(29,person.getAge());
+        assertEquals("Man",person.getGender());
+    }
+
+    private boolean isGenderValid(String gender)
+    {
+        return gender.equals("Woman") || gender.equals("Man") || gender.equals("Non-binary|gender diverse") || gender.equals("Prefer not to say") || gender.equals("Other");
+    }
+
+    @Test
+    public void testValidGender()
+    {
+        person.setGender("Man");
+        assertTrue(isGenderValid(person.getGender()));
+    }
+    @Test
+    public void testInvalidGender()
+    {
+        person.setGender("X");
+        assertFalse(isGenderValid(person.getGender()));
     }
 }

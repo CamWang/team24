@@ -25,8 +25,7 @@ public class PersonTest
     @Test
     public void testAllFields()
     {
-        Person person = new Passenger("Wells","Yu",27, "male", "cyuu0052@student.monash.edu", "0450000000",
-                "123456789", "123456789", 123);
+        person = new Passenger("Wells","Yu",27, "male", "cyuu0052@student.monash.edu", "0450000000", "123456789", "123456789", 123);
         assertEquals("Wells",person.getFirstName());
         assertEquals("Yu",person.getSecondName());
         assertEquals(29,person.getAge());

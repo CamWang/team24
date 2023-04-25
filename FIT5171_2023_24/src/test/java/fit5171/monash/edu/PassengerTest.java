@@ -57,7 +57,7 @@ public class PassengerTest {
     }
 
     @Test
-    public void genderIncorrectFormat() throws IllegalArgumentException{
+    public void genderInvalidFormat() throws IllegalArgumentException{
         try {
             passenger.setGender("Male");
             fail("Expected IllegalArgumentException to be thrown");
@@ -66,7 +66,7 @@ public class PassengerTest {
         }
     }
     @Test
-    public void firstNameIncorrectFormat() throws IllegalArgumentException{
+    public void firstNameInvalidFormat() throws IllegalArgumentException{
         try {
             passenger.setFirstName("1Wells");
             fail("Expected IllegalArgumentException to be thrown");

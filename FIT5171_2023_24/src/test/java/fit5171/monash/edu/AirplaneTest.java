@@ -54,11 +54,13 @@ public class AirplaneTest {
     public void businessSeatNumberNotInRange() throws IllegalArgumentException{
         try {
             airplane.setBusinessSitsNumber(0);
+            fail("Expected IllegalArgumentException to be thrown");
         } catch (IllegalArgumentException e) {
             assertTrue(e.getMessage().contains("Business sits number cannot be less than 1"));
         }
         try {
             airplane.setBusinessSitsNumber(400);
+            fail("Expected IllegalArgumentException to be thrown");
         } catch (IllegalArgumentException e) {
             assertTrue(e.getMessage().contains("Business sits number cannot be greater than 300"));
         }
@@ -68,11 +70,13 @@ public class AirplaneTest {
     public void economySeatNumberNotInRange() throws IllegalArgumentException{
         try {
             airplane.setEconomySitsNumber(0);
+            fail("Expected IllegalArgumentException to be thrown");
         } catch (IllegalArgumentException e) {
             assertTrue(e.getMessage().contains("Economy sits number cannot be less than 1"));
         }
         try {
             airplane.setEconomySitsNumber(400);
+            fail("Expected IllegalArgumentException to be thrown");
         } catch (IllegalArgumentException e) {
             assertTrue(e.getMessage().contains("Economy sits number cannot be greater than 300"));
         }
@@ -82,11 +86,13 @@ public class AirplaneTest {
     public void crewSeatNumberNotInRange() throws IllegalArgumentException{
         try {
             airplane.setCrewSitsNumber(0);
+            fail("Expected IllegalArgumentException to be thrown");
         } catch (IllegalArgumentException e) {
             assertTrue(e.getMessage().contains("Crew sits number cannot be less than 1"));
         }
         try {
             airplane.setCrewSitsNumber(400);
+            fail("Expected IllegalArgumentException to be thrown");
         } catch (IllegalArgumentException e) {
             assertTrue(e.getMessage().contains("Crew sits number cannot be greater than 300"));
         }

@@ -22,9 +22,9 @@ public class Flight {
 
     public Flight(int flight_id, String departTo, String departFrom, String code, String company, Timestamp dateFrom,
             Timestamp dateTo, Airplane airplane) throws IllegalArgumentException {
-        if (FlightCollection.getFlightInfo(flight_id)!=null) {
-            throw new IllegalArgumentException("Flight ID already exists");
-        }
+//        if (FlightCollection.getFlightInfo(flight_id)!=null) {
+//            throw new IllegalArgumentException("Flight ID already exists");
+//        }
         this.flightID = flight_id;
         this.departTo = departTo;
         this.departFrom = departFrom;

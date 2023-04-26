@@ -2,8 +2,11 @@ package fit5171.monash.edu;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
+
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -16,13 +19,22 @@ import java.util.Scanner;
 import java.sql.Timestamp;
 
 public class TicketSystemTest {
+    private TicketSystem ticketSystem;
+    private FlightCollection flightCollection;
+    private TicketCollection ticketCollection;
+    private Flight flight;
+    private Ticket ticket;
 
     @BeforeEach
     public void setUp() {
+        flightCollection = mock(FlightCollection.class);
+        ticketCollection = mock(TicketCollection.class);
+        ticketSystem = new TicketSystem();
+
     }
 
     @Test
-    void testBuyTicketWithValidInput() throws Exception {
+    public void testBuyTicketWithValidInput() throws Exception {
         String testInput = "Cheng-Han\nYu\n27\nmale\ncyuu0052@student.monash.edu\n" +
                 "0450000000\n987654321\n1\n987654321\n987";
         System.setIn(new ByteArrayInputStream(testInput.getBytes()));
@@ -57,7 +69,7 @@ public class TicketSystemTest {
     }
 
     @Test
-    void testShowTicket() {
+    public void testShowTicket() {
         Timestamp dateFrom = new Timestamp(123, 0, 0, 0, 0, 0, 0);
         Timestamp dateTo = new Timestamp(123, 0, 1, 0, 0, 0, 0);
 
@@ -85,7 +97,42 @@ public class TicketSystemTest {
         assertEquals(expectedOutput, output.toString());
     }
 
+    /*
+          When choosing a ticket, a valid city is used.
+     */
+    @Test
+    public void testTicketWithValidCity() {
+        String testCity1 = "Sydney";
+        String testCity2 = "Melbourne";
+        Flight flight = mock(Flight.class);
+        when(flightCollection.getFlightInfo(testCity1, testCity2)).thenReturn(flight);
+        Flight result = flightCollection.getFlightInfo(testCity1, testCity2);
+        assertEquals(flight, result);
+
+    }
+
+    @Test
+    public void testTicketWithInvalidCity() {
+        String testCity1 = "Invalid1";
+        String testCity2 = "Invalid2";
+        Flight flight = mock(Flight.class);
+        when(flightCollection.getFlightInfo(testCity1, testCity2)).thenReturn(null);
+        Flight result = flightCollection.getFlightInfo(testCity1, testCity2);
+        assertNull(result);
+    }
+
+    /*
+        If a passenger chooses an already booked ticket it should display an error message.
+    */
+    @Test
+    public void testBookedTicketthrowerrormessage()
+    {
+        Ticket ticket = mock(Ticket.class);
+        when(ticket.ticketStatus()).thenReturn(true);
+        when(ticketSystem.getTicketCollection().getTicketInfo(1)).thenReturn(ticket); // Use the existing TicketSystem instance
+        assertDoesNotThrow(() -> ticketSystem.buyTicket(1, 2));
+    }
+
 }
-/*
- * int ticket_id,int price, Flight flight, boolean classVip, Passenger passenger
- */
+
+

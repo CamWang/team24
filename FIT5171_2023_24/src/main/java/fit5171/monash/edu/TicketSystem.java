@@ -79,16 +79,16 @@ public class TicketSystem {
                 passenger.setPassport(passportNumber);
 
                 System.out.println("Do you want to purchase?\n 1-YES 0-NO");
-                int purch = Integer.parseInt(in.nextLine());
-                if (purch == 0) {
+                Integer purchase = Integer.parseInt(in.nextLine());
+                if (purchase == 0) {
                     return;
                 } else {
 
                     flight = FlightCollection.getFlightInfo(flight_id);
 
-                    int airplane_id = flight.getAirplane().getAirplaneID();
-
-                    Airplane airplane = Airplane.getAirPlaneInfo(airplane_id);
+//                    int airplane_id = flight.getAirplane().getAirplaneID();
+                    Airplane airplane = flight.getAirplane();
+//                    Airplane airplane = Airplane.getAirPlaneInfo(airplane_id);
 
                     ticket = TicketCollection.getTicketInfo(ticket_id);
 

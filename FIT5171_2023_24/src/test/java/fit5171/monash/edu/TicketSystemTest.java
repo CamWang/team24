@@ -35,16 +35,16 @@ public class TicketSystemTest {
 
     @Test
     public void testBuyTicketWithValidInput() throws Exception {
-        String testInput = "Cheng-Han\nYu\n27\nmale\ncyuu0052@student.monash.edu\n" +
+        String testInput = "Cheng-Han\nYu\n27\nMan\ncyuu0052@student.monash.edu\n" +
                 "0450000000\n987654321\n1\n987654321\n987";
         System.setIn(new ByteArrayInputStream(testInput.getBytes()));
 
         Airplane airplane = new Airplane(1, "Boeing 747", 10, 200, 5);
         Flight flight = new Flight(1, "Sydney", "Melbourne", "QF001", "Qantas", Timestamp.valueOf("2023-6-8 12:00:00"),
                 Timestamp.valueOf("2023-6-8 15:00:00"), airplane);
-        Passenger passenger = new Passenger("Wells", "Yu", 27, "male", "cyuu0052@student.monash.edu", "0450 000 000",
+        Passenger passenger = new Passenger("Wells", "Yu", 27, "Man", "cyuu0052@student.monash.edu", "0450000000",
                 "123456789", "123456789", 123);
-        Ticket ticket = new Ticket(1, 1000, flight, true, passenger);
+        Ticket ticket = new Ticket(1, 1000, flight, false, passenger);
 
         TicketCollection.tickets = new ArrayList<Ticket>();
         ArrayList<Ticket> tickets_db = new ArrayList<>(Arrays.asList(ticket));
@@ -57,10 +57,10 @@ public class TicketSystemTest {
         TicketSystem ticketSystem = new TicketSystem();
         ticketSystem.buyTicket(1);
 
-        assertEquals("Cheng-Han", ticket.getPassenger().getFirstName());
+        assertEquals("ChengHan", ticket.getPassenger().getFirstName());
         assertEquals("Yu", ticket.getPassenger().getSecondName());
         assertEquals(27, ticket.getPassenger().getAge());
-        assertEquals("male", ticket.getPassenger().getGender());
+        assertEquals("Man", ticket.getPassenger().getGender());
         assertEquals("cyuu0052@student.monash.edu", ticket.getPassenger().getEmail());
         assertEquals("0450000000", ticket.getPassenger().getPhoneNumber());
         assertEquals("987654321", ticket.getPassenger().getPassport());
@@ -75,7 +75,7 @@ public class TicketSystemTest {
 
         Airplane airplane = new Airplane(1, "Boeing 747", 10, 100, 10);
         Flight flight = new Flight(1, "Melbourne", "Sydney", "SM001", "MonashAir", dateFrom, dateTo, airplane);
-        Passenger passenger = new Passenger("Ping", "He", 22, "Female", "phee0011@student.monash.edu", "0421111111",
+        Passenger passenger = new Passenger("Ping", "He", 22, "Woman", "phee0011@student.monash.edu", "0421111111",
                 "CN001", "46221111", 111);
         Ticket ticket = new Ticket(1, 200, flight, false, passenger);
 

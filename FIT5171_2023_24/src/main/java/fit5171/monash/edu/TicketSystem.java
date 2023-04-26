@@ -15,10 +15,20 @@ public class TicketSystem {
     Flight flight = new Flight();
     Scanner in = new Scanner(System.in);
 
+    private FlightCollection flightCollection;
+    private TicketCollection ticketCollection;
+
     public TicketSystem() {
         passenger = new Passenger();
         ticket = new Ticket();
         flight = new Flight();
+        flightCollection = new FlightCollection();
+        ticketCollection = new TicketCollection();
+    }
+
+    public TicketCollection getTicketCollection()
+    {
+        return ticketCollection;
     }
 
     public void buyTicket(int ticket_id) throws Exception
@@ -126,6 +136,13 @@ public class TicketSystem {
 
         System.out.println("Processing...");
 
+        //Display error message when a passenger choose an already booked ticket
+        if (validTicketFirst.ticketStatus() == true || validTicketSecond.ticketStatus() == true)
+        {
+            System.out.println("This ticket is already booked.");
+            return;
+        }
+
         // if there is a valid ticket id was input then we buy it, otherwise show
         // message
 
@@ -171,7 +188,8 @@ public class TicketSystem {
 
                 System.out.println("Do you want to purchase?\n 1-YES 0-NO");
                 int purch = in.nextInt();
-                if (purch == 0) {
+                if (purch == 0)
+                {
                     return;
                 } else {
 

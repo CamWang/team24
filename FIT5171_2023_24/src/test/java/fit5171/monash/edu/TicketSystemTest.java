@@ -128,7 +128,7 @@ public class TicketSystemTest {
     public void testBookedTicketthrowerrormessage()
     {
         Ticket ticket = mock(Ticket.class);
-        when(ticket.ticketStatus()).thenReturn(true);
+        when(ticket.ticketStatus()).thenReturn(Boolean.valueOf(true));
         when(ticketSystem.getTicketCollection().getTicketInfo(1)).thenReturn(ticket); // Use the existing TicketSystem instance
         assertDoesNotThrow(() -> ticketSystem.buyTicket(1, 2));
     }

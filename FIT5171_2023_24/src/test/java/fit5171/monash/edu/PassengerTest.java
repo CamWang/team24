@@ -12,10 +12,11 @@ import static org.mockito.Mockito.when;
 public class PassengerTest {
     private Person person;
     private Passenger passenger;
+
     @BeforeEach
     void setUp() {
         person = mock(Person.class);
-        passenger = new Passenger("Wells", "Yu", 27, "Man", "cyuu0052@student.monash.edu", "0450000000",
+        passenger = new Passenger("Wells", "Yu", 27, "Man", "cyuu0052@student.monash.com", "0450000000",
                 "123456789", "123456789", 123);
     }
 
@@ -57,7 +58,7 @@ public class PassengerTest {
     }
 
     @Test
-    public void genderInvalidFormat() throws IllegalArgumentException{
+    public void genderInvalidFormat() throws IllegalArgumentException {
         try {
             passenger.setGender("Male");
             fail("Expected IllegalArgumentException to be thrown");
@@ -65,13 +66,62 @@ public class PassengerTest {
             assertEquals("Gender option: Woman, Man, Non-binary|gender diverse, Prefer not to say and Other.", e.getMessage());
         }
     }
+
     @Test
-    public void firstNameInvalidFormat() throws IllegalArgumentException{
+    public void firstNameInvalidFormat() throws IllegalArgumentException {
         try {
             passenger.setFirstName("1Wells");
             fail("Expected IllegalArgumentException to be thrown");
         } catch (IllegalArgumentException e) {
             assertEquals("Name can contain only small case and upper-case alphabet letters.", e.getMessage());
+        }
+    }
+
+    @Test
+    public void phoneNumberInvalidFormat() throws IllegalArgumentException {
+        try {
+            passenger.setPhoneNumber("041234567");
+            fail("Expected IllegalArgumentException to be thrown");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Wrong phone number format", e.getMessage());
+        }
+        try {
+            passenger.setPhoneNumber("0612345678");
+            fail("Expected IllegalArgumentException to be thrown");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Wrong phone number format", e.getMessage());
+        }
+        try {
+            passenger.setPhoneNumber("+6112345678");
+            fail("Expected IllegalArgumentException to be thrown");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Wrong phone number format", e.getMessage());
+        }
+    }
+
+    @Test
+    public void emailInvalidFormat() throws IllegalArgumentException {
+        try {
+            passenger.setEmail("abc@domain.co");
+            fail("Expected IllegalArgumentException to be thrown");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Wrong email format", e.getMessage());
+        }
+    }
+
+    @Test
+    public void passportNumberInvalidFormat() throws IllegalArgumentException {
+        try {
+            passenger.setPassport("1234567890");
+            fail("Expected IllegalArgumentException to be thrown");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Wrong passport number format", e.getMessage());
+        }
+        try {
+            passenger.setPassport("A23456789");
+            fail("Expected IllegalArgumentException to be thrown");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Wrong passport number format", e.getMessage());
         }
     }
 }

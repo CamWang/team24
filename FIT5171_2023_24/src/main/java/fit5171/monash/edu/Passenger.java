@@ -1,12 +1,17 @@
 package fit5171.monash.edu;
 
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
 public class Passenger extends Person {
     private String email;
     private String phoneNumber;
     private String cardNumber;
     private int securityCode;
     private String passport;
-
+    private static final Pattern PHONE_NUMBER_PATTERN = Pattern.compile("^(\\+61|0)?[45]\\d{8}$");
+    private static final Pattern EMAIL_PATTERN = Pattern.compile("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.com$");
+    private static final Pattern PASSPORT_NUMBER_PATTERN = Pattern.compile("\\d{9}");
     public Passenger() {
     }
 
@@ -15,16 +20,19 @@ public class Passenger extends Person {
         super(firstName, secondName, age, gender);
         this.securityCode = securityCode;
         this.cardNumber = cardNumber;
-        this.passport = passport;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
+        setPassport(passport);
+        setEmail(email);
+        setPhoneNumber(phoneNumber);
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(String email) throws IllegalArgumentException {
+        if (!EMAIL_PATTERN.matcher(email).matches()) {
+            throw new IllegalArgumentException("Wrong email format");
+        }
         this.email = email;
     }
 
@@ -77,7 +85,10 @@ public class Passenger extends Person {
         super.setAge(age);
     }
 
-    public void setPassport(String passport) {
+    public void setPassport(String passport) throws IllegalArgumentException {
+        if (!PASSPORT_NUMBER_PATTERN.matcher(passport).matches()) {
+            throw new IllegalArgumentException("Wrong passport number format");
+        }
         this.passport = passport;
     }
 
@@ -86,7 +97,10 @@ public class Passenger extends Person {
         return super.getGender();
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setPhoneNumber(String phoneNumber) throws IllegalArgumentException{
+        if (!PHONE_NUMBER_PATTERN.matcher(phoneNumber).matches()) {
+            throw new IllegalArgumentException("Wrong phone number format");
+        }
         this.phoneNumber = phoneNumber;
     }
 

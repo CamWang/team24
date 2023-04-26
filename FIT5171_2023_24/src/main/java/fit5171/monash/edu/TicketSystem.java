@@ -59,7 +59,7 @@ public class TicketSystem {
                 passenger.setSecondName(secondName);
 
                 System.out.println("Enter your age:");
-                Integer age = Integer.parseInt(in.nextLine());
+                int age = Integer.parseInt(in.nextLine());
                 passenger.setAge(age);
 
                 System.out.println("Enter your gender: ");
@@ -79,7 +79,7 @@ public class TicketSystem {
                 passenger.setPassport(passportNumber);
 
                 System.out.println("Do you want to purchase?\n 1-YES 0-NO");
-                Integer purchase = Integer.parseInt(in.nextLine());
+                int purchase = Integer.parseInt(in.nextLine());
                 if (purchase == 0) {
                     return;
                 } else {
@@ -98,7 +98,7 @@ public class TicketSystem {
                     ticket.setPrice(ticket.getPrice());
                     ticket.setClassVip(ticket.getClassVip());
                     ticket.setTicketStatus(true);
-                    if (ticket.getClassVip() == true) {
+                    if (ticket.getClassVip()) {
                         airplane.setBusinessSitsNumber(airplane.getBusinessSitsNumber() - 1);
                     } else {
                         airplane.setEconomySitsNumber(airplane.getEconomySitsNumber() - 1);
@@ -112,7 +112,7 @@ public class TicketSystem {
                 passenger.setCardNumber(cardNumber);
 
                 System.out.println("Enter your security code:");
-                Integer securityCode = Integer.parseInt(in.nextLine());
+                int securityCode = Integer.parseInt(in.nextLine());
                 passenger.setSecurityCode(securityCode);
 
             } catch (PatternSyntaxException patternException) {
@@ -137,7 +137,7 @@ public class TicketSystem {
         System.out.println("Processing...");
 
         //Display error message when a passenger choose an already booked ticket
-        if (validTicketFirst.ticketStatus() == true || validTicketSecond.ticketStatus() == true)
+        if (validTicketFirst.ticketStatus() || validTicketSecond.ticketStatus())
         {
             System.out.println("This ticket is already booked.");
             return;
@@ -197,15 +197,15 @@ public class TicketSystem {
                     // flight.airplane_id=airplane.airplane_id");
                     Flight flight_first = FlightCollection.getFlightInfo(flight_id_first);
 
-                    int airplane_id_first = flight_first.getAirplane().getAirplaneID();
-
-                    Airplane airplane_first = Airplane.getAirPlaneInfo(airplane_id_first);
+//                    int airplane_id_first = flight_first.getAirplane().getAirplaneID();
+                    Airplane airplane_first = flight_first.getAirplane();
+//                    Airplane airplane_first = Airplane.getAirPlaneInfo(airplane_id_first);
 
                     Flight flight_second = FlightCollection.getFlightInfo(flight_id_second);
 
-                    int airplane_id_second = flight_second.getAirplane().getAirplaneID();
-
-                    Airplane airplane_second = Airplane.getAirPlaneInfo(airplane_id_second);
+//                    int airplane_id_second = flight_second.getAirplane().getAirplaneID();
+                    Airplane airplane_second = flight_second.getAirplane();
+//                    Airplane airplane_second = Airplane.getAirPlaneInfo(airplane_id_second);
 
                     Ticket ticket_first = TicketCollection.getTicketInfo(ticket_id_first);
 
@@ -218,7 +218,7 @@ public class TicketSystem {
                     ticket_first.setClassVip(ticket_first.getClassVip());
                     ticket_first.setTicketStatus(true);
 
-                    if (ticket_first.getClassVip() == true) {
+                    if (ticket_first.getClassVip()) {
                         airplane_first.setBusinessSitsNumber(airplane_first.getBusinessSitsNumber() - 1);
                     } else {
                         airplane_first.setEconomySitsNumber(airplane_first.getEconomySitsNumber() - 1);
@@ -232,7 +232,7 @@ public class TicketSystem {
                     ticket_second.setPrice(ticket_second.getPrice());
                     ticket_second.setClassVip(ticket_second.getClassVip());
                     ticket_second.setTicketStatus(true);
-                    if (ticket_second.getClassVip() == true) {
+                    if (ticket_second.getClassVip()) {
                         airplane_second.setBusinessSitsNumber(airplane_second.getBusinessSitsNumber() - 1);
                     } else {
                         airplane_second.setEconomySitsNumber(airplane_second.getEconomySitsNumber() - 1);

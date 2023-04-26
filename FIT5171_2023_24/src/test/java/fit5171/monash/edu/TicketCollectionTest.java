@@ -10,22 +10,24 @@ import java.io.InputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.sql.Timestamp;
 
 public class TicketCollectionTest {
-
+    private Airplane airplane;
+    private Flight flight;
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws ParseException {
+        airplane = new Airplane(1, "Boeing 747", 10, 200, 5);
+        flight = new Flight(1, "Sydney", "Melbourne", "QF001", "Qantas", "08/06/23 12:00:00",
+                "08/06/23 15:00:00", airplane);
     }
 
     @Test
     public void testGetTickets() {
-        Airplane airplane = new Airplane(1, "Boeing 747", 10, 200, 5);
-        Flight flight = new Flight(1, "Sydney", "Melbourne", "QF001", "Qantas", Timestamp.valueOf("2023-6-8 12:00:00"),
-                Timestamp.valueOf("2023-6-8 15:00:00"), airplane);
         Passenger passenger = new Passenger("Wells", "Yu", 27, "male", "cyuu0052@student.monash.edu", "0450 000 000",
                 "123456789", "123456789", 123);
         Ticket ticket = new Ticket(1, 1000, flight, true, passenger);
@@ -34,9 +36,6 @@ public class TicketCollectionTest {
 
     @Test
     public void testAddTickets() {
-        Airplane airplane = new Airplane(1, "Boeing 747", 10, 200, 5);
-        Flight flight = new Flight(1, "Sydney", "Melbourne", "QF001", "Qantas", Timestamp.valueOf("2023-6-8 12:00:00"),
-                Timestamp.valueOf("2023-6-8 15:00:00"), airplane);
         Passenger passenger = new Passenger("Wells", "Yu", 27, "male", "cyuu0052@student.monash.edu", "0450 000 000",
                 "123456789", "123456789", 123);
         Ticket ticket1 = new Ticket(1, 1000, flight, true, passenger);
@@ -50,9 +49,6 @@ public class TicketCollectionTest {
 
     @Test
     public void testGetAllTickets() {
-        Airplane airplane = new Airplane(1, "Boeing 747", 10, 200, 5);
-        Flight flight = new Flight(1, "Sydney", "Melbourne", "QF001", "Qantas", Timestamp.valueOf("2023-6-8 12:00:00"),
-                Timestamp.valueOf("2023-6-8 15:00:00"), airplane);
         Passenger passenger = new Passenger("Wells", "Yu", 27, "male", "cyuu0052@student.monash.edu", "0450 000 000",
                 "123456789", "123456789", 123);
         Ticket ticket1 = new Ticket(1, 1000, flight, true, passenger);
@@ -74,9 +70,6 @@ public class TicketCollectionTest {
 
     @Test
     public void testGetTicketInfoWithInvalidTicket_id() {
-        Airplane airplane = new Airplane(1, "Boeing 747", 10, 200, 5);
-        Flight flight = new Flight(1, "Sydney", "Melbourne", "QF001", "Qantas", Timestamp.valueOf("2023-6-8 12:00:00"),
-                Timestamp.valueOf("2023-6-8 15:00:00"), airplane);
         Passenger passenger = new Passenger("Wells", "Yu", 27, "male", "cyuu0052@student.monash.edu", "0450 000 000",
                 "123456789", "123456789", 123);
         Ticket ticket1 = new Ticket(1, 1000, flight, true, passenger);
@@ -90,9 +83,6 @@ public class TicketCollectionTest {
 
     @Test
     public void testGetTicketInfoWithValidTicket_id() {
-        Airplane airplane = new Airplane(1, "Boeing 747", 10, 200, 5);
-        Flight flight = new Flight(1, "Sydney", "Melbourne", "QF001", "Qantas", Timestamp.valueOf("2023-6-8 12:00:00"),
-                Timestamp.valueOf("2023-6-8 15:00:00"), airplane);
         Passenger passenger = new Passenger("Wells", "Yu", 27, "male", "cyuu0052@student.monash.edu", "0450 000 000",
                 "123456789", "123456789", 123);
         Ticket ticket1 = new Ticket(1, 1000, flight, true, passenger);

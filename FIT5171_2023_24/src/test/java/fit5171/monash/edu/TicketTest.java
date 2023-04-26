@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.Timestamp;
+import java.text.ParseException;
 
 public class TicketTest {
 
@@ -20,11 +21,11 @@ public class TicketTest {
     }
 
     @Test
-    public void testSetterMethods() {
+    public void testSetterMethods() throws ParseException {
         Airplane airplane = new Airplane(1, "Boeing 747", 10, 200, 5);
-        Flight flight = new Flight(1, "Sydney", "Melbourne", "QF001", "Qantas", Timestamp.valueOf("2023-6-8 12:00:00"),
-                Timestamp.valueOf("2023-6-8 15:00:00"), airplane);
-        Passenger passenger = new Passenger("Wells", "Yu", 27, "male", "cyuu0052@student.monash.edu", "0450 000 000",
+        Flight flight = new Flight(1, "Sydney", "Melbourne", "QF001", "Qantas", "08/06/23 12:00:00",
+                "08/06/23 15:00:00", airplane);
+        Passenger passenger = new Passenger("Wells", "Yu", 27, "male", "cyuu0052@student.monash.edu", "0450000000",
                 "123456789", "123456789", 123);
         Ticket ticket = new Ticket(1, 1000, flight, true, passenger);
 
@@ -38,16 +39,16 @@ public class TicketTest {
         assertEquals(3, ticket.getTicket_id());
         assertEquals(2240, ticket.getPrice());
         assertEquals(flight, ticket.getFlight());
-        assertEquals(false, ticket.getClassVip());
-        assertEquals(true, ticket.ticketStatus());
+        assertFalse(ticket.getClassVip());
+        assertTrue(ticket.ticketStatus());
         assertEquals(passenger, ticket.getPassenger());
     }
 
     @Test
-    public void testSaleByAgeWithJunior() {
+    public void testSaleByAgeWithJunior() throws ParseException {
         Airplane airplane = new Airplane(1, "Boeing 747", 10, 200, 5);
-        Flight flight = new Flight(1, "Sydney", "Melbourne", "QF001", "Qantas", Timestamp.valueOf("2023-6-8 12:00:00"),
-                Timestamp.valueOf("2023-6-8 15:00:00"), airplane);
+        Flight flight = new Flight(1, "Sydney", "Melbourne", "QF001", "Qantas", "08/06/23 12:00:00",
+                "08/06/23 15:00:00", airplane);
         Passenger passenger = new Passenger("Wells", "Yu", 3, "male", "cyuu0052@student.monash.edu", "0450 000 000",
                 "123456789", "123456789", 123);
         Ticket ticket = new Ticket(1, 1000, flight, true, passenger);
@@ -56,10 +57,10 @@ public class TicketTest {
     }
 
     @Test
-    public void testSaleByAgeWithSenior() {
+    public void testSaleByAgeWithSenior() throws ParseException {
         Airplane airplane = new Airplane(1, "Boeing 747", 10, 200, 5);
-        Flight flight = new Flight(1, "Sydney", "Melbourne", "QF001", "Qantas", Timestamp.valueOf("2023-6-8 12:00:00"),
-                Timestamp.valueOf("2023-6-8 15:00:00"), airplane);
+        Flight flight = new Flight(1, "Sydney", "Melbourne", "QF001", "Qantas", "08/06/23 12:00:00",
+                "08/06/23 15:00:00", airplane);
         Passenger passenger = new Passenger("Wells", "Yu", 82, "male", "cyuu0052@student.monash.edu", "0450 000 000",
                 "123456789", "123456789", 123);
         Ticket ticket = new Ticket(1, 1000, flight, true, passenger);
@@ -69,10 +70,10 @@ public class TicketTest {
     }
 
     @Test
-    public void testToStringMethod() {
+    public void testToStringMethod() throws ParseException {
         Airplane airplane = new Airplane(1, "Boeing 747", 10, 200, 5);
-        Flight flight = new Flight(1, "Sydney", "Melbourne", "QF001", "Qantas", Timestamp.valueOf("2023-6-8 12:00:00"),
-                Timestamp.valueOf("2023-6-8 15:00:00"), airplane);
+        Flight flight = new Flight(1, "Sydney", "Melbourne", "QF001", "Qantas", "08/06/23 12:00:00",
+                "08/06/23 15:00:00", airplane);
         Passenger passenger = new Passenger("Wells", "Yu", 28, "male", "cyuu0052@student.monash.edu", "0450 000 000",
                 "123456789", "123456789", 123);
         Ticket ticket = new Ticket(1, 1000, flight, true, passenger);

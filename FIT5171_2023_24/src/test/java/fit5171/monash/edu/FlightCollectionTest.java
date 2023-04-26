@@ -10,31 +10,30 @@ import java.io.InputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 import java.sql.Timestamp;
 
 public class FlightCollectionTest {
-
+    private Airplane airplane;
+    private Flight flight;
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws ParseException {
+        airplane = new Airplane(1, "Boeing 747", 10, 200, 5);
+        flight = new Flight(1, "Sydney", "Melbourne", "QF001", "Qantas", "08/06/23 12:00:00",
+                "08/06/23 15:00:00", airplane);
     }
 
     @Test
     void testGetFlight() {
-//        Airplane airplane = new Airplane(1, "Boeing 747", 10, 200, 5);
-//        Flight flight = new Flight(1, "Sydney", "Melbourne", "QF001", "Qantas", Timestamp.valueOf("2023-6-8 12:00:00"),
-//                Timestamp.valueOf("2023-6-8 15:00:00"), airplane);
         FlightCollection.flights = new ArrayList<Flight>();
         assertEquals(FlightCollection.flights, FlightCollection.getFlights());
     }
 
     @Test
     void testAddFlights() {
-        Airplane airplane = new Airplane(1, "Boeing 747", 10, 200, 5);
-        Flight flight = new Flight(1, "Sydney", "Melbourne", "QF001", "Qantas", Timestamp.valueOf("2023-6-8 12:00:00"),
-                Timestamp.valueOf("2023-6-8 15:00:00"), airplane);
         FlightCollection.flights = new ArrayList<Flight>();
         ArrayList<Flight> flights_db = new ArrayList<>(Arrays.asList(flight));
         FlightCollection.addFlights(flights_db);
@@ -43,9 +42,6 @@ public class FlightCollectionTest {
 
     @Test
     void testGetFlightInfoWithTwoCities() {
-        Airplane airplane = new Airplane(1, "Boeing 747", 10, 200, 5);
-        Flight flight = new Flight(1, "Sydney", "Melbourne", "QF001", "Qantas", Timestamp.valueOf("2023-6-8 12:00:00"),
-                Timestamp.valueOf("2023-6-8 15:00:00"), airplane);
         FlightCollection.flights = new ArrayList<Flight>();
         ArrayList<Flight> flights_db = new ArrayList<>(Arrays.asList(flight));
         FlightCollection.addFlights(flights_db);
@@ -54,9 +50,6 @@ public class FlightCollectionTest {
 
     @Test
     void testGetFlightInfoWithCity() {
-        Airplane airplane = new Airplane(1, "Boeing 747", 10, 200, 5);
-        Flight flight = new Flight(1, "Sydney", "Melbourne", "QF001", "Qantas", Timestamp.valueOf("2023-6-8 12:00:00"),
-                Timestamp.valueOf("2023-6-8 15:00:00"), airplane);
         FlightCollection.flights = new ArrayList<Flight>();
         ArrayList<Flight> flights_db = new ArrayList<>(Arrays.asList(flight));
         FlightCollection.addFlights(flights_db);
@@ -65,9 +58,6 @@ public class FlightCollectionTest {
 
     @Test
     void testGetFlightInfoWithFlight_id() {
-        Airplane airplane = new Airplane(1, "Boeing 747", 10, 200, 5);
-        Flight flight = new Flight(1, "Sydney", "Melbourne", "QF001", "Qantas", Timestamp.valueOf("2023-6-8 12:00:00"),
-                Timestamp.valueOf("2023-6-8 15:00:00"), airplane);
         FlightCollection.flights = new ArrayList<Flight>();
         ArrayList<Flight> flights_db = new ArrayList<>(Arrays.asList(flight));
         FlightCollection.addFlights(flights_db);

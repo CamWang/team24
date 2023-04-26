@@ -32,7 +32,7 @@ public class PassengerTest {
         passenger.setSecondName("Li");
         passenger.setAge(28);
         passenger.setGender("Non-binary|gender diverse");
-        passenger.setEmail("mlii0181@student.monash.edu");
+        passenger.setEmail("mlii0181@student.monash.com");
         passenger.setPhoneNumber("0450000001");
         passenger.setPassport("987654321");
         passenger.setCardNumber("987654321");
@@ -42,7 +42,7 @@ public class PassengerTest {
         assertEquals("Li", passenger.getSecondName());
         assertEquals(28, passenger.getAge());
         assertEquals("Non-binary|gender diverse", passenger.getGender());
-        assertEquals("mlii0181@student.monash.edu", passenger.getEmail());
+        assertEquals("mlii0181@student.monash.com", passenger.getEmail());
         assertEquals("0450000001", passenger.getPhoneNumber());
         assertEquals("987654321", passenger.getPassport());
         assertEquals("987654321", passenger.getCardNumber());
@@ -53,8 +53,14 @@ public class PassengerTest {
     public void testToStringMethod() {
         when(person.getFirstName()).thenReturn("Wells");
         when(person.getSecondName()).thenReturn("Yu");
-        String expectedString = "Passenger{ Fullname= Wells Yu ,email='cyuu0052@student.monash.edu', phoneNumber='0450000000', passport='123456789}";
+        String expectedString = "Passenger{ Fullname= Wells Yu ,email='cyuu0052@student.monash.com', phoneNumber='0450000000', passport='123456789}";
         assertEquals(expectedString, passenger.toString());
+    }
+
+    @Test
+    public void genderValidFormat() {
+        passenger.setGender("Man");
+        assertEquals("Man", passenger.getGender());
     }
 
     @Test
@@ -68,6 +74,12 @@ public class PassengerTest {
     }
 
     @Test
+    public void firstNameValidFormat() {
+        passenger.setFirstName("Wells");
+        assertEquals("Wells", passenger.getFirstName());
+    }
+
+    @Test
     public void firstNameInvalidFormat() throws IllegalArgumentException {
         try {
             passenger.setFirstName("1Wells");
@@ -75,6 +87,28 @@ public class PassengerTest {
         } catch (IllegalArgumentException e) {
             assertEquals("Name can contain only small case and upper-case alphabet letters.", e.getMessage());
         }
+    }
+
+    @Test
+    public void secondNameValidFormat() {
+        passenger.setSecondName("Wells");
+        assertEquals("Wells", passenger.getSecondName());
+    }
+
+    @Test
+    public void secondNameInvalidFormat() throws IllegalArgumentException {
+        try {
+            passenger.setSecondName("1Wells");
+            fail("Expected IllegalArgumentException to be thrown");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Name can contain only small case and upper-case alphabet letters.", e.getMessage());
+        }
+    }
+
+    @Test
+    public void phoneNumberValidFormat() {
+        passenger.setPhoneNumber("0412345678");
+        assertEquals("0412345678", passenger.getPhoneNumber());
     }
 
     @Test
@@ -100,6 +134,12 @@ public class PassengerTest {
     }
 
     @Test
+    public void emailValidFormat() {
+        passenger.setEmail("abc@domain.com");
+        assertEquals("abc@domain.com", passenger.getEmail());
+    }
+
+    @Test
     public void emailInvalidFormat() throws IllegalArgumentException {
         try {
             passenger.setEmail("abc@domain.co");
@@ -107,6 +147,12 @@ public class PassengerTest {
         } catch (IllegalArgumentException e) {
             assertEquals("Wrong email format", e.getMessage());
         }
+    }
+
+    @Test
+    public void passportNumberValidFormat() {
+        passenger.setPassport("123456789");
+        assertEquals("123456789", passenger.getPassport());
     }
 
     @Test

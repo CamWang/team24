@@ -14,10 +14,10 @@ public abstract class Person // abstract class Person
     public Person() {
     }
 
-    public Person(String firstName, String secondName, int age, String gender) {
+    public Person(String firstName, String secondName, int age, String gender) throws IllegalArgumentException {
         this.age = age;
-        this.firstName = firstName;
-        this.secondName = secondName;
+        setFirstName(firstName);
+        setSecondName(secondName);
         setGender(gender);
     }
     public enum Gender {

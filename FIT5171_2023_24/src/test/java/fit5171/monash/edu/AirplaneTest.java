@@ -51,7 +51,7 @@ public class AirplaneTest {
 //    }
 
     @Test
-    public void businessSeatNumberNotInRange() throws IllegalArgumentException{
+    public void businessSeatNumberNotInRange() throws IllegalArgumentException {
         try {
             airplane.setBusinessSitsNumber(0);
             fail("Expected IllegalArgumentException to be thrown");
@@ -67,7 +67,13 @@ public class AirplaneTest {
     }
 
     @Test
-    public void economySeatNumberNotInRange() throws IllegalArgumentException{
+    public void businessSeatNumberInRange() {
+        airplane.setBusinessSitsNumber(1);
+        assertEquals(1, airplane.getBusinessSitsNumber());
+    }
+
+    @Test
+    public void economySeatNumberNotInRange() throws IllegalArgumentException {
         try {
             airplane.setEconomySitsNumber(0);
             fail("Expected IllegalArgumentException to be thrown");
@@ -81,9 +87,13 @@ public class AirplaneTest {
             assertTrue(e.getMessage().contains("Economy sits number cannot be greater than 300"));
         }
     }
-
     @Test
-    public void crewSeatNumberNotInRange() throws IllegalArgumentException{
+    public void economySeatNumberInRange() {
+        airplane.setEconomySitsNumber(1);
+        assertEquals(1, airplane.getEconomySitsNumber());
+    }
+    @Test
+    public void crewSeatNumberNotInRange() throws IllegalArgumentException {
         try {
             airplane.setCrewSitsNumber(0);
             fail("Expected IllegalArgumentException to be thrown");
@@ -97,5 +107,9 @@ public class AirplaneTest {
             assertTrue(e.getMessage().contains("Crew sits number cannot be greater than 300"));
         }
     }
-
+    @Test
+    public void crewSeatNumberInRange() {
+        airplane.setCrewSitsNumber(1);
+        assertEquals(1, airplane.getCrewSitsNumber());
+    }
 }

@@ -13,6 +13,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 
 import java.io.PrintStream;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -22,15 +23,17 @@ public class TicketSystemTest {
     private TicketSystem ticketSystem;
     private FlightCollection flightCollection;
     private TicketCollection ticketCollection;
-    private Flight flight;
     private Ticket ticket;
-
+    private Airplane airplane;
+    private Flight flight;
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws ParseException {
         flightCollection = mock(FlightCollection.class);
         ticketCollection = mock(TicketCollection.class);
         ticketSystem = new TicketSystem();
-
+        airplane = new Airplane(1, "Boeing 747", 10, 200, 5);
+        flight = new Flight(1, "Sydney", "Melbourne", "QF001", "Qantas", "08/06/23 12:00:00",
+                "08/06/23 15:00:00", airplane);
     }
 
     @Test
@@ -39,9 +42,6 @@ public class TicketSystemTest {
                 "0450000000\n987654321\n1\n987654321\n987";
         System.setIn(new ByteArrayInputStream(testInput.getBytes()));
 
-        Airplane airplane = new Airplane(1, "Boeing 747", 10, 200, 5);
-        Flight flight = new Flight(1, "Sydney", "Melbourne", "QF001", "Qantas", Timestamp.valueOf("2023-6-8 12:00:00"),
-                Timestamp.valueOf("2023-6-8 15:00:00"), airplane);
         Passenger passenger = new Passenger("Wells", "Yu", 27, "Man", "cyuu0052@student.monash.edu", "0450000000",
                 "123456789", "123456789", 123);
         Ticket ticket = new Ticket(1, 1000, flight, false, passenger);
@@ -73,8 +73,6 @@ public class TicketSystemTest {
         Timestamp dateFrom = new Timestamp(123, 0, 0, 0, 0, 0, 0);
         Timestamp dateTo = new Timestamp(123, 0, 1, 0, 0, 0, 0);
 
-        Airplane airplane = new Airplane(1, "Boeing 747", 10, 100, 10);
-        Flight flight = new Flight(1, "Melbourne", "Sydney", "SM001", "MonashAir", dateFrom, dateTo, airplane);
         Passenger passenger = new Passenger("Ping", "He", 22, "Woman", "phee0011@student.monash.edu", "0421111111",
                 "CN001", "46221111", 111);
         Ticket ticket = new Ticket(1, 200, flight, false, passenger);

@@ -10,7 +10,7 @@ public class TicketCollection {
 		return tickets;
 	}
 
-	public static void addTickets(ArrayList<Ticket> tickets_db) {
+	public static void addTickets(ArrayList<Ticket> tickets_db) throws IllegalArgumentException {
 //		TicketCollection.tickets.addAll(tickets_db);
 
 		for (Ticket ticket : tickets_db) {

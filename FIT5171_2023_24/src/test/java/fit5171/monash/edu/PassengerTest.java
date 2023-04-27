@@ -10,12 +10,12 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 public class PassengerTest {
-    private Person person;
+    private Person mockPerson;
     private Passenger passenger;
 
     @BeforeEach
     void setUp() {
-        person = mock(Person.class);
+        mockPerson = mock(Person.class);
         passenger = new Passenger("Wells", "Yu", 27, "Man", "cyuu0052@student.monash.com", "0450000000",
                 "123456789", "123456789", 123);
     }
@@ -51,8 +51,8 @@ public class PassengerTest {
 
     @Test
     public void testToStringMethod() {
-        when(person.getFirstName()).thenReturn("Wells");
-        when(person.getSecondName()).thenReturn("Yu");
+        when(mockPerson.getFirstName()).thenReturn("Wells");
+        when(mockPerson.getSecondName()).thenReturn("Yu");
         String expectedString = "Passenger{ Fullname= Wells Yu ,email='cyuu0052@student.monash.com', phoneNumber='0450000000', passport='123456789}";
         assertEquals(expectedString, passenger.toString());
     }

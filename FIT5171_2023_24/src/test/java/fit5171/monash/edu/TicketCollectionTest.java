@@ -24,7 +24,7 @@ public class TicketCollectionTest {
     private Ticket mockTicket;
 
     @BeforeEach
-    public void setUp() throws ParseException {
+    public void setUp() {
 //        airplane = new Airplane(1, "Boeing 747", 10, 200, 5);
 //        flight = new Flight(1, "Sydney", "Melbourne", "QF001", "Qantas", "08/06/23 12:00:00",
 //                "08/06/23 15:00:00", airplane);
@@ -45,13 +45,14 @@ public class TicketCollectionTest {
     }
 
     @Test
-    public void testAddTicketInvalid() {
+    public void testAddTicketInvalid() throws IllegalArgumentException {
         when(mockTicket.getTicket_id()).thenReturn(0);
 
         try {
             TicketCollection.addTickets(new ArrayList<Ticket>() {{ add(mockTicket); }});
             fail("Expected IllegalArgumentException was not thrown");
         } catch (IllegalArgumentException e) {
+            assertEquals("Invalid ticket ID: 0", e.getMessage());
         }
     }
 

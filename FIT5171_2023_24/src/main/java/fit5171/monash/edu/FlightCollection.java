@@ -10,7 +10,12 @@ public class FlightCollection {
         return flights;
     }
 
-    public static void addFlights(ArrayList<Flight> flights) {
+    public static void addFlights(ArrayList<Flight> flights) throws IllegalArgumentException {
+        for (Flight flight : flights) {
+            if (FlightCollection.getFlightInfo(flight.getFlightID()) != null) {
+                throw new IllegalArgumentException("Flight already exists");
+            }
+        }
         FlightCollection.flights.addAll(flights);
     }
 

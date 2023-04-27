@@ -23,9 +23,6 @@ public class Flight {
 
     public Flight(int flight_id, String departTo, String departFrom, String code, String company, String dateFrom,
                   String dateTo, Airplane airplane) throws ParseException {
-//        if (FlightCollection.getFlightInfo(flight_id)!=null) {
-//            throw new IllegalArgumentException("Flight ID already exists");
-//        }
         this.flightID = flight_id;
         this.departTo = departTo;
         this.departFrom = departFrom;

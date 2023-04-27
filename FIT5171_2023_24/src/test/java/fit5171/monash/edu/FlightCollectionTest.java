@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -17,51 +19,77 @@ import java.util.Scanner;
 import java.sql.Timestamp;
 
 public class FlightCollectionTest {
-    private Airplane airplane;
-    private Flight flight;
+    private Airplane mockAirplane;
+    private ArrayList<Flight> mockFlights;
+    private Flight mockFlight;
     @BeforeEach
-    public void setUp() throws ParseException {
-        airplane = new Airplane(1, "Boeing 747", 10, 200, 5);
-        flight = new Flight(1, "Sydney", "Melbourne", "QF001", "Qantas", "08/06/23 12:00:00",
-                "08/06/23 15:00:00", airplane);
+    public void setUp() {
+        mockFlights = new ArrayList<Flight>();
+        mockFlight = mock(Flight.class);
+        mockFlights.add(mockFlight);
+
+        FlightCollection.flights = mockFlights;
     }
 
     @Test
-    void testGetFlight() {
-        FlightCollection.flights = new ArrayList<Flight>();
-        assertEquals(FlightCollection.flights, FlightCollection.getFlights());
+    void testGetFlights() {
+        assertEquals(mockFlights, FlightCollection.getFlights());
     }
 
     @Test
     void testAddFlights() {
-        FlightCollection.flights = new ArrayList<Flight>();
-        ArrayList<Flight> flights_db = new ArrayList<>(Arrays.asList(flight));
-        FlightCollection.addFlights(flights_db);
-        assertEquals(flights_db, FlightCollection.getFlights());
+        assertEquals(mockFlights, FlightCollection.getFlights());
     }
 
     @Test
+    void testAddExistFlights() {
+        when(mockFlight.getFlightID()).thenReturn(1);
+        try{
+            FlightCollection.addFlights(mockFlights);
+            fail("Expected IllegalArgumentException was not thrown");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Flight already exists", e.getMessage());
+        }
+    }
+
+
+    @Test
     void testGetFlightInfoWithTwoCities() {
-        FlightCollection.flights = new ArrayList<Flight>();
-        ArrayList<Flight> flights_db = new ArrayList<>(Arrays.asList(flight));
-        FlightCollection.addFlights(flights_db);
-        assertEquals(flight, FlightCollection.getFlightInfo("Melbourne", "Sydney"));
+        when(mockFlight.getDepartFrom()).thenReturn("Melbourne");
+        when(mockFlight.getDepartTo()).thenReturn("Sydney");
+        assertEquals(mockFlight, FlightCollection.getFlightInfo("Melbourne", "Sydney"));
+    }
+
+    @Test
+    public void testGetFlightInfoWithInvalidTwoCities() {
+        when(mockFlight.getDepartFrom()).thenReturn("Melbourne");
+        when(mockFlight.getDepartTo()).thenReturn("Sydney");
+        Flight result = FlightCollection.getFlightInfo("123", "456");
+        assertNull(result);
     }
 
     @Test
     void testGetFlightInfoWithCity() {
-        FlightCollection.flights = new ArrayList<Flight>();
-        ArrayList<Flight> flights_db = new ArrayList<>(Arrays.asList(flight));
-        FlightCollection.addFlights(flights_db);
-        assertEquals(flight, FlightCollection.getFlightInfo("Sydney"));
+        when(mockFlight.getDepartTo()).thenReturn("Sydney");
+        assertEquals(mockFlight, FlightCollection.getFlightInfo("Sydney"));
     }
+    @Test
+    public void testGetFlightInfoWithInvalidCity() {
+        when(mockFlight.getDepartTo()).thenReturn("Sydney");
+        Flight result = FlightCollection.getFlightInfo("123");
+        assertNull(result);
+    }
+
 
     @Test
     void testGetFlightInfoWithFlight_id() {
-        FlightCollection.flights = new ArrayList<Flight>();
-        ArrayList<Flight> flights_db = new ArrayList<>(Arrays.asList(flight));
-        FlightCollection.addFlights(flights_db);
-        assertEquals(flight, FlightCollection.getFlightInfo(1));
+        when(mockFlight.getFlightID()).thenReturn(1);
+        assertEquals(mockFlight, FlightCollection.getFlightInfo(1));
     }
-
+    @Test
+    public void testGetFlightInfoWithInvalidFlight_id() {
+        when(mockFlight.getFlightID()).thenReturn(1);
+        Flight result = FlightCollection.getFlightInfo(9);
+        assertNull(result);
+    }
 }

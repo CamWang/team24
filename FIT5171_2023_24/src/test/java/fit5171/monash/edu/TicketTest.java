@@ -51,6 +51,7 @@ public class TicketTest {
     public void testServiceTax() {
         Ticket ticket = new Ticket(1, 100, mockFlight, false, mockPassenger);
         ticket.setPrice(100);
+        ticket.setTicketStatus(true);
         ticket.serviceTax();
         assertEquals(112, ticket.getPrice(), 0.001);
     }
@@ -58,12 +59,12 @@ public class TicketTest {
     @Test
     public void testGettersAndSetters() {
         Ticket ticket = new Ticket();
+        ticket.setPassenger(mockPassenger);
+        ticket.setFlight(mockFlight);
         ticket.setTicket_id(1);
         ticket.setPrice(100);
-        ticket.setFlight(mockFlight);
         ticket.setClassVip(false);
         ticket.setTicketStatus(true);
-        ticket.setPassenger(mockPassenger);
         assertEquals(1, ticket.getTicket_id());
         assertEquals(100, ticket.getPrice());
         assertEquals(mockFlight, ticket.getFlight());

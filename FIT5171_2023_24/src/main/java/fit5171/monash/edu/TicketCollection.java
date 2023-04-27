@@ -11,6 +11,13 @@ public class TicketCollection {
 	}
 
 	public static void addTickets(ArrayList<Ticket> tickets_db) {
+//		TicketCollection.tickets.addAll(tickets_db);
+
+		for (Ticket ticket : tickets_db) {
+			if (ticket.getTicket_id() <= 0) {
+				throw new IllegalArgumentException("Invalid ticket ID: " + ticket.getTicket_id());
+			}
+		}
 		TicketCollection.tickets.addAll(tickets_db);
 	}
 

@@ -2,5 +2,6 @@ stages:
   - test_simple_job
 
 test_simple_job:
+  stage: test_simple_job
   script:
     - echo "This is a simple test job."

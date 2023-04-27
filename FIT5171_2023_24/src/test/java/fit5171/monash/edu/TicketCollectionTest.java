@@ -57,7 +57,7 @@ public class TicketCollectionTest {
 
     @Test
     public void testGetTicketInfoValid() {
-        int ticketId = 1;
+        int ticketId = 2;
         when(mockTicket.getTicket_id()).thenReturn(ticketId);
 
         Ticket result = TicketCollection.getTicketInfo(ticketId);
@@ -67,8 +67,8 @@ public class TicketCollectionTest {
 
     @Test
     public void testGetTicketInfoInvalid() {
-        int ticketId = 2;
-        when(mockTicket.getTicket_id()).thenReturn(1);
+        int ticketId = 3;
+        when(mockTicket.getTicket_id()).thenReturn(4);
 
         Ticket result = TicketCollection.getTicketInfo(ticketId);
 

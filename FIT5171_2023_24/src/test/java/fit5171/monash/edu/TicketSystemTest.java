@@ -2,6 +2,7 @@ package fit5171.monash.edu;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -21,39 +22,67 @@ import java.sql.Timestamp;
 
 public class TicketSystemTest {
     private TicketSystem ticketSystem;
-    private FlightCollection flightCollection;
-    private TicketCollection ticketCollection;
+    private FlightCollection mockFlightCollection;
+    private TicketCollection mockTicketCollection;
     private Ticket ticket;
+    private Ticket mockTicket;
     private Airplane airplane;
+    private Airplane mockAirplane;
     private Flight flight;
+    private Flight mockFlight;
+    private Passenger passenger;
+    private Passenger mockPassenger;
+
     @BeforeEach
     public void setUp() throws ParseException {
-        flightCollection = mock(FlightCollection.class);
-        ticketCollection = mock(TicketCollection.class);
-        ticketSystem = new TicketSystem();
+        mockFlightCollection = mock(FlightCollection.class);
+        mockTicketCollection = mock(TicketCollection.class);
+        mockTicket = mock(Ticket.class);
+        mockPassenger = mock(Passenger.class);
+        mockAirplane = mock(Airplane.class);
+        mockFlight = mock(Flight.class);
+
         airplane = new Airplane(1, "Boeing 747", 10, 200, 5);
         flight = new Flight(1, "Sydney", "Melbourne", "QF001", "Qantas", "08/06/23 12:00:00",
                 "08/06/23 15:00:00", airplane);
+        passenger = new Passenger("Wells", "Yu", 27, "Man", "cyuu0052@student.monash.com", "0450000000",
+                "123456789", "123456789", 123);
+        ticket = new Ticket(1, 1000, flight, false, passenger);
+        TicketCollection.tickets = new ArrayList<Ticket>();
+        ArrayList<Ticket> tickets_db = new ArrayList<>(Arrays.asList(ticket));
+        TicketCollection.addTickets(tickets_db);
+        FlightCollection.flights = new ArrayList<Flight>();
+        ArrayList<Flight> flights_db = new ArrayList<>(Arrays.asList(flight));
+        FlightCollection.addFlights(flights_db);
+    }
+
+    /**
+     * 1. When choosing a ticket, a valid city is used.
+     */
+    @Test
+    public void testTicketWithValidCity() throws Exception {
+        String testCity1 = "Melbourne";
+        String testCity2 = "Sydney";
+        String testInput = "1\nChengHan\nYu\n27\nMan\ncyuu0052@student.monash.com\n" +
+                "0450000000\n987654321\n1\n987654321\n987";
+        System.setIn(new ByteArrayInputStream(testInput.getBytes()));
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+
+        TicketSystem ticketSystem = new TicketSystem();
+        ticketSystem.chooseTicket("Melbourne", "Sydney");
+
+        String expectedOutput = "Passenger{ Fullname= Wells Yu ,email='cyuu0052@student.monash.com', phoneNumber='0450000000', passport='123456789}\n" +
+                "Ticket was purchased=false";
+        assert output.toString().contains(expectedOutput);
     }
 
     @Test
     public void testBuyTicketWithValidInput() throws Exception {
         String testInput = "ChengHan\nYu\n27\nMan\ncyuu0052@student.monash.com\n" +
                 "0450000000\n987654321\n1\n987654321\n987";
+
         System.setIn(new ByteArrayInputStream(testInput.getBytes()));
-
-        Passenger passenger = new Passenger("Wells", "Yu", 27, "Man", "cyuu0052@student.monash.com", "0450000000",
-                "123456789", "123456789", 123);
-        Ticket ticket = new Ticket(1, 1000, flight, false, passenger);
-
-        TicketCollection.tickets = new ArrayList<Ticket>();
-        ArrayList<Ticket> tickets_db = new ArrayList<>(Arrays.asList(ticket));
-        TicketCollection.addTickets(tickets_db);
-
-        FlightCollection.flights = new ArrayList<Flight>();
-        ArrayList<Flight> flights_db = new ArrayList<>(Arrays.asList(flight));
-        FlightCollection.addFlights(flights_db);
-
         TicketSystem ticketSystem = new TicketSystem();
         ticketSystem.buyTicket(1);
 
@@ -70,17 +99,6 @@ public class TicketSystemTest {
 
     @Test
     public void testShowTicket() {
-        Timestamp dateFrom = new Timestamp(123, 0, 0, 0, 0, 0, 0);
-        Timestamp dateTo = new Timestamp(123, 0, 1, 0, 0, 0, 0);
-
-        Passenger passenger = new Passenger("Ping", "He", 22, "Woman", "phee0011@student.monash.com", "0421111111",
-                "123456789", "46221111", 111);
-        Ticket ticket = new Ticket(1, 200, flight, false, passenger);
-
-        TicketCollection.tickets = new ArrayList<Ticket>();
-        ArrayList<Ticket> tickets_db = new ArrayList<>(Arrays.asList(ticket));
-        TicketCollection.addTickets(tickets_db);
-
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
 
@@ -95,18 +113,7 @@ public class TicketSystemTest {
         assertEquals(expectedOutput, output.toString());
     }
 
-    /*
-          When choosing a ticket, a valid city is used.
-     */
-//    @Test
-//    public void testTicketWithValidCity() {
-//        String testCity1 = "Sydney";
-//        String testCity2 = "Melbourne";
-//        Flight flight = mock(Flight.class);
-//        when(flightCollection.getFlightInfo(testCity1, testCity2)).thenReturn(flight);
-//        Flight result = flightCollection.getFlightInfo(testCity1, testCity2);
-//        assertEquals(flight, result);
-//    }
+
 //
 //    @Test
 //    public void testTicketWithInvalidCity() {

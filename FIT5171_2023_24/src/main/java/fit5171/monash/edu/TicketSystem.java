@@ -266,20 +266,23 @@ public class TicketSystem {
         int idFirst = 0;
         int idSecond = 0;
 
-        Flight flight = new Flight();
+//        Flight flight = new Flight();
 
         // search for direct flight from city1 to city2
 
-        flight = FlightCollection.getFlightInfo(city1, city2);
+        Flight flight = FlightCollection.getFlightInfo(city1, city2);
 
         if (flight != null) {
 
             TicketCollection.getAllTickets();
 
             System.out.println("\nEnter ID of ticket you want to choose:");
-
-            int ticket_id = in.nextInt();
-
+            int ticket_id = 1;
+            try {
+                ticket_id = Integer.parseInt(in.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid number");
+            }
             // validate ticker here
 
             // buy ticket here

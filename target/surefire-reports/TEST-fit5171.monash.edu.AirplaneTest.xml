@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="fit5171.monash.edu.AirplaneTest" time="0.041" tests="8" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="fit5171.monash.edu.AirplaneTest" time="0.045" tests="8" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="windows"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -18,7 +18,7 @@
     <property name="user.country" value="AU"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_131\jre\bin"/>
-    <property name="sun.java.command" value="C:\Users\heping\AppData\Local\Temp\surefire6567339798510927958\surefirebooter2053302919939481052.jar C:\Users\heping\AppData\Local\Temp\surefire6567339798510927958 2023-04-29T23-30-55_988-jvmRun1 surefire2624632358169158749tmp surefire_05837059520324013531tmp"/>
+    <property name="sun.java.command" value="C:\Users\heping\AppData\Local\Temp\surefire1912573092874996654\surefirebooter4066115444143221529.jar C:\Users\heping\AppData\Local\Temp\surefire1912573092874996654 2023-04-29T23-32-07_435-jvmRun1 surefire344329365343706755tmp surefire_01684168723499095209tmp"/>
     <property name="surefire.test.class.path" value="C:\Monash\FIT5171\team24\target\test-classes;C:\Monash\FIT5171\team24\target\classes;C:\Users\heping\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.8.0\junit-jupiter-params-5.8.0.jar;C:\Users\heping\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\heping\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.0\junit-jupiter-engine-5.8.0.jar;C:\Users\heping\.m2\repository\org\junit\platform\junit-platform-engine\1.8.0\junit-platform-engine-1.8.0.jar;C:\Users\heping\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.0\junit-jupiter-api-5.8.0.jar;C:\Users\heping\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\heping\.m2\repository\org\junit\platform\junit-platform-commons\1.8.0\junit-platform-commons-1.8.0.jar;C:\Users\heping\.m2\repository\org\junit\jupiter\junit-jupiter\5.8.0\junit-jupiter-5.8.0.jar;C:\Users\heping\.m2\repository\org\mockito\mockito-all\1.10.19\mockito-all-1.10.19.jar;C:\Users\heping\.m2\repository\org\mockito\mockito-core\4.7.0\mockito-core-4.7.0.jar;C:\Users\heping\.m2\repository\net\bytebuddy\byte-buddy\1.12.13\byte-buddy-1.12.13.jar;C:\Users\heping\.m2\repository\net\bytebuddy\byte-buddy-agent\1.12.13\byte-buddy-agent-1.12.13.jar;C:\Users\heping\.m2\repository\org\objenesis\objenesis\3.2\objenesis-3.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\heping"/>
@@ -31,7 +31,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\heping\AppData\Local\Temp\surefire6567339798510927958\surefirebooter2053302919939481052.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\heping\AppData\Local\Temp\surefire1912573092874996654\surefirebooter4066115444143221529.jar"/>
     <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.8.0_131\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_131\jre\classes"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
@@ -60,12 +60,12 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="52.0"/>
   </properties>
-  <testcase name="businessSeatNumberNotInRange" classname="fit5171.monash.edu.AirplaneTest" time="0.024"/>
+  <testcase name="businessSeatNumberNotInRange" classname="fit5171.monash.edu.AirplaneTest" time="0.023"/>
   <testcase name="crewSeatNumberInRange" classname="fit5171.monash.edu.AirplaneTest" time="0"/>
-  <testcase name="economySeatNumberNotInRange" classname="fit5171.monash.edu.AirplaneTest" time="0"/>
-  <testcase name="crewSeatNumberNotInRange" classname="fit5171.monash.edu.AirplaneTest" time="0.001"/>
+  <testcase name="economySeatNumberNotInRange" classname="fit5171.monash.edu.AirplaneTest" time="0.001"/>
+  <testcase name="crewSeatNumberNotInRange" classname="fit5171.monash.edu.AirplaneTest" time="0.002"/>
   <testcase name="economySeatNumberInRange" classname="fit5171.monash.edu.AirplaneTest" time="0.001"/>
-  <testcase name="businessSeatNumberInRange" classname="fit5171.monash.edu.AirplaneTest" time="0.001"/>
+  <testcase name="businessSeatNumberInRange" classname="fit5171.monash.edu.AirplaneTest" time="0"/>
   <testcase name="testSetterMethods" classname="fit5171.monash.edu.AirplaneTest" time="0.003"/>
   <testcase name="testToStringMethod" classname="fit5171.monash.edu.AirplaneTest" time="0.001"/>
 </testsuite>

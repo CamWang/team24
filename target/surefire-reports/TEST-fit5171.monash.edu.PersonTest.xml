@@ -18,7 +18,7 @@
     <property name="user.country" value="AU"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_131\jre\bin"/>
-    <property name="sun.java.command" value="C:\Users\heping\AppData\Local\Temp\surefire6567339798510927958\surefirebooter2053302919939481052.jar C:\Users\heping\AppData\Local\Temp\surefire6567339798510927958 2023-04-29T23-30-55_988-jvmRun1 surefire2624632358169158749tmp surefire_05837059520324013531tmp"/>
+    <property name="sun.java.command" value="C:\Users\heping\AppData\Local\Temp\surefire1912573092874996654\surefirebooter4066115444143221529.jar C:\Users\heping\AppData\Local\Temp\surefire1912573092874996654 2023-04-29T23-32-07_435-jvmRun1 surefire344329365343706755tmp surefire_01684168723499095209tmp"/>
     <property name="surefire.test.class.path" value="C:\Monash\FIT5171\team24\target\test-classes;C:\Monash\FIT5171\team24\target\classes;C:\Users\heping\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.8.0\junit-jupiter-params-5.8.0.jar;C:\Users\heping\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\heping\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.0\junit-jupiter-engine-5.8.0.jar;C:\Users\heping\.m2\repository\org\junit\platform\junit-platform-engine\1.8.0\junit-platform-engine-1.8.0.jar;C:\Users\heping\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.0\junit-jupiter-api-5.8.0.jar;C:\Users\heping\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\heping\.m2\repository\org\junit\platform\junit-platform-commons\1.8.0\junit-platform-commons-1.8.0.jar;C:\Users\heping\.m2\repository\org\junit\jupiter\junit-jupiter\5.8.0\junit-jupiter-5.8.0.jar;C:\Users\heping\.m2\repository\org\mockito\mockito-all\1.10.19\mockito-all-1.10.19.jar;C:\Users\heping\.m2\repository\org\mockito\mockito-core\4.7.0\mockito-core-4.7.0.jar;C:\Users\heping\.m2\repository\net\bytebuddy\byte-buddy\1.12.13\byte-buddy-1.12.13.jar;C:\Users\heping\.m2\repository\net\bytebuddy\byte-buddy-agent\1.12.13\byte-buddy-agent-1.12.13.jar;C:\Users\heping\.m2\repository\org\objenesis\objenesis\3.2\objenesis-3.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\heping"/>
@@ -31,7 +31,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\heping\AppData\Local\Temp\surefire6567339798510927958\surefirebooter2053302919939481052.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\heping\AppData\Local\Temp\surefire1912573092874996654\surefirebooter4066115444143221529.jar"/>
     <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.8.0_131\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_131\jre\classes"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
@@ -64,8 +64,8 @@
   <testcase name="testAllFields" classname="fit5171.monash.edu.PersonTest" time="0"/>
   <testcase name="secondNameValidFormat" classname="fit5171.monash.edu.PersonTest" time="0"/>
   <testcase name="firstNameValidFormat" classname="fit5171.monash.edu.PersonTest" time="0"/>
-  <testcase name="testInvalidGender" classname="fit5171.monash.edu.PersonTest" time="0"/>
-  <testcase name="secondNameInvalidFormat" classname="fit5171.monash.edu.PersonTest" time="0"/>
+  <testcase name="testInvalidGender" classname="fit5171.monash.edu.PersonTest" time="0.001"/>
+  <testcase name="secondNameInvalidFormat" classname="fit5171.monash.edu.PersonTest" time="0.001"/>
   <testcase name="testValidGender" classname="fit5171.monash.edu.PersonTest" time="0"/>
-  <testcase name="testConstructor" classname="fit5171.monash.edu.PersonTest" time="0.001"/>
+  <testcase name="testConstructor" classname="fit5171.monash.edu.PersonTest" time="0"/>
 </testsuite>

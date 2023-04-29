@@ -1,4 +1,39 @@
 -------------------------------------------------------------------------------
 Test set: fit5171.monash.edu.FlightTest
 -------------------------------------------------------------------------------
-Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.036 s - in fit5171.monash.edu.FlightTest
+Tests run: 7, Failures: 0, Errors: 7, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in fit5171.monash.edu.FlightTest
+dateToInvalidFormat  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class org.mockito.internal.creation.cglib.ClassImposterizer$3
+	at fit5171.monash.edu.FlightTest.setUp(FlightTest.java:20)
+Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.ExceptionInInitializerError [in thread "main"]
+
+dateFromInvalidFormat  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class org.mockito.internal.creation.cglib.ClassImposterizer$3
+	at fit5171.monash.edu.FlightTest.setUp(FlightTest.java:20)
+Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.ExceptionInInitializerError [in thread "main"]
+
+dateFromValidFormat  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class org.mockito.internal.creation.cglib.ClassImposterizer$3
+	at fit5171.monash.edu.FlightTest.setUp(FlightTest.java:20)
+Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.ExceptionInInitializerError [in thread "main"]
+
+testSetterMethods  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class org.mockito.internal.creation.cglib.ClassImposterizer$3
+	at fit5171.monash.edu.FlightTest.setUp(FlightTest.java:20)
+Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.ExceptionInInitializerError [in thread "main"]
+
+dateToValidFormat  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class org.mockito.internal.creation.cglib.ClassImposterizer$3
+	at fit5171.monash.edu.FlightTest.setUp(FlightTest.java:20)
+Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.ExceptionInInitializerError [in thread "main"]
+
+testConstructor  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class org.mockito.internal.creation.cglib.ClassImposterizer$3
+	at fit5171.monash.edu.FlightTest.setUp(FlightTest.java:20)
+Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.ExceptionInInitializerError [in thread "main"]
+
+testToStringMethod  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class org.mockito.internal.creation.cglib.ClassImposterizer$3
+	at fit5171.monash.edu.FlightTest.setUp(FlightTest.java:20)
+Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.ExceptionInInitializerError [in thread "main"]
+

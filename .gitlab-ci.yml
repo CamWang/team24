@@ -12,15 +12,11 @@ cache:
 
 build:
   stage: build
-  tags:
-    - Arvinds-MBP.gateway
   script:
     - mvn $MAVEN_CLI_OPTS compile
 
 test:
   stage: test
-  tags:
-    - Arvinds-MBP.gateway
   script:
     - mvn $MAVEN_CLI_OPTS test
  

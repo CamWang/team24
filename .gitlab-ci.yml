@@ -3,11 +3,11 @@ build:
   tags:
     - Arvinds-MBP.gateway
   script:
-    - mvn $MAVEN_CLI_OPTS compile
+    - mvn compile
 
 test:
   stage: test
   tags:
     - Arvinds-MBP.gateway
   script:
-    - mvn $MAVEN_CLI_OPTS test
+    - mvn test

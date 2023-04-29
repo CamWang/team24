@@ -15,6 +15,9 @@ public class FlightCollection {
             if (FlightCollection.getFlightInfo(flight.getFlightID()) != null) {
                 throw new IllegalArgumentException("Flight already exists");
             }
+            if (!flight.getDepartTo().matches("[a-zA-Z]+") || !flight.getDepartFrom().matches("[a-zA-Z]+")) {
+                throw new IllegalArgumentException("City can contain only small case and upper-case alphabet letters.");
+            }
         }
         FlightCollection.flights.addAll(flights);
     }

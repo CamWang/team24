@@ -25,10 +25,12 @@ public class TicketSystemTest {
     private FlightCollection mockFlightCollection;
     private TicketCollection mockTicketCollection;
     private Ticket ticket;
+    private Ticket ticket2;
     private Ticket mockTicket;
     private Airplane airplane;
     private Airplane mockAirplane;
     private Flight flight;
+    private Flight flight2;
     private Flight mockFlight;
     private Passenger passenger;
     private Passenger mockPassenger;
@@ -45,14 +47,17 @@ public class TicketSystemTest {
         airplane = new Airplane(1, "Boeing 747", 10, 200, 5);
         flight = new Flight(1, "Sydney", "Melbourne", "QF001", "Qantas", "08/06/23 12:00:00",
                 "08/06/23 15:00:00", airplane);
+        flight2 = new Flight(2, "Brisbane", "Sydney", "QF001", "Qantas", "08/06/23 12:00:00",
+                "08/06/23 15:00:00", airplane);
         passenger = new Passenger("Wells", "Yu", 27, "Man", "cyuu0052@student.monash.com", "0450000000",
                 "123456789", "123456789", 123);
         ticket = new Ticket(1, 1000, flight, false, passenger);
+        ticket2 = new Ticket(2, 1000, flight2, false, passenger);
         TicketCollection.tickets = new ArrayList<Ticket>();
-        ArrayList<Ticket> tickets_db = new ArrayList<>(Arrays.asList(ticket));
+        ArrayList<Ticket> tickets_db = new ArrayList<>(Arrays.asList(ticket, ticket2));
         TicketCollection.addTickets(tickets_db);
         FlightCollection.flights = new ArrayList<Flight>();
-        ArrayList<Flight> flights_db = new ArrayList<>(Arrays.asList(flight));
+        ArrayList<Flight> flights_db = new ArrayList<>(Arrays.asList(flight, flight2));
         FlightCollection.addFlights(flights_db);
     }
 
@@ -61,8 +66,6 @@ public class TicketSystemTest {
      */
     @Test
     public void testTicketWithValidCity() throws Exception {
-        String testCity1 = "Melbourne";
-        String testCity2 = "Sydney";
         String testInput = "1\nChengHan\nYu\n27\nMan\ncyuu0052@student.monash.com\n" +
                 "0450000000\n987654321\n1\n987654321\n987";
         System.setIn(new ByteArrayInputStream(testInput.getBytes()));
@@ -74,6 +77,21 @@ public class TicketSystemTest {
 
         String expectedOutput = "Passenger{ Fullname= Wells Yu ,email='cyuu0052@student.monash.com', phoneNumber='0450000000', passport='123456789}\n" +
                 "Ticket was purchased=false";
+        assert output.toString().contains(expectedOutput);
+    }
+
+    @Test
+    public void testTicketWithValidTwoCity() throws Exception {
+        String testInput = "1\nChengHan\nYu\n27\nMan\ncyuu0052@student.monash.com\n" +
+                "0450000000\n987654321\n1\n987654321\n987";
+        System.setIn(new ByteArrayInputStream(testInput.getBytes()));
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+
+        TicketSystem ticketSystem = new TicketSystem();
+        ticketSystem.chooseTicket("Melbourne", "Brisbane");
+
+        String expectedOutput = "There is special way to go there. And it is transfer way, like above. Way №";
         assert output.toString().contains(expectedOutput);
     }
 

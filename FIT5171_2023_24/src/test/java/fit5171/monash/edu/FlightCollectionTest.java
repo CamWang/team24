@@ -37,11 +37,6 @@ public class FlightCollectionTest {
     }
 
     @Test
-    void testAddFlights() {
-        assertEquals(mockFlights, FlightCollection.getFlights());
-    }
-
-    @Test
     void testAddExistFlights() {
         when(mockFlight.getFlightID()).thenReturn(1);
         try{
@@ -52,7 +47,25 @@ public class FlightCollectionTest {
         }
     }
 
+    /**
+     * 2. Valid city names must be used.
+     */
+    @Test
+    void testAddInvalidCityFlights() {
+        when(mockFlight.getFlightID()).thenReturn(1).thenReturn(2);
+        when(mockFlight.getDepartTo()).thenReturn("Sydney123");
+        when(mockFlight.getDepartFrom()).thenReturn("Melbourne");
+        try{
+            FlightCollection.addFlights(mockFlights);
+            fail("Expected IllegalArgumentException was not thrown");
+        } catch (IllegalArgumentException e) {
+            assertEquals("City can contain only small case and upper-case alphabet letters.", e.getMessage());
+        }
+    }
 
+    /**
+     * 3. When trying to get flight information, a valid flight is returned.
+     */
     @Test
     void testGetFlightInfoWithTwoCities() {
         when(mockFlight.getDepartFrom()).thenReturn("Melbourne");

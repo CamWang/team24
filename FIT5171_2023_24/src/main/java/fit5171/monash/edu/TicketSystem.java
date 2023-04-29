@@ -311,12 +311,9 @@ public class TicketSystem {
                 idFirst = depart_to.getFlightID();
 
                 idSecond = flightConnectingTwoCities.getFlightID();
-
+                buyTicket(idFirst, idSecond); // pass two tickets and buy them
+                counter++;
             }
-
-            counter++;
-
-            buyTicket(idFirst, idSecond); // pass two tickets and buy them
 
             if (counter == 1) {
                 System.out.println("There is no possible variants.");

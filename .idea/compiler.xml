@@ -9,5 +9,8 @@
         <module name="FIT5171_2023_24" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="FIT5171_2023_24" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

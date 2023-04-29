@@ -1,71 +1,105 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="fit5171.monash.edu.PersonTest" time="0.004" tests="8" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="fit5171.monash.edu.PersonTest" time="0.013" tests="8" errors="8" skipped="0" failures="0">
   <properties>
-    <property name="sun.desktop" value="windows"/>
-    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
+    <property name="gopherProxySet" value="false"/>
+    <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
     <property name="file.encoding.pkg" value="sun.io"/>
     <property name="java.specification.version" value="1.8"/>
-    <property name="sun.cpu.isalist" value="amd64"/>
-    <property name="sun.jnu.encoding" value="GBK"/>
-    <property name="java.class.path" value="C:\Monash\FIT5171\team24\target\test-classes;C:\Monash\FIT5171\team24\target\classes;C:\Users\heping\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.8.0\junit-jupiter-params-5.8.0.jar;C:\Users\heping\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\heping\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.0\junit-jupiter-engine-5.8.0.jar;C:\Users\heping\.m2\repository\org\junit\platform\junit-platform-engine\1.8.0\junit-platform-engine-1.8.0.jar;C:\Users\heping\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.0\junit-jupiter-api-5.8.0.jar;C:\Users\heping\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\heping\.m2\repository\org\junit\platform\junit-platform-commons\1.8.0\junit-platform-commons-1.8.0.jar;C:\Users\heping\.m2\repository\org\junit\jupiter\junit-jupiter\5.8.0\junit-jupiter-5.8.0.jar;C:\Users\heping\.m2\repository\org\mockito\mockito-all\1.10.19\mockito-all-1.10.19.jar;C:\Users\heping\.m2\repository\org\mockito\mockito-core\4.7.0\mockito-core-4.7.0.jar;C:\Users\heping\.m2\repository\net\bytebuddy\byte-buddy\1.12.13\byte-buddy-1.12.13.jar;C:\Users\heping\.m2\repository\net\bytebuddy\byte-buddy-agent\1.12.13\byte-buddy-agent-1.12.13.jar;C:\Users\heping\.m2\repository\org\objenesis\objenesis\3.2\objenesis-3.2.jar;"/>
+    <property name="sun.cpu.isalist" value=""/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/wells/Monash/FIT5171/team24/target/test-classes:/Users/wells/Monash/FIT5171/team24/target/classes:/Users/wells/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.8.0/junit-jupiter-params-5.8.0.jar:/Users/wells/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/wells/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.8.0/junit-jupiter-engine-5.8.0.jar:/Users/wells/.m2/repository/org/junit/platform/junit-platform-engine/1.8.0/junit-platform-engine-1.8.0.jar:/Users/wells/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.8.0/junit-jupiter-api-5.8.0.jar:/Users/wells/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/wells/.m2/repository/org/junit/platform/junit-platform-commons/1.8.0/junit-platform-commons-1.8.0.jar:/Users/wells/.m2/repository/org/junit/jupiter/junit-jupiter/5.8.0/junit-jupiter-5.8.0.jar:/Users/wells/.m2/repository/org/mockito/mockito-all/1.10.19/mockito-all-1.10.19.jar:/Users/wells/.m2/repository/org/mockito/mockito-core/4.7.0/mockito-core-4.7.0.jar:/Users/wells/.m2/repository/net/bytebuddy/byte-buddy/1.12.13/byte-buddy-1.12.13.jar:/Users/wells/.m2/repository/net/bytebuddy/byte-buddy-agent/1.12.13/byte-buddy-agent-1.12.13.jar:/Users/wells/.m2/repository/org/objenesis/objenesis/3.2/objenesis-3.2.jar:"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="user.variant" value=""/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
-    <property name="user.timezone" value="Australia/Sydney"/>
+    <property name="user.timezone" value=""/>
     <property name="java.vm.specification.version" value="1.8"/>
-    <property name="os.name" value="Windows 10"/>
-    <property name="user.country" value="AU"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="user.country" value="TW"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
-    <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_131\jre\bin"/>
-    <property name="sun.java.command" value="C:\Users\heping\AppData\Local\Temp\surefire1912573092874996654\surefirebooter4066115444143221529.jar C:\Users\heping\AppData\Local\Temp\surefire1912573092874996654 2023-04-29T23-32-07_435-jvmRun1 surefire344329365343706755tmp surefire_01684168723499095209tmp"/>
-    <property name="surefire.test.class.path" value="C:\Monash\FIT5171\team24\target\test-classes;C:\Monash\FIT5171\team24\target\classes;C:\Users\heping\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.8.0\junit-jupiter-params-5.8.0.jar;C:\Users\heping\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\heping\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.8.0\junit-jupiter-engine-5.8.0.jar;C:\Users\heping\.m2\repository\org\junit\platform\junit-platform-engine\1.8.0\junit-platform-engine-1.8.0.jar;C:\Users\heping\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.8.0\junit-jupiter-api-5.8.0.jar;C:\Users\heping\.m2\repository\org\opentest4j\opentest4j\1.2.0\opentest4j-1.2.0.jar;C:\Users\heping\.m2\repository\org\junit\platform\junit-platform-commons\1.8.0\junit-platform-commons-1.8.0.jar;C:\Users\heping\.m2\repository\org\junit\jupiter\junit-jupiter\5.8.0\junit-jupiter-5.8.0.jar;C:\Users\heping\.m2\repository\org\mockito\mockito-all\1.10.19\mockito-all-1.10.19.jar;C:\Users\heping\.m2\repository\org\mockito\mockito-core\4.7.0\mockito-core-4.7.0.jar;C:\Users\heping\.m2\repository\net\bytebuddy\byte-buddy\1.12.13\byte-buddy-1.12.13.jar;C:\Users\heping\.m2\repository\net\bytebuddy\byte-buddy-agent\1.12.13\byte-buddy-agent-1.12.13.jar;C:\Users\heping\.m2\repository\org\objenesis\objenesis\3.2\objenesis-3.2.jar;"/>
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/jre/lib"/>
+    <property name="sun.java.command" value="/Users/wells/Monash/FIT5171/team24/target/surefire/surefirebooter6379777913523943133.jar /Users/wells/Monash/FIT5171/team24/target/surefire 2023-04-29T23-13-48_776-jvmRun1 surefire996438466832596444tmp surefire_01861267085773170527tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="surefire.test.class.path" value="/Users/wells/Monash/FIT5171/team24/target/test-classes:/Users/wells/Monash/FIT5171/team24/target/classes:/Users/wells/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.8.0/junit-jupiter-params-5.8.0.jar:/Users/wells/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/Users/wells/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.8.0/junit-jupiter-engine-5.8.0.jar:/Users/wells/.m2/repository/org/junit/platform/junit-platform-engine/1.8.0/junit-platform-engine-1.8.0.jar:/Users/wells/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.8.0/junit-jupiter-api-5.8.0.jar:/Users/wells/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/wells/.m2/repository/org/junit/platform/junit-platform-commons/1.8.0/junit-platform-commons-1.8.0.jar:/Users/wells/.m2/repository/org/junit/jupiter/junit-jupiter/5.8.0/junit-jupiter-5.8.0.jar:/Users/wells/.m2/repository/org/mockito/mockito-all/1.10.19/mockito-all-1.10.19.jar:/Users/wells/.m2/repository/org/mockito/mockito-core/4.7.0/mockito-core-4.7.0.jar:/Users/wells/.m2/repository/net/bytebuddy/byte-buddy/1.12.13/byte-buddy-1.12.13.jar:/Users/wells/.m2/repository/net/bytebuddy/byte-buddy-agent/1.12.13/byte-buddy-agent-1.12.13.jar:/Users/wells/.m2/repository/org/objenesis/objenesis/3.2/objenesis-3.2.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
-    <property name="user.home" value="C:\Users\heping"/>
+    <property name="user.home" value="/Users/wells"/>
     <property name="user.language" value="en"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
-    <property name="java.home" value="C:\Program Files\Java\jdk1.8.0_131\jre"/>
-    <property name="basedir" value="C:\Monash\FIT5171\team24"/>
-    <property name="file.separator" value="\"/>
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/jre"/>
+    <property name="basedir" value="/Users/wells/Monash/FIT5171/team24"/>
+    <property name="file.separator" value="/"/>
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\heping\AppData\Local\Temp\surefire1912573092874996654\surefirebooter4066115444143221529.jar"/>
-    <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.8.0_131\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_131\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_131\jre\classes"/>
-    <property name="user.script" value=""/>
+    <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="/Users/wells/Monash/FIT5171/team24/target/surefire/surefirebooter6379777913523943133.jar"/>
+    <property name="sun.boot.class.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/jre/classes"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="java.runtime.version" value="1.8.0_131-b11"/>
-    <property name="user.name" value="heping"/>
-    <property name="path.separator" value=";"/>
-    <property name="os.version" value="10.0"/>
-    <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_131\jre\lib\endorsed"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.runtime.version" value="1.8.0_202-b08"/>
+    <property name="user.name" value="chenghanyu"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="10.16"/>
+    <property name="java.endorsed.dirs" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/jre/lib/endorsed"/>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
-    <property name="file.encoding" value="GBK"/>
+    <property name="file.encoding" value="UTF-8"/>
     <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
-    <property name="localRepository" value="C:\Users\heping\.m2\repository"/>
+    <property name="localRepository" value="/Users/wells/.m2/repository"/>
     <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
-    <property name="java.io.tmpdir" value="C:\Users\heping\AppData\Local\Temp\"/>
-    <property name="java.version" value="1.8.0_131"/>
-    <property name="user.dir" value="C:\Monash\FIT5171\team24"/>
-    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="/var/folders/6v/t5svmqns04d9jlnjj1l2nr9m0000gn/T/"/>
+    <property name="idea.version" value="2023.1"/>
+    <property name="java.version" value="1.8.0_202"/>
+    <property name="user.dir" value="/Users/wells/Monash/FIT5171/team24"/>
+    <property name="os.arch" value="x86_64"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
-    <property name="sun.os.patch.level" value=""/>
-    <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_131\jre\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Common Files\Oracle\Java\javapath;E:\Xmanager\;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\NetSarang\Xshell 6\;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\PROGRA~1\PTC\MKSTOO~1\bin64;C:\PROGRA~1\PTC\MKSTOO~1\bin;C:\PROGRA~1\PTC\MKSTOO~1\bin\X11;C:\PROGRA~1\PTC\MKSTOO~1\mksnt;e:\fortran\Tools;e:\fortran\Msdev98\BIN;e:\DF98\BIN;e:\VC98\BIN;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;E:\Xshell\;E:\Xftp\;E:\quuka\nodejs\;E;\vivo互传\EasyShare\x64\;E;\DiskGenius\ADK\Windows Performance Toolkit\;C:\Program Files\dotnet\;E:\vivo互传\EasyShare\x86\;E;\vivo互传\EasyShare\x64\;C:\Program Files\Git\cmd;E:\SDK platform\platform-tools;E:\MRT\MRT\bin;C:\Users\heping\AppData\Local\Microsoft\WindowsApps;E:\VSCode\Microsoft VS Code\bin;E:\Python;C:\Users\heping\AppData\Roaming\npm;E:\IDEA\IntelliJ IDEA Community Edition 2022.2\bin;C:\Users\heping\AppData\Local\JetBrains\Toolbox\scripts;C:\Program Files\Java\jdk1.8.0_131\bin;E:\MAVEN\apache-maven-3.9.1\bin;;."/>
+    <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.library.path" value="/Users/wells/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
     <property name="java.vm.info" value="mixed mode"/>
     <property name="java.vendor" value="Oracle Corporation"/>
-    <property name="java.vm.version" value="25.131-b11"/>
-    <property name="java.ext.dirs" value="C:\Program Files\Java\jdk1.8.0_131\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"/>
-    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.vm.version" value="25.202-b08"/>
+    <property name="java.ext.dirs" value="/Users/wells/Library/Java/Extensions:/Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/jre/lib/ext:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="java.class.version" value="52.0"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
   </properties>
-  <testcase name="firstNameInvalidFormat" classname="fit5171.monash.edu.PersonTest" time="0"/>
-  <testcase name="testAllFields" classname="fit5171.monash.edu.PersonTest" time="0"/>
-  <testcase name="secondNameValidFormat" classname="fit5171.monash.edu.PersonTest" time="0"/>
-  <testcase name="firstNameValidFormat" classname="fit5171.monash.edu.PersonTest" time="0"/>
-  <testcase name="testInvalidGender" classname="fit5171.monash.edu.PersonTest" time="0.001"/>
-  <testcase name="secondNameInvalidFormat" classname="fit5171.monash.edu.PersonTest" time="0.001"/>
-  <testcase name="testValidGender" classname="fit5171.monash.edu.PersonTest" time="0"/>
-  <testcase name="testConstructor" classname="fit5171.monash.edu.PersonTest" time="0"/>
+  <testcase name="firstNameInvalidFormat" classname="fit5171.monash.edu.PersonTest" time="0.002">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at fit5171.monash.edu.PersonTest.setUp(PersonTest.java:13)
+</error>
+  </testcase>
+  <testcase name="testAllFields" classname="fit5171.monash.edu.PersonTest" time="0">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at fit5171.monash.edu.PersonTest.setUp(PersonTest.java:13)
+</error>
+  </testcase>
+  <testcase name="secondNameValidFormat" classname="fit5171.monash.edu.PersonTest" time="0">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at fit5171.monash.edu.PersonTest.setUp(PersonTest.java:13)
+</error>
+  </testcase>
+  <testcase name="firstNameValidFormat" classname="fit5171.monash.edu.PersonTest" time="0.002">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at fit5171.monash.edu.PersonTest.setUp(PersonTest.java:13)
+</error>
+  </testcase>
+  <testcase name="testInvalidGender" classname="fit5171.monash.edu.PersonTest" time="0.004">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at fit5171.monash.edu.PersonTest.setUp(PersonTest.java:13)
+</error>
+  </testcase>
+  <testcase name="secondNameInvalidFormat" classname="fit5171.monash.edu.PersonTest" time="0.001">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at fit5171.monash.edu.PersonTest.setUp(PersonTest.java:13)
+</error>
+  </testcase>
+  <testcase name="testValidGender" classname="fit5171.monash.edu.PersonTest" time="0">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at fit5171.monash.edu.PersonTest.setUp(PersonTest.java:13)
+</error>
+  </testcase>
+  <testcase name="testConstructor" classname="fit5171.monash.edu.PersonTest" time="0.001">
+    <error type="java.lang.NullPointerException">java.lang.NullPointerException
+	at fit5171.monash.edu.PersonTest.setUp(PersonTest.java:13)
+</error>
+  </testcase>
 </testsuite>

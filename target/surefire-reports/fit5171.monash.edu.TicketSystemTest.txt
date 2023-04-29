@@ -1,4 +1,20 @@
 -------------------------------------------------------------------------------
 Test set: fit5171.monash.edu.TicketSystemTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.037 s - in fit5171.monash.edu.TicketSystemTest
+Tests run: 4, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 0.051 s <<< FAILURE! - in fit5171.monash.edu.TicketSystemTest
+testBuyTicketWithValidInput  Time elapsed: 0.033 s  <<< ERROR!
+java.lang.NullPointerException
+	at fit5171.monash.edu.TicketSystemTest.testBuyTicketWithValidInput(TicketSystemTest.java:104)
+
+testTicketWithValidCity  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.NullPointerException
+	at fit5171.monash.edu.TicketSystemTest.testTicketWithValidCity(TicketSystemTest.java:75)
+
+testShowTicket  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.NullPointerException
+	at fit5171.monash.edu.TicketSystemTest.testShowTicket(TicketSystemTest.java:123)
+
+testTicketWithValidTwoCity  Time elapsed: 0.004 s  <<< ERROR!
+java.lang.NullPointerException
+	at fit5171.monash.edu.TicketSystemTest.testTicketWithValidTwoCity(TicketSystemTest.java:91)
+

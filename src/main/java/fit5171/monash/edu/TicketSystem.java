@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 // public class TicketSystem<T> {
 public class TicketSystem {
-    Passenger passenger = new Passenger();
+    Passenger passenger;
     Ticket ticket = new Ticket();
     Flight flight = new Flight();
     Scanner in = new Scanner(System.in);
@@ -19,7 +19,7 @@ public class TicketSystem {
     private TicketCollection ticketCollection;
 
     public TicketSystem() {
-        passenger = new Passenger();
+        passenger = new Passenger("null", "null", 1, "Other");
         ticket = new Ticket();
         flight = new Flight();
         flightCollection = new FlightCollection();
@@ -250,7 +250,7 @@ public class TicketSystem {
                     passenger.setCardNumber(cardNumber);
 
                     System.out.println("Enter your security code:");
-                    Integer securityCode = 0;
+                    int securityCode = 0;
                     passenger.setSecurityCode(securityCode);
 
                 }
@@ -284,6 +284,12 @@ public class TicketSystem {
                 System.out.println("Please enter a valid number");
             }
             // validate ticker here
+            if(TicketCollection.getTicketInfo(ticket_id) == null){
+                throw new Exception("This ticket does not exist.");
+            } else if(TicketCollection.getTicketInfo(ticket_id).ticketStatus()) {
+                throw new Exception("This ticket is already booked.");
+            }
+
 
             // buy ticket here
             buyTicket(ticket_id);

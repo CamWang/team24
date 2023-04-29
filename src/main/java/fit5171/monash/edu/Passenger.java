@@ -12,7 +12,8 @@ public class Passenger extends Person {
     private static final Pattern PHONE_NUMBER_PATTERN = Pattern.compile("^(\\+61|0)?[45]\\d{8}$");
     private static final Pattern EMAIL_PATTERN = Pattern.compile("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.com$");
     private static final Pattern PASSPORT_NUMBER_PATTERN = Pattern.compile("\\d{9}");
-    public Passenger() {
+    public Passenger(String firstName, String secondName, int age, String gender) {
+        super(firstName, secondName, age, gender);
     }
 
     public Passenger(String firstName, String secondName, int age, String gender, String email, String phoneNumber,

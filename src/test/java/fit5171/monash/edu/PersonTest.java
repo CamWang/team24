@@ -10,13 +10,13 @@ public class PersonTest {
 
     @BeforeEach
     void setUp() {
-        person = new Passenger();
+        person = new Passenger("null", "null", 1, "Other");
     }
 
-    @Test
-    public void testConstructor() {
-        assertNotNull(person);
-    }
+//    @Test
+//    public void testConstructor() {
+//        assertNotNull(person);
+//    }
 
     /**
      * 1. All fields of a Person class are required to create a person.

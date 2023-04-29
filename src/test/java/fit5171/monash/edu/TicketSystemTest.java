@@ -22,35 +22,23 @@ import java.sql.Timestamp;
 
 public class TicketSystemTest {
     private TicketSystem ticketSystem;
-    private FlightCollection mockFlightCollection;
-    private TicketCollection mockTicketCollection;
     private Ticket ticket;
     private Ticket ticket2;
-    private Ticket mockTicket;
     private Airplane airplane;
-    private Airplane mockAirplane;
     private Flight flight;
     private Flight flight2;
-    private Flight mockFlight;
     private Passenger passenger;
-    private Passenger mockPassenger;
 
     @BeforeEach
     public void setUp() throws ParseException {
-        mockFlightCollection = mock(FlightCollection.class);
-        mockTicketCollection = mock(TicketCollection.class);
-        mockTicket = mock(Ticket.class);
-        mockPassenger = mock(Passenger.class);
-        mockAirplane = mock(Airplane.class);
-        mockFlight = mock(Flight.class);
-
         airplane = new Airplane(1, "Boeing 747", 10, 200, 5);
         flight = new Flight(1, "Sydney", "Melbourne", "QF001", "Qantas", "08/06/23 12:00:00",
                 "08/06/23 15:00:00", airplane);
         flight2 = new Flight(2, "Brisbane", "Sydney", "QF001", "Qantas", "08/06/23 12:00:00",
                 "08/06/23 15:00:00", airplane);
-        passenger = new Passenger("Wells", "Yu", 27, "Man", "cyuu0052@student.monash.com", "0450000000",
-                "123456789", "123456789", 123);
+//        passenger = new Passenger("Wells", "Yu", 27, "Man", "cyuu0052@student.monash.com", "0450000000",
+//                "123456789", "123456789", 123);
+        passenger = new Passenger("null", "null", 1, "Other");
         ticket = new Ticket(1, 1000, flight, false, passenger);
         ticket2 = new Ticket(2, 1000, flight2, false, passenger);
         TicketCollection.tickets = new ArrayList<Ticket>();
@@ -65,7 +53,7 @@ public class TicketSystemTest {
      * 1. When choosing a ticket, a valid city is used.
      */
     @Test
-    public void testTicketWithValidCity() throws Exception {
+    public void chooseTicketWithValidCity() throws Exception {
         String testInput = "1\nChengHan\nYu\n27\nMan\ncyuu0052@student.monash.com\n" +
                 "0450000000\n987654321\n1\n987654321\n987";
         System.setIn(new ByteArrayInputStream(testInput.getBytes()));
@@ -75,13 +63,15 @@ public class TicketSystemTest {
         TicketSystem ticketSystem = new TicketSystem();
         ticketSystem.chooseTicket("Melbourne", "Sydney");
 
-        String expectedOutput = "Passenger{ Fullname= Wells Yu ,email='cyuu0052@student.monash.com', phoneNumber='0450000000', passport='123456789}\n" +
-                "Ticket was purchased=false";
+        String expectedOutput = "Flight{Airplane{model=Boeing 747', business sits=10', economy sits=200', crew sits=5'}, date to=08/06/23 15:00:00, ', date from='08/06/23 12:00:00', depart from='Melbourne', depart to='Sydney', company=Qantas', code=QF001'}";
         assert output.toString().contains(expectedOutput);
     }
 
+    /**
+     * 1. When choosing a ticket, a valid city is used.
+     */
     @Test
-    public void testTicketWithValidTwoCity() throws Exception {
+    public void chooseTicketWithTransferWay() throws Exception {
         String testInput = "1\nChengHan\nYu\n27\nMan\ncyuu0052@student.monash.com\n" +
                 "0450000000\n987654321\n1\n987654321\n987";
         System.setIn(new ByteArrayInputStream(testInput.getBytes()));
@@ -95,6 +85,44 @@ public class TicketSystemTest {
         assert output.toString().contains(expectedOutput);
     }
 
+    /**
+     * 1. When choosing a ticket, a valid city is used.
+     */
+    @Test
+    public void chooseTicketWithInvalidCity() throws Exception {
+        String testInput = "1\nChengHan\nYu\n27\nMan\ncyuu0052@student.monash.com\n" +
+                "0450000000\n987654321\n1\n987654321\n987";
+        System.setIn(new ByteArrayInputStream(testInput.getBytes()));
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+
+        TicketSystem ticketSystem = new TicketSystem();
+        ticketSystem.chooseTicket("Melbourne123", "Sydney");
+
+        assertEquals("There is no possible variants.\n", output.toString());
+    }
+
+    /**
+     * 2. If a passenger chooses an already booked ticket it should display an error message.
+     */
+    @Test
+    public void testBookedTicket() throws Exception {
+        String testInput = "1\n";
+        System.setIn(new ByteArrayInputStream(testInput.getBytes()));
+        TicketCollection.getTicketInfo(1).setTicketStatus(true);
+        TicketSystem ticketSystem = new TicketSystem();
+        try {
+            ticketSystem.chooseTicket("Melbourne", "Sydney");
+            fail("Expected an Exception to be thrown");
+        } catch (Exception e) {
+            assertEquals("This ticket is already booked.", e.getMessage());
+        }
+    }
+
+
+    /**
+     * 6. A correct value is displayed to the passenger when buying a ticket.
+     */
     @Test
     public void testBuyTicketWithValidInput() throws Exception {
         String testInput = "ChengHan\nYu\n27\nMan\ncyuu0052@student.monash.com\n" +
@@ -130,31 +158,6 @@ public class TicketSystemTest {
                 + System.lineSeparator() + ticket.toString() + System.lineSeparator();
         assertEquals(expectedOutput, output.toString());
     }
-
-
-//
-//    @Test
-//    public void testTicketWithInvalidCity() {
-//        String testCity1 = "Invalid1";
-//        String testCity2 = "Invalid2";
-//        Flight flight = mock(Flight.class);
-//        when(flightCollection.getFlightInfo(testCity1, testCity2)).thenReturn(null);
-//        Flight result = flightCollection.getFlightInfo(testCity1, testCity2);
-//        assertNull(result);
-//    }
-//
-//    /*
-//        If a passenger chooses an already booked ticket it should display an error message.
-//    */
-//    @Test
-//    public void testBookedTicketthrowerrormessage()
-//    {
-//        Ticket ticket = mock(Ticket.class);
-//        when(ticket.ticketStatus()).thenReturn(Boolean.valueOf(true));
-//        when(ticketSystem.getTicketCollection().getTicketInfo(1)).thenReturn(ticket); // Use the existing TicketSystem instance
-//        assertDoesNotThrow(() -> ticketSystem.buyTicket(1, 2));
-//    }
-
 }
 
 

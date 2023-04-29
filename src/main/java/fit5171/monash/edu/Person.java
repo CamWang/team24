@@ -11,8 +11,8 @@ public abstract class Person // abstract class Person
     private int age;
     private Gender gender;
 
-    public Person() {
-    }
+//    public Person() {
+//    }
 
     public Person(String firstName, String secondName, int age, String gender) throws IllegalArgumentException {
         this.age = age;

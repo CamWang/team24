@@ -33,10 +33,14 @@ public class FlightCollectionTest {
         assertEquals(mockFlights, FlightCollection.getFlights());
     }
 
+    /**
+     * 1. When adding a flight into the system,
+     * test if it conforms with the requirement as a flight and Flight Collection.
+     */
     @Test
     void testAddExistFlights() {
         when(mockFlight.getFlightID()).thenReturn(1);
-        try{
+        try {
             FlightCollection.addFlights(mockFlights);
             fail("Expected IllegalArgumentException was not thrown");
         } catch (IllegalArgumentException e) {
@@ -52,7 +56,7 @@ public class FlightCollectionTest {
         when(mockFlight.getFlightID()).thenReturn(1).thenReturn(2);
         when(mockFlight.getDepartTo()).thenReturn("Sydney123");
         when(mockFlight.getDepartFrom()).thenReturn("Melbourne");
-        try{
+        try {
             FlightCollection.addFlights(mockFlights);
             fail("Expected IllegalArgumentException was not thrown");
         } catch (IllegalArgumentException e) {
@@ -70,6 +74,9 @@ public class FlightCollectionTest {
         assertEquals(mockFlight, FlightCollection.getFlightInfo("Melbourne", "Sydney"));
     }
 
+    /**
+     * 3. When trying to get flight information, a valid flight is returned.
+     */
     @Test
     public void testGetFlightInfoWithInvalidTwoCities() {
         when(mockFlight.getDepartFrom()).thenReturn("Melbourne");
@@ -78,11 +85,18 @@ public class FlightCollectionTest {
         assertNull(result);
     }
 
+    /**
+     * 3. When trying to get flight information, a valid flight is returned.
+     */
     @Test
     void testGetFlightInfoWithCity() {
         when(mockFlight.getDepartTo()).thenReturn("Sydney");
         assertEquals(mockFlight, FlightCollection.getFlightInfo("Sydney"));
     }
+
+    /**
+     * 3. When trying to get flight information, a valid flight is returned.
+     */
     @Test
     public void testGetFlightInfoWithInvalidCity() {
         when(mockFlight.getDepartTo()).thenReturn("Sydney");
@@ -90,12 +104,18 @@ public class FlightCollectionTest {
         assertNull(result);
     }
 
-
+    /**
+     * 3. When trying to get flight information, a valid flight is returned.
+     */
     @Test
     void testGetFlightInfoWithFlight_id() {
         when(mockFlight.getFlightID()).thenReturn(1);
         assertEquals(mockFlight, FlightCollection.getFlightInfo(1));
     }
+
+    /**
+     * 3. When trying to get flight information, a valid flight is returned.
+     */
     @Test
     public void testGetFlightInfoWithInvalidFlight_id() {
         when(mockFlight.getFlightID()).thenReturn(1);

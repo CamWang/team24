@@ -20,10 +20,24 @@ public class PassengerTest {
                 "123456789", "123456789", 123);
     }
 
+    /**
+     * 1. All fields of a passenger are required.
+     * Note: Mock the behavior of the Person class while creating objects of the Passenger class for unit testing.
+     * 5. When a passenger is being added, it must include the passenger’s First name, Last Name, age,
+     * and gender following the person who is becoming a passenger
+     */
     @Test
     public void testConstructor() {
-        Passenger passenger = new Passenger();
-        assertNotNull(passenger);
+        when(mockPerson.getFirstName()).thenReturn("Wells");
+        when(mockPerson.getSecondName()).thenReturn("Yu");
+        when(mockPerson.getAge()).thenReturn(27);
+        when(mockPerson.getGender()).thenReturn("Man");
+        Passenger passenger = new Passenger(mockPerson.getFirstName(), mockPerson.getSecondName(), mockPerson.getAge(),
+                mockPerson.getGender());
+        assertEquals("Wells", passenger.getFirstName());
+        assertEquals("Yu", passenger.getSecondName());
+        assertEquals(27, passenger.getAge());
+        assertEquals("Man", passenger.getGender());
     }
 
     /**

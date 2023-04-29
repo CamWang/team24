@@ -1,13 +1,11 @@
 build:
   stage: build
-  tags:
-  
+  #tags:
   script:
     - mvn compile
 
 test:
   stage: test
-  tags:
- 
+  #tags:
   script:
     - mvn test

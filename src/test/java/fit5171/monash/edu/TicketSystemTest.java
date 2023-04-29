@@ -21,7 +21,6 @@ import java.util.Scanner;
 import java.sql.Timestamp;
 
 public class TicketSystemTest {
-    private TicketSystem ticketSystem;
     private Ticket ticket;
     private Ticket ticket2;
     private Airplane airplane;
@@ -142,7 +141,34 @@ public class TicketSystemTest {
         assertEquals("987654321", ticket.getPassenger().getCardNumber());
         assertEquals(987, ticket.getPassenger().getSecurityCode());
     }
+    /**
+     * 3. Appropriate checks have been implemented to validate passenger information
+     */
+    @Test
+    public void testBuyTicketWithInvalidPassenger() throws Exception {
+//        String testInput = "ChengHan\nYu\n27\nMan\ncyuu0052@student.monash.com\n" +
+//                "0450000000\n987654321\n1\n987654321\n987";
+        try {
+            String testInput = "ChengHan123\n";
+            System.setIn(new ByteArrayInputStream(testInput.getBytes()));
+            TicketSystem ticketSystem = new TicketSystem();
+            ticketSystem.buyTicket(1);
+            fail("Expected an Exception to be thrown");
+        } catch (Exception e) {
+            assertEquals("Invalid first name.", e.getMessage());
+        }
+        try {
+            String testInput = "ChengHan\nYu\ntwenty\n";
+            System.setIn(new ByteArrayInputStream(testInput.getBytes()));
+            TicketSystem ticketSystem = new TicketSystem();
+            ticketSystem.buyTicket(1);
+            fail("Expected an Exception to be thrown");
+        } catch (Exception e) {
+            assertEquals("Invalid age.", e.getMessage());
+        }
 
+
+    }
     @Test
     public void testShowTicket() {
         ByteArrayOutputStream output = new ByteArrayOutputStream();

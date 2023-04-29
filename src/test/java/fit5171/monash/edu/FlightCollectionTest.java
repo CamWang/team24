@@ -12,8 +12,6 @@ import java.util.ArrayList;
 
 public class FlightCollectionTest {
     @Mock
-    private Airplane mockAirplane;
-    @Mock
     private ArrayList<Flight> mockFlights;
     @Mock
     private Flight mockFlight;

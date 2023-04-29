@@ -21,6 +21,9 @@ public class TicketTest {
         when(mockPassenger.getAge()).thenReturn(22);
     }
 
+    /**
+     * 2. Discount is always applied based on the age category of the passenger.
+     */
     @Test
     public void testSaleByAgeChild() {
         Passenger child = mock(Passenger.class);
@@ -29,6 +32,9 @@ public class TicketTest {
         assertEquals(50, childTicket.getPrice());
     }
 
+    /**
+     * 2. Discount is always applied based on the age category of the passenger.
+     */
     @Test
     public void testSaleByAgeAdult() {
         Passenger adult = mock(Passenger.class);
@@ -37,6 +43,9 @@ public class TicketTest {
         assertEquals(100, adultTicket.getPrice());
     }
 
+    /**
+     * 2. Discount is always applied based on the age category of the passenger.
+     */
     @Test
     public void testSaleByAgeSenior() {
         Passenger senior = mock(Passenger.class);
@@ -45,6 +54,9 @@ public class TicketTest {
         assertEquals(0, seniorTicket.getPrice());
     }
 
+    /**
+     * 4. The price and service tax is a valid value (Integer or real numbers etc.)
+     */
     @Test
     public void testServiceTax() {
         Ticket ticket = new Ticket(1, 100, mockFlight, false, mockPassenger);

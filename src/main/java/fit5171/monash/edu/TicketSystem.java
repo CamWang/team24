@@ -52,14 +52,25 @@ public class TicketSystem {
             try {
                 System.out.println("Enter your First Name: ");
                 String firstName = in.nextLine();
+                if (!firstName.matches("[a-zA-Z]+")) {
+                    throw new RuntimeException("Invalid first name.");
+                }
                 passenger.setFirstName(firstName);
 
                 System.out.println("Enter your Second name:");
                 String secondName = in.nextLine();
+                if (!firstName.matches("[a-zA-Z]+")) {
+                    throw new RuntimeException("Invalid Second name.");
+                }
                 passenger.setSecondName(secondName);
 
                 System.out.println("Enter your age:");
-                int age = Integer.parseInt(in.nextLine());
+                int age = 1;
+                try {
+                    age = Integer.parseInt(in.nextLine());
+                } catch (NumberFormatException e) {
+                    throw new RuntimeException("Invalid age.");
+                }
                 passenger.setAge(age);
 
                 System.out.println("Enter your gender: ");

@@ -18,9 +18,6 @@ public class TicketCollectionTest {
 
     @BeforeEach
     public void setUp() {
-//        airplane = new Airplane(1, "Boeing 747", 10, 200, 5);
-//        flight = new Flight(1, "Sydney", "Melbourne", "QF001", "Qantas", "08/06/23 12:00:00",
-//                "08/06/23 15:00:00", airplane);
         mockTickets = new ArrayList<Ticket>();
         mockTicket = mock(Ticket.class);
         mockTickets.add(mockTicket);
@@ -28,27 +25,40 @@ public class TicketCollectionTest {
         TicketCollection.tickets = mockTickets;
     }
 
+    /**
+     * 1. Whenever a ticket is being added to the TicketCollection, it must be validated.
+     */
     @Test
     public void testAddTicketValid() {
         when(mockTicket.getTicket_id()).thenReturn(1);
 
-        TicketCollection.addTickets(new ArrayList<Ticket>() {{ add(mockTicket); }});
+        TicketCollection.addTickets(new ArrayList<Ticket>() {{
+            add(mockTicket);
+        }});
 
         assertEquals(mockTickets.size(), 2);
     }
 
+    /**
+     * 1. Whenever a ticket is being added to the TicketCollection, it must be validated.
+     */
     @Test
     public void testAddTicketInvalid() throws IllegalArgumentException {
         when(mockTicket.getTicket_id()).thenReturn(0);
 
         try {
-            TicketCollection.addTickets(new ArrayList<Ticket>() {{ add(mockTicket); }});
+            TicketCollection.addTickets(new ArrayList<Ticket>() {{
+                add(mockTicket);
+            }});
             fail("Expected IllegalArgumentException was not thrown");
         } catch (IllegalArgumentException e) {
             assertEquals("Invalid ticket ID: 0", e.getMessage());
         }
     }
 
+    /**
+     * 2. When trying to get a ticket, the correct ticket is returned.
+     */
     @Test
     public void testGetTicketInfoValid() {
         int ticketId = 2;
@@ -59,6 +69,9 @@ public class TicketCollectionTest {
         assertEquals(mockTicket, result);
     }
 
+    /**
+     * 2. When trying to get a ticket, the correct ticket is returned.
+     */
     @Test
     public void testGetTicketInfoInvalid() {
         int ticketId = 3;

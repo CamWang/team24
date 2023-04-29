@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
 Test set: fit5171.monash.edu.TicketSystemTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in fit5171.monash.edu.TicketSystemTest
+Tests run: 4, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 0 s <<< FAILURE! - in fit5171.monash.edu.TicketSystemTest
 testBuyTicketWithValidInput  Time elapsed: 0 s  <<< ERROR!
 java.lang.NoClassDefFoundError: Could not initialize class org.mockito.internal.creation.cglib.ClassImposterizer$3
 	at fit5171.monash.edu.TicketSystemTest.setUp(TicketSystemTest.java:40)

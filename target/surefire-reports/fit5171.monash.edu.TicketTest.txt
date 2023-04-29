@@ -1,13 +1,13 @@
 -------------------------------------------------------------------------------
 Test set: fit5171.monash.edu.TicketTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 6, Skipped: 0, Time elapsed: 0.002 s <<< FAILURE! - in fit5171.monash.edu.TicketTest
-testGettersAndSetters  Time elapsed: 0.001 s  <<< ERROR!
+Tests run: 6, Failures: 0, Errors: 6, Skipped: 0, Time elapsed: 0.004 s <<< FAILURE! - in fit5171.monash.edu.TicketTest
+testGettersAndSetters  Time elapsed: 0 s  <<< ERROR!
 java.lang.NoClassDefFoundError: Could not initialize class org.mockito.internal.creation.cglib.ClassImposterizer$3
 	at fit5171.monash.edu.TicketTest.setUp(TicketTest.java:19)
 Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.ExceptionInInitializerError [in thread "main"]
 
-testToString  Time elapsed: 0 s  <<< ERROR!
+testToString  Time elapsed: 0.001 s  <<< ERROR!
 java.lang.NoClassDefFoundError: Could not initialize class org.mockito.internal.creation.cglib.ClassImposterizer$3
 	at fit5171.monash.edu.TicketTest.setUp(TicketTest.java:19)
 Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.ExceptionInInitializerError [in thread "main"]

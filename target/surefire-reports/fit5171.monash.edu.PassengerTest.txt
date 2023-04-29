@@ -1,7 +1,7 @@
 -------------------------------------------------------------------------------
 Test set: fit5171.monash.edu.PassengerTest
 -------------------------------------------------------------------------------
-Tests run: 9, Failures: 0, Errors: 9, Skipped: 0, Time elapsed: 0.003 s <<< FAILURE! - in fit5171.monash.edu.PassengerTest
+Tests run: 9, Failures: 0, Errors: 9, Skipped: 0, Time elapsed: 0.002 s <<< FAILURE! - in fit5171.monash.edu.PassengerTest
 phoneNumberInvalidFormat  Time elapsed: 0 s  <<< ERROR!
 java.lang.NoClassDefFoundError: Could not initialize class org.mockito.internal.creation.cglib.ClassImposterizer$3
 	at fit5171.monash.edu.PassengerTest.setUp(PassengerTest.java:18)
@@ -17,7 +17,7 @@ java.lang.NoClassDefFoundError: Could not initialize class org.mockito.internal.
 	at fit5171.monash.edu.PassengerTest.setUp(PassengerTest.java:18)
 Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.ExceptionInInitializerError [in thread "main"]
 
-phoneNumberValidFormat  Time elapsed: 0.001 s  <<< ERROR!
+phoneNumberValidFormat  Time elapsed: 0 s  <<< ERROR!
 java.lang.NoClassDefFoundError: Could not initialize class org.mockito.internal.creation.cglib.ClassImposterizer$3
 	at fit5171.monash.edu.PassengerTest.setUp(PassengerTest.java:18)
 Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.ExceptionInInitializerError [in thread "main"]
@@ -37,12 +37,12 @@ java.lang.NoClassDefFoundError: Could not initialize class org.mockito.internal.
 	at fit5171.monash.edu.PassengerTest.setUp(PassengerTest.java:18)
 Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.ExceptionInInitializerError [in thread "main"]
 
-testToStringMethod  Time elapsed: 0.001 s  <<< ERROR!
+testToStringMethod  Time elapsed: 0 s  <<< ERROR!
 java.lang.NoClassDefFoundError: Could not initialize class org.mockito.internal.creation.cglib.ClassImposterizer$3
 	at fit5171.monash.edu.PassengerTest.setUp(PassengerTest.java:18)
 Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.ExceptionInInitializerError [in thread "main"]
 
-passportNumberValidFormat  Time elapsed: 0 s  <<< ERROR!
+passportNumberValidFormat  Time elapsed: 0.001 s  <<< ERROR!
 java.lang.NoClassDefFoundError: Could not initialize class org.mockito.internal.creation.cglib.ClassImposterizer$3
 	at fit5171.monash.edu.PassengerTest.setUp(PassengerTest.java:18)
 Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.ExceptionInInitializerError [in thread "main"]

@@ -1,28 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: fit5171.monash.edu.TicketCollectionTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 0.036 s <<< FAILURE! - in fit5171.monash.edu.TicketCollectionTest
-testAddTicketValid  Time elapsed: 0.023 s  <<< ERROR!
-java.lang.ExceptionInInitializerError
-	at fit5171.monash.edu.TicketCollectionTest.setUp(TicketCollectionTest.java:25)
-Caused by: java.lang.reflect.InaccessibleObjectException: Unable to make protected final java.lang.Class java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain) throws java.lang.ClassFormatError accessible: module java.base does not "opens java.lang" to unnamed module @b6ba78c
-	at fit5171.monash.edu.TicketCollectionTest.setUp(TicketCollectionTest.java:25)
-
-testAddTicketInvalid  Time elapsed: 0 s  <<< ERROR!
-java.lang.NoClassDefFoundError: Could not initialize class org.mockito.internal.creation.cglib.ClassImposterizer$3
-	at fit5171.monash.edu.TicketCollectionTest.setUp(TicketCollectionTest.java:25)
-Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.ExceptionInInitializerError [in thread "main"]
-	at fit5171.monash.edu.TicketCollectionTest.setUp(TicketCollectionTest.java:25)
-
-testGetTicketInfoInvalid  Time elapsed: 0.001 s  <<< ERROR!
-java.lang.NoClassDefFoundError: Could not initialize class org.mockito.internal.creation.cglib.ClassImposterizer$3
-	at fit5171.monash.edu.TicketCollectionTest.setUp(TicketCollectionTest.java:25)
-Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.ExceptionInInitializerError [in thread "main"]
-	at fit5171.monash.edu.TicketCollectionTest.setUp(TicketCollectionTest.java:25)
-
-testGetTicketInfoValid  Time elapsed: 0 s  <<< ERROR!
-java.lang.NoClassDefFoundError: Could not initialize class org.mockito.internal.creation.cglib.ClassImposterizer$3
-	at fit5171.monash.edu.TicketCollectionTest.setUp(TicketCollectionTest.java:25)
-Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.ExceptionInInitializerError [in thread "main"]
-	at fit5171.monash.edu.TicketCollectionTest.setUp(TicketCollectionTest.java:25)
-
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.202 s - in fit5171.monash.edu.TicketCollectionTest

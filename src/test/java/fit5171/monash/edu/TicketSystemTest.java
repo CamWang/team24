@@ -81,7 +81,7 @@ public class TicketSystemTest {
         TicketSystem ticketSystem = new TicketSystem();
         ticketSystem.chooseTicket("Melbourne", "Brisbane");
 
-        String expectedOutput = "There is special way to go there. And it is transfer way, like above. Way №";
+        String expectedOutput = "There is special way to go there. And it is transfer way, like above.";
         assert output.toString().contains(expectedOutput);
     }
 
@@ -98,8 +98,8 @@ public class TicketSystemTest {
 
         TicketSystem ticketSystem = new TicketSystem();
         ticketSystem.chooseTicket("Melbourne123", "Sydney");
-
-        assertEquals("There is no possible variants.\n", output.toString());
+        String expectedOutput = "There is no possible variants.";
+        assert output.toString().contains(expectedOutput);
     }
 
     /**

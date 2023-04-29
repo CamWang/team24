@@ -17,9 +17,11 @@ public class FlightCollectionTest {
     private ArrayList<Flight> mockFlights;
     @Mock
     private Flight mockFlight;
+
     @BeforeEach
     public void setUp() {
         mockFlights = new ArrayList<Flight>();
+
         mockFlight = mock(Flight.class);
         mockFlights.add(mockFlight);
 

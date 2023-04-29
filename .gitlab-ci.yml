@@ -1,13 +1,13 @@
 build:
   stage: build
   tags:
-    - Arvinds-MBP.gateway
+  
   script:
     - mvn compile
 
 test:
   stage: test
   tags:
-    - Arvinds-MBP.gateway
+ 
   script:
     - mvn test

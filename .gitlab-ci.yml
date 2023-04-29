@@ -13,14 +13,14 @@ cache:
 build:
   stage: build
   tags:
-    - heping
+    - Arvinds-MBP.gateway
   script:
     - mvn $MAVEN_CLI_OPTS compile
 
 test:
   stage: test
   tags:
-    - heping
+    - Arvinds-MBP.gateway
   script:
     - mvn $MAVEN_CLI_OPTS test
  

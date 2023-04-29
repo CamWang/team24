@@ -1,4 +1,24 @@
 -------------------------------------------------------------------------------
 Test set: fit5171.monash.edu.TicketSystemTest
 -------------------------------------------------------------------------------
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.052 s - in fit5171.monash.edu.TicketSystemTest
+Tests run: 4, Failures: 0, Errors: 4, Skipped: 0, Time elapsed: 0.001 s <<< FAILURE! - in fit5171.monash.edu.TicketSystemTest
+testBuyTicketWithValidInput  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class org.mockito.internal.creation.cglib.ClassImposterizer$3
+	at fit5171.monash.edu.TicketSystemTest.setUp(TicketSystemTest.java:40)
+Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.ExceptionInInitializerError [in thread "main"]
+
+testTicketWithValidCity  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class org.mockito.internal.creation.cglib.ClassImposterizer$3
+	at fit5171.monash.edu.TicketSystemTest.setUp(TicketSystemTest.java:40)
+Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.ExceptionInInitializerError [in thread "main"]
+
+testShowTicket  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class org.mockito.internal.creation.cglib.ClassImposterizer$3
+	at fit5171.monash.edu.TicketSystemTest.setUp(TicketSystemTest.java:40)
+Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.ExceptionInInitializerError [in thread "main"]
+
+testTicketWithValidTwoCity  Time elapsed: 0 s  <<< ERROR!
+java.lang.NoClassDefFoundError: Could not initialize class org.mockito.internal.creation.cglib.ClassImposterizer$3
+	at fit5171.monash.edu.TicketSystemTest.setUp(TicketSystemTest.java:40)
+Caused by: java.lang.ExceptionInInitializerError: Exception java.lang.ExceptionInInitializerError [in thread "main"]
+

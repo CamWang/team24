@@ -168,6 +168,8 @@ public class TicketSystem {
 
                 System.out.println("Enter your age:");
                 int age = in.nextInt();
+                in.nextLine(); // Consume newline left-over
+                in.nextLine(); // Consume newline left-over
                 passenger.setAge(age);
 
                 System.out.println("Enter your gender: ");
@@ -238,10 +240,11 @@ public class TicketSystem {
                     }
 
                     System.out.println("--*-*--");
-
+                    ticket.setPassenger(passenger);
                     ticket.setPrice(ticketFirst.getPrice() + ticketSecond.getPrice());
                     System.out.println("Your bill: " + ticket.getPrice() + "\n");
                     System.out.println("Enter your card number:");
+                    String random = in.nextLine(); // Consume newline left-over
                     String cardNumber = in.nextLine();
                     passenger.setCardNumber(cardNumber);
 

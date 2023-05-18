@@ -169,7 +169,6 @@ public class TicketSystem {
                 System.out.println("Enter your age:");
                 int age = in.nextInt();
                 in.nextLine(); // Consume newline left-over
-                in.nextLine(); // Consume newline left-over
                 passenger.setAge(age);
 
                 System.out.println("Enter your gender: ");

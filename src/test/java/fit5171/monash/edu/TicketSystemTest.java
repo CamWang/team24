@@ -73,7 +73,8 @@ public class TicketSystemTest {
      */
     @Test
     public void chooseTicketWithTransferWay() throws Exception {
-        String testInput = "1\nChengHan\nYu\n27\nMan\ncyuu0052@student.monash.com\n" +
+
+        String testInput = "ChengHan\nYu\n27\nMan\ncyuu0052@student.monash.com\n" +
                 "0450000000\n987654321\n1\n987654321\n987";
         System.setIn(new ByteArrayInputStream(testInput.getBytes()));
         ByteArrayOutputStream output = new ByteArrayOutputStream();

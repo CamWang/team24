@@ -1,4 +1,7 @@
-package fit5171.monash.edu;
+package fit5171.monash.edu.entity;
+
+import fit5171.monash.edu.entity.Flight;
+import fit5171.monash.edu.entity.Passenger;
 
 public class Ticket {
     private int ticket_id;
@@ -19,6 +22,12 @@ public class Ticket {
 
     public Ticket() {
 
+    }
+
+    public Ticket(int ticket_id, Flight flightFirst, boolean classVip) {
+        this.ticket_id = ticket_id;
+        this.flight = flightFirst;
+        this.classVip = classVip;
     }
 
     public int getTicket_id() {

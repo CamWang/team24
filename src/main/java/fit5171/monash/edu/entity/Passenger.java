@@ -1,7 +1,6 @@
-package fit5171.monash.edu;
+package fit5171.monash.edu.entity;
 
 import java.util.regex.Pattern;
-import java.util.regex.Matcher;
 
 public class Passenger extends Person {
     private String email;

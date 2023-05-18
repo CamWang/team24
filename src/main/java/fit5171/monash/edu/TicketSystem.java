@@ -1,10 +1,12 @@
 package fit5171.monash.edu;
 
-import java.sql.*;
-import java.util.*;
-import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import fit5171.monash.edu.collection.FlightCollection;
+import fit5171.monash.edu.collection.TicketCollection;
+import fit5171.monash.edu.entity.Airplane;
+import fit5171.monash.edu.entity.Flight;
+import fit5171.monash.edu.entity.Passenger;
+import fit5171.monash.edu.entity.Ticket;
+
 import java.util.regex.PatternSyntaxException;
 import java.util.Scanner;
 
@@ -127,135 +129,124 @@ public class TicketSystem {
     }
 
     @SuppressWarnings("null")
-    public void buyTicket(int ticket_id_first, int ticket_id_second) throws Exception {
+    public void buyTicket(int ticketIdFirst, int ticketIdSecond) throws Exception {
         // method for buying two tickets with transfer flight
-        int flight_id_first = 0;
+        int flightIdFirst = 0;
+        int flightIdSecond = 0;
 
-        int flight_id_second = 0;
-
-        System.out.println(ticket_id_first + " " + ticket_id_second);
-
-        Ticket validTicketFirst = TicketCollection.getTicketInfo(ticket_id_first);
-
-        Ticket validTicketSecond = TicketCollection.getTicketInfo(ticket_id_first);
-
+        System.out.println(ticketIdFirst + " " + ticketIdSecond);
+        Ticket validTicketFirst = TicketCollection.getTicketInfo(ticketIdFirst);
+        Ticket validTicketSecond = TicketCollection.getTicketInfo(ticketIdFirst);
         System.out.println("Processing...");
 
         //Display error message when a passenger choose an already booked ticket
-        if (validTicketFirst.ticketStatus() || validTicketSecond.ticketStatus())
+        /*if (validTicketFirst.ticketStatus() || validTicketSecond.ticketStatus())
         {
             System.out.println("This ticket is already booked.");
             return;
-        }
+        }*/
 
         // if there is a valid ticket id was input then we buy it, otherwise show
         // message
 
-        if (validTicketFirst != null || validTicketSecond != null) {
-            System.out.println("This ticket does not exist.");
+        if (validTicketFirst == null || validTicketSecond == null) {
+            System.out.println("At least one ticket does not exist.");
             return;
         }
-
         else {
-            flight_id_first = validTicketFirst.getFlight().getFlightID();
-
-            flight_id_second = validTicketFirst.getFlight().getFlightID();
+            flightIdFirst = validTicketFirst.getFlight().getFlightID();
+            flightIdSecond = validTicketFirst.getFlight().getFlightID();
 
             try {
                 System.out.println("Enter your First Name: ");
-                String firstName = "";
+                String firstName = in.nextLine();
                 passenger.setFirstName(firstName);
 
                 System.out.println("Enter your Second name:");
-                String secondName = "";
+                String secondName = in.nextLine();
                 passenger.setSecondName(secondName); // setting passengers info
 
                 System.out.println("Enter your age:");
-                Integer age = 0;
-                in.nextLine();
+                int age = in.nextInt();
                 passenger.setAge(age);
 
                 System.out.println("Enter your gender: ");
-                String gender = "";
-                // passenger.setGender(gender));
+                String gender = in.nextLine();
+                passenger.setGender(gender);
 
                 System.out.println("Enter your e-mail address");
-                String email = "";
+                String email = in.nextLine();
                 passenger.setEmail(email);
 
                 System.out.println("Enter your phone number (+7):");
-                String phoneNumber = "";
+                String phoneNumber = in.nextLine();
                 passenger.setPhoneNumber(phoneNumber);
 
                 System.out.println("Enter your passport number:");
-                String passportNumber = "";
+                String passportNumber = in.nextLine();
                 passenger.setPassport(passportNumber);
 
                 System.out.println("Do you want to purchase?\n 1-YES 0-NO");
-                int purch = in.nextInt();
-                if (purch == 0)
+                int confirmCode = in.nextInt();
+                if (confirmCode == 0)
                 {
                     return;
                 } else {
-
                     // "select * from flight, airplane where flight_id=" + flight_id_first + " and
                     // flight.airplane_id=airplane.airplane_id");
-                    Flight flight_first = FlightCollection.getFlightInfo(flight_id_first);
+                    Flight flightFirst = FlightCollection.getFlightInfo(flightIdFirst);
 
 //                    int airplane_id_first = flight_first.getAirplane().getAirplaneID();
-                    Airplane airplane_first = flight_first.getAirplane();
+                    Airplane airplaneFirst = flightFirst.getAirplane();
 //                    Airplane airplane_first = Airplane.getAirPlaneInfo(airplane_id_first);
 
-                    Flight flight_second = FlightCollection.getFlightInfo(flight_id_second);
+                    Flight flightSecond = FlightCollection.getFlightInfo(flightIdSecond);
 
 //                    int airplane_id_second = flight_second.getAirplane().getAirplaneID();
-                    Airplane airplane_second = flight_second.getAirplane();
+                    Airplane airplaneSecond = flightSecond.getAirplane();
 //                    Airplane airplane_second = Airplane.getAirPlaneInfo(airplane_id_second);
 
-                    Ticket ticket_first = TicketCollection.getTicketInfo(ticket_id_first);
+                    Ticket ticketFirst = TicketCollection.getTicketInfo(ticketIdFirst);
 
-                    Ticket ticket_second = TicketCollection.getTicketInfo(ticket_id_second);
+                    Ticket ticketSecond = TicketCollection.getTicketInfo(ticketIdSecond);
 
-                    ticket_first.setPassenger(passenger);
-                    ticket_first.setTicket_id(ticket_id_first);
-                    ticket_first.setFlight(flight_first);
-                    ticket_first.setPrice(ticket_first.getPrice());
-                    ticket_first.setClassVip(ticket_first.getClassVip());
-                    ticket_first.setTicketStatus(true);
+                    ticketFirst.setPassenger(passenger);
+                    ticketFirst.setTicket_id(ticketIdFirst);
+                    ticketFirst.setFlight(flightFirst);
+                    ticketFirst.setPrice(ticketFirst.getPrice());
+                    ticketFirst.setClassVip(ticketFirst.getClassVip());
+                    ticketFirst.setTicketStatus(true);
 
-                    if (ticket_first.getClassVip()) {
-                        airplane_first.setBusinessSitsNumber(airplane_first.getBusinessSitsNumber() - 1);
+                    if (ticketFirst.getClassVip()) {
+                        airplaneFirst.setBusinessSitsNumber(airplaneFirst.getBusinessSitsNumber() - 1);
                     } else {
-                        airplane_first.setEconomySitsNumber(airplane_first.getEconomySitsNumber() - 1);
+                        airplaneFirst.setEconomySitsNumber(airplaneFirst.getEconomySitsNumber() - 1);
                     }
 
-                    System.out.println("--*-*-");
+                    System.out.println("--*-*--");
 
-                    ticket_second.setPassenger(passenger);
-                    ticket_second.setTicket_id(ticket_id_second);
-                    ticket_second.setFlight(flight_first);
-                    ticket_second.setPrice(ticket_second.getPrice());
-                    ticket_second.setClassVip(ticket_second.getClassVip());
-                    ticket_second.setTicketStatus(true);
-                    if (ticket_second.getClassVip()) {
-                        airplane_second.setBusinessSitsNumber(airplane_second.getBusinessSitsNumber() - 1);
+                    ticketSecond.setPassenger(passenger);
+                    ticketSecond.setTicket_id(ticketIdSecond);
+                    ticketSecond.setFlight(flightFirst);
+                    ticketSecond.setPrice(ticketSecond.getPrice());
+                    ticketSecond.setClassVip(ticketSecond.getClassVip());
+                    ticketSecond.setTicketStatus(true);
+                    if (ticketSecond.getClassVip()) {
+                        airplaneSecond.setBusinessSitsNumber(airplaneSecond.getBusinessSitsNumber() - 1);
                     } else {
-                        airplane_second.setEconomySitsNumber(airplane_second.getEconomySitsNumber() - 1);
+                        airplaneSecond.setEconomySitsNumber(airplaneSecond.getEconomySitsNumber() - 1);
                     }
 
-                    System.out.println("--*-*-");
+                    System.out.println("--*-*--");
 
-                    ticket.setPrice(ticket_first.getPrice() + ticket_second.getPrice());
-
+                    ticket.setPrice(ticketFirst.getPrice() + ticketSecond.getPrice());
                     System.out.println("Your bill: " + ticket.getPrice() + "\n");
-
                     System.out.println("Enter your card number:");
-
-                    String cardNumber = "";
+                    String cardNumber = in.nextLine();
                     passenger.setCardNumber(cardNumber);
 
                     System.out.println("Enter your security code:");
-                    int securityCode = 0;
+                    int securityCode = in.nextInt();
                     passenger.setSecurityCode(securityCode);
 
                 }
@@ -307,6 +298,7 @@ public class TicketSystem {
 
             // and search for city with depart_from as connector city
 
+            assert depart_to != null;
             String connectCity = depart_to.getDepartFrom();
 
             // SELECT * from flight where depart_to = '" + connectCity + "' and depart_from
@@ -334,10 +326,29 @@ public class TicketSystem {
 
     }
 
+    public void run() throws Exception{
+        while(true){
+            System.out.println("Welcome to the Arline Ticket Booking System!");
+            System.out.println("Please, enter the departure city:");
+            String departCity = in.nextLine();
+            System.out.println("Please, enter the destination city:");
+            String destCity = in.nextLine();
+            chooseTicket(departCity, destCity);
+            showTicket();
+            System.out.println("Do you want to buy another tickets?\n 1-YES 0-NO");
+            int confirmCode = in.nextInt();
+            if (confirmCode == 0)
+            {
+                System.out.println("Thank you for using our system!");
+                break;
+            }
+        }
+    }
+
     public void showTicket() {
         try {
-            System.out.println("You have bought a ticket for flight " + ticket.flight.getDepartFrom() + " - "
-                    + ticket.flight.getDepartTo() + "\n\nDetails:");
+            System.out.println("You have bought a ticket for flight " + ticket.getFlight().getDepartFrom() + " - "
+                    + ticket.getFlight().getDepartTo() + "\n\nDetails:");
             System.out.println(this.ticket.toString());
         } catch (NullPointerException e) {
             return;
@@ -345,3 +356,5 @@ public class TicketSystem {
     }
 
 }
+
+

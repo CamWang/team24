@@ -1,10 +1,12 @@
-package fit5171.monash.edu;
+package fit5171.monash.edu.collection;
+
+import fit5171.monash.edu.entity.Ticket;
 
 import java.util.ArrayList;
 
 public class TicketCollection {
 
-	public static ArrayList<Ticket> tickets;
+	public static ArrayList<Ticket> tickets = new ArrayList<>();
 
 	public static ArrayList<Ticket> getTickets() {
 		return tickets;

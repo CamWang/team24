@@ -1,10 +1,12 @@
-package fit5171.monash.edu;
+package fit5171.monash.edu.collection;
+
+import fit5171.monash.edu.entity.Flight;
 
 import java.util.ArrayList;
 
 public class FlightCollection {
 
-    public static ArrayList<Flight> flights;
+    public static ArrayList<Flight> flights = new ArrayList<>();
 
     public static ArrayList<Flight> getFlights() {
         return flights;

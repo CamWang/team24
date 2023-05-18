@@ -1,5 +1,6 @@
 package fit5171.monash.edu;
 
+import fit5171.monash.edu.entity.Airplane;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

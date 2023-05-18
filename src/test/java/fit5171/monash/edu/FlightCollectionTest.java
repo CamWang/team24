@@ -1,5 +1,7 @@
 package fit5171.monash.edu;
 
+import fit5171.monash.edu.collection.FlightCollection;
+import fit5171.monash.edu.entity.Flight;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;

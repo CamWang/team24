@@ -1,4 +1,4 @@
-package fit5171.monash.edu;
+package fit5171.monash.edu.entity;
 
 public class Airplane {
     private int airplaneID;

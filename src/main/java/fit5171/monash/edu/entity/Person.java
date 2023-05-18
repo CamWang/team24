@@ -1,4 +1,4 @@
-package fit5171.monash.edu;
+package fit5171.monash.edu.entity;
 
 import java.util.ArrayList;
 import java.util.Arrays;

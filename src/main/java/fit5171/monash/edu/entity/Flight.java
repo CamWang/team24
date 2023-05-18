@@ -1,11 +1,10 @@
-package fit5171.monash.edu;
+package fit5171.monash.edu.entity;
+
+import fit5171.monash.edu.entity.Airplane;
 
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 
 public class Flight {
     private int flightID;

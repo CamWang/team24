@@ -1,24 +1,26 @@
 package fit5171.monash.edu;
 
+import fit5171.monash.edu.collection.FlightCollection;
+import fit5171.monash.edu.collection.TicketCollection;
+import fit5171.monash.edu.entity.Airplane;
+import fit5171.monash.edu.entity.Flight;
+import fit5171.monash.edu.entity.Passenger;
+import fit5171.monash.edu.entity.Ticket;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
 
 import java.io.PrintStream;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Scanner;
-import java.sql.Timestamp;
 
 public class TicketSystemTest {
     private Ticket ticket;

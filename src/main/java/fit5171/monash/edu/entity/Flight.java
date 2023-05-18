@@ -14,7 +14,7 @@ public class Flight {
     private String company;
     private Timestamp dateFrom;
     private Timestamp dateTo;
-    public static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+    public final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
     Airplane airplane;
 
     public Flight() {

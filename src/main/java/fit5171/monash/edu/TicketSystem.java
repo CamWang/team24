@@ -149,7 +149,7 @@ public class TicketSystem {
         // if there is a valid ticket id was input then we buy it, otherwise show
         // message
 
-        if (validTicketFirst == null || validTicketSecond == null) {
+        if (validTicketFirst != null || validTicketSecond != null) {
             System.out.println("At least one ticket does not exist.");
             return;
         }

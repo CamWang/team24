@@ -8,6 +8,7 @@ import fit5171.monash.edu.entity.Ticket;
 
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Main {
 
@@ -49,6 +50,9 @@ public class Main {
     public static void main(String[] args) throws Exception {
         loadData();
         TicketSystem ticketSystem = new TicketSystem();
+        if (Objects.equals(args[0], "test")) {
+            return;
+        }
         ticketSystem.run();
     }
 }

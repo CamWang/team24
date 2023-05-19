@@ -8,10 +8,6 @@ public class TicketCollection {
 
 	public static ArrayList<Ticket> tickets = new ArrayList<>();
 
-	public static ArrayList<Ticket> getTickets() {
-		return tickets;
-	}
-
 	public static void addTickets(ArrayList<Ticket> tickets_db) throws IllegalArgumentException {
 //		TicketCollection.tickets.addAll(tickets_db);
 

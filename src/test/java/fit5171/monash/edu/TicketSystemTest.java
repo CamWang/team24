@@ -230,6 +230,31 @@ public class TicketSystemTest {
                 + System.lineSeparator() + ticket.toString() + System.lineSeparator();
         assertEquals(expectedOutput, output.toString());
     }
+
+    @Test
+    public void testGetTicketCollection() {
+        TicketSystem ticketSystem = new TicketSystem();
+        assertNotNull(ticketSystem.getTicketCollection());
+    }
+
+    @Test
+    public void testBuyTicketNotValidId() {
+        TicketSystem ticketSystem = new TicketSystem();
+        assertThrows(RuntimeException.class, () -> ticketSystem.buyTicket(100));
+    }
+
+    @Test
+    public void testBuyTicketNotValidIds() {
+        TicketSystem ticketSystem = new TicketSystem();
+        assertThrows(RuntimeException.class, () -> ticketSystem.buyTicket(100, 200));
+    }
+
+    @Test
+    public void testEnterInvalidTicketId() throws Exception {
+        String testInput = "100\n";
+        System.setIn(new ByteArrayInputStream(testInput.getBytes()));
+        assertThrows(Exception.class, () -> new TicketSystem().chooseTicket("Melbourne", "Sydney"));
+    }
 }
 
 

@@ -2,6 +2,7 @@ package fit5171.monash.edu;
 
 import fit5171.monash.edu.collection.*;
 import fit5171.monash.edu.entity.*;
+
 import java.util.regex.PatternSyntaxException;
 import java.util.Scanner;
 
@@ -11,6 +12,8 @@ public class TicketSystem {
     Ticket ticket = new Ticket();
     Flight flight = new Flight();
     Scanner in = new Scanner(System.in);
+
+    private FlightCollection flightCollection;
     private TicketCollection ticketCollection;
 
     public TicketSystem() {
@@ -46,6 +49,39 @@ public class TicketSystem {
 
             try {
                 setPassengerInformation();
+                System.out.println("Enter your First Name: ");
+                String firstName = in.nextLine();
+                passenger.setFirstName(firstName);
+
+                System.out.println("Enter your Second name:");
+                String secondName = in.nextLine();
+                passenger.setSecondName(secondName);
+
+                System.out.println("Enter your age:");
+                int age = 1;
+                try {
+                    age = Integer.parseInt(in.nextLine());
+                } catch (NumberFormatException e) {
+                    throw new RuntimeException("Age must be a integer.");
+                }
+                passenger.setAge(age);
+
+                System.out.println("Enter your gender: ");
+                String gender = in.nextLine();
+                passenger.setGender(gender);
+
+                System.out.println("Enter your e-mail address");
+                String email = in.nextLine();
+                passenger.setEmail(email);
+
+                System.out.println("Enter your phone number (+7):");
+                String phoneNumber = in.nextLine();
+                passenger.setPhoneNumber(phoneNumber);
+
+                System.out.println("Enter your passport number:");
+                String passportNumber = in.nextLine();
+                passenger.setPassport(passportNumber);
+
                 System.out.println("Do you want to purchase?\n 1-YES 0-NO");
                 int purchase = Integer.parseInt(in.nextLine());
                 if (purchase == 0) {
@@ -115,6 +151,35 @@ public class TicketSystem {
 
             try {
                 setPassengerInformation();
+                System.out.println("Enter your First Name: ");
+                String firstName = in.nextLine();
+                passenger.setFirstName(firstName);
+
+                System.out.println("Enter your Second name:");
+                String secondName = in.nextLine();
+                passenger.setSecondName(secondName); // setting passengers info
+
+                System.out.println("Enter your age:");
+                int age = in.nextInt();
+                in.nextLine(); // Consume newline left-over
+                passenger.setAge(age);
+
+                System.out.println("Enter your gender: ");
+                String gender = in.nextLine();
+                passenger.setGender(gender);
+
+                System.out.println("Enter your e-mail address");
+                String email = in.nextLine();
+                passenger.setEmail(email);
+
+                System.out.println("Enter your phone number (+7):");
+                String phoneNumber = in.nextLine();
+                passenger.setPhoneNumber(phoneNumber);
+
+                System.out.println("Enter your passport number:");
+                String passportNumber = in.nextLine();
+                passenger.setPassport(passportNumber);
+
                 System.out.println("Do you want to purchase?\n 1-YES 0-NO");
                 int confirmCode = in.nextInt();
                 if (confirmCode == 0)
@@ -145,6 +210,7 @@ public class TicketSystem {
                     } else {
                         airplaneFirst.setEconomySitsNumber(airplaneFirst.getEconomySitsNumber() - 1);
                     }
+
                     System.out.println("--*-*--");
 
                     setTicketInformation(ticketSecond, ticketIdSecond, flightSecond);
@@ -153,6 +219,7 @@ public class TicketSystem {
                     } else {
                         airplaneSecond.setEconomySitsNumber(airplaneSecond.getEconomySitsNumber() - 1);
                     }
+
                     System.out.println("--*-*--");
 
                     ticket.setPassenger(passenger);
@@ -166,6 +233,7 @@ public class TicketSystem {
                     System.out.println("Enter your security code:");
                     int securityCode = in.nextInt();
                     passenger.setSecurityCode(securityCode);
+
                 }
             } catch (PatternSyntaxException patternException) {
                 patternException.printStackTrace();
@@ -202,6 +270,8 @@ public class TicketSystem {
             } else if(TicketCollection.getTicketInfo(ticket_id).ticketStatus()) {
                 throw new Exception("This ticket is already booked.");
             }
+
+
             // buy ticket here
             buyTicket(ticket_id);
         } else
@@ -305,13 +375,9 @@ public class TicketSystem {
     }
 
     public void showTicket() {
-        try {
-            System.out.println("You have bought a ticket for flight " + ticket.getFlight().getDepartFrom() + " - "
-                    + ticket.getFlight().getDepartTo() + "\n\nDetails:");
-            System.out.println(this.ticket.toString());
-        } catch (NullPointerException e) {
-            return;
-        }
+        System.out.println("You have bought a ticket for flight " + ticket.getFlight().getDepartFrom() + " - "
+                + ticket.getFlight().getDepartTo() + "\n\nDetails:");
+        System.out.println(this.ticket.toString());
     }
 
 }

@@ -15,8 +15,8 @@ public class Main {
     private static final String FLIGHT_COMPANY = "Qantas";
 
     public static void loadData() throws ParseException {
-        Airplane airplaneFirst = new Airplane(1, "A380", 50, 320, 8);
-        Airplane airplaneSecond = new Airplane(2, "Bowening787-MAX", 30, 340, 10);
+        Airplane airplaneFirst = new Airplane(1, "A380", 50, 300, 8);
+        Airplane airplaneSecond = new Airplane(2, "Bowening787-MAX", 30, 300, 10);
 
         Flight flightFirst = new Flight(1, "Sydney", "Melbourne", "QF485", FLIGHT_COMPANY, "16/07/23 12:12:12", "17/07/23 13:13:13", airplaneFirst);
         Flight flightSecond = new Flight(2, "ShangHai", "Perth", "QF075", FLIGHT_COMPANY, "02/08/23 14:14:14", "03/08/23 15:15:15", airplaneSecond);
@@ -52,7 +52,7 @@ public class Main {
     public static void main(String[] args) throws Exception {
         loadData();
         TicketSystem ticketSystem = new TicketSystem();
-        if (Objects.equals(args[0], "test")) {
+        if (args.length == 1 && Objects.equals(args[0], "test")) {
             return;
         }
         ticketSystem.run();

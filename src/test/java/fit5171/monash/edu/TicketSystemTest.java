@@ -65,7 +65,7 @@ public class TicketSystemTest {
         ticketSystem.chooseTicket("Melbourne", "Sydney");
 
         String expectedOutput = "Flight{Airplane{model=Boeing 747', business sits=10', economy sits=200', crew sits=5'}, date to=08/06/23 15:00:00, ', date from='08/06/23 12:00:00', depart from='Melbourne', depart to='Sydney', company=Qantas', code=QF001'}";
-        assert output.toString().contains(expectedOutput);
+        assertTrue(output.toString().contains(expectedOutput));
     }
 
     /**
@@ -84,7 +84,7 @@ public class TicketSystemTest {
         ticketSystem.chooseTicket("Melbourne", "Brisbane");
 
         String expectedOutput = "There is special way to go there. And it is transfer way, like above.";
-        assert output.toString().contains(expectedOutput);
+        assertTrue(output.toString().contains(expectedOutput));
     }
 
     /**
@@ -101,7 +101,7 @@ public class TicketSystemTest {
         TicketSystem ticketSystem = new TicketSystem();
         ticketSystem.chooseTicket("Melbourne123", "Sydney");
         String expectedOutput = "There is no possible variants.";
-        assert output.toString().contains(expectedOutput);
+        assertTrue(output.toString().contains(expectedOutput));
     }
 
     /**

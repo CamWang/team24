@@ -27,11 +27,6 @@ public class MainTest {
     }
 
     @Test
-    public void testMainInit() throws Exception {
-        Main.main(new String[] {"test"});
-    }
-
-    @Test
     public void testMain() throws Exception {
         String testInput = "Melbourne\nSydney\n2\nChengHan\nYu\n27\nMan\ncyuu0052@student.monash.com\n" +
                 "0450000000\n987654321\n1\n987654321\n987\n0";

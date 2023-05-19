@@ -2,7 +2,6 @@ package fit5171.monash.edu;
 
 import fit5171.monash.edu.collection.*;
 import fit5171.monash.edu.entity.*;
-
 import java.util.regex.PatternSyntaxException;
 import java.util.Scanner;
 
@@ -12,16 +11,14 @@ public class TicketSystem {
     Ticket ticket = new Ticket();
     Flight flight = new Flight();
     Scanner in = new Scanner(System.in);
-
-    private FlightCollection flightCollection;
     private TicketCollection ticketCollection;
 
     public TicketSystem() {
         passenger = new Passenger("null", "null", 1, "Other");
         ticket = new Ticket();
         flight = new Flight();
-        flightCollection = new FlightCollection();
-        ticketCollection = new TicketCollection();
+        FlightCollection flightCollection = new FlightCollection();
+        TicketCollection ticketCollection = new TicketCollection();
     }
 
     public TicketCollection getTicketCollection()
@@ -29,13 +26,13 @@ public class TicketSystem {
         return ticketCollection;
     }
 
-    public void buyTicket(int ticket_id) throws Exception
+    public void buyTicket(int ticketId) throws Exception
     // method for buying one ticket with direct flight
     {
         int flight_id = 0;
 
         // select ticket where ticket_id="+ticket_id"
-        Ticket validTicket = TicketCollection.getTicketInfo(ticket_id);
+        Ticket validTicket = TicketCollection.getTicketInfo(ticketId);
 
         // if there is a valid ticket id was input then we buy it, otherwise show
         // message
@@ -48,39 +45,7 @@ public class TicketSystem {
             flight_id = validTicket.getFlight().getFlightID();
 
             try {
-                System.out.println("Enter your First Name: ");
-                String firstName = in.nextLine();
-                passenger.setFirstName(firstName);
-
-                System.out.println("Enter your Second name:");
-                String secondName = in.nextLine();
-                passenger.setSecondName(secondName);
-
-                System.out.println("Enter your age:");
-                int age = 1;
-                try {
-                    age = Integer.parseInt(in.nextLine());
-                } catch (NumberFormatException e) {
-                    throw new RuntimeException("Age must be a integer.");
-                }
-                passenger.setAge(age);
-
-                System.out.println("Enter your gender: ");
-                String gender = in.nextLine();
-                passenger.setGender(gender);
-
-                System.out.println("Enter your e-mail address");
-                String email = in.nextLine();
-                passenger.setEmail(email);
-
-                System.out.println("Enter your phone number (+7):");
-                String phoneNumber = in.nextLine();
-                passenger.setPhoneNumber(phoneNumber);
-
-                System.out.println("Enter your passport number:");
-                String passportNumber = in.nextLine();
-                passenger.setPassport(passportNumber);
-
+                setPassengerInformation();
                 System.out.println("Do you want to purchase?\n 1-YES 0-NO");
                 int purchase = Integer.parseInt(in.nextLine());
                 if (purchase == 0) {
@@ -93,14 +58,9 @@ public class TicketSystem {
                     Airplane airplane = flight.getAirplane();
 //                    Airplane airplane = Airplane.getAirPlaneInfo(airplane_id);
 
-                    ticket = TicketCollection.getTicketInfo(ticket_id);
+                    ticket = TicketCollection.getTicketInfo(ticketId);
 
-                    ticket.setPassenger(passenger);
-                    ticket.setTicket_id(ticket_id);
-                    ticket.setFlight(flight);
-                    ticket.setPrice(ticket.getPrice());
-                    ticket.setClassVip(ticket.getClassVip());
-                    ticket.setTicketStatus(true);
+                    setTicketInformation(ticketId);
                     if (ticket.getClassVip()) {
                         airplane.setBusinessSitsNumber(airplane.getBusinessSitsNumber() - 1);
                     } else {
@@ -154,35 +114,7 @@ public class TicketSystem {
             flightIdSecond = validTicketFirst.getFlight().getFlightID();
 
             try {
-                System.out.println("Enter your First Name: ");
-                String firstName = in.nextLine();
-                passenger.setFirstName(firstName);
-
-                System.out.println("Enter your Second name:");
-                String secondName = in.nextLine();
-                passenger.setSecondName(secondName); // setting passengers info
-
-                System.out.println("Enter your age:");
-                int age = in.nextInt();
-                in.nextLine(); // Consume newline left-over
-                passenger.setAge(age);
-
-                System.out.println("Enter your gender: ");
-                String gender = in.nextLine();
-                passenger.setGender(gender);
-
-                System.out.println("Enter your e-mail address");
-                String email = in.nextLine();
-                passenger.setEmail(email);
-
-                System.out.println("Enter your phone number (+7):");
-                String phoneNumber = in.nextLine();
-                passenger.setPhoneNumber(phoneNumber);
-
-                System.out.println("Enter your passport number:");
-                String passportNumber = in.nextLine();
-                passenger.setPassport(passportNumber);
-
+                setPassengerInformation();
                 System.out.println("Do you want to purchase?\n 1-YES 0-NO");
                 int confirmCode = in.nextInt();
                 if (confirmCode == 0)
@@ -207,34 +139,22 @@ public class TicketSystem {
 
                     Ticket ticketSecond = TicketCollection.getTicketInfo(ticketIdSecond);
 
-                    ticketFirst.setPassenger(passenger);
-                    ticketFirst.setTicket_id(ticketIdFirst);
-                    ticketFirst.setFlight(flightFirst);
-                    ticketFirst.setPrice(ticketFirst.getPrice());
-                    ticketFirst.setClassVip(ticketFirst.getClassVip());
-                    ticketFirst.setTicketStatus(true);
-
+                    setTicketInformation(ticketFirst, ticketIdFirst, flightFirst);
                     if (ticketFirst.getClassVip()) {
                         airplaneFirst.setBusinessSitsNumber(airplaneFirst.getBusinessSitsNumber() - 1);
                     } else {
                         airplaneFirst.setEconomySitsNumber(airplaneFirst.getEconomySitsNumber() - 1);
                     }
-
                     System.out.println("--*-*--");
 
-                    ticketSecond.setPassenger(passenger);
-                    ticketSecond.setTicket_id(ticketIdSecond);
-                    ticketSecond.setFlight(flightFirst);
-                    ticketSecond.setPrice(ticketSecond.getPrice());
-                    ticketSecond.setClassVip(ticketSecond.getClassVip());
-                    ticketSecond.setTicketStatus(true);
+                    setTicketInformation(ticketSecond, ticketIdSecond, flightSecond);
                     if (ticketSecond.getClassVip()) {
                         airplaneSecond.setBusinessSitsNumber(airplaneSecond.getBusinessSitsNumber() - 1);
                     } else {
                         airplaneSecond.setEconomySitsNumber(airplaneSecond.getEconomySitsNumber() - 1);
                     }
-
                     System.out.println("--*-*--");
+
                     ticket.setPassenger(passenger);
                     ticket.setPrice(ticketFirst.getPrice() + ticketSecond.getPrice());
                     System.out.println("Your bill: " + ticket.getPrice() + "\n");
@@ -246,7 +166,6 @@ public class TicketSystem {
                     System.out.println("Enter your security code:");
                     int securityCode = in.nextInt();
                     passenger.setSecurityCode(securityCode);
-
                 }
             } catch (PatternSyntaxException patternException) {
                 patternException.printStackTrace();
@@ -283,8 +202,6 @@ public class TicketSystem {
             } else if(TicketCollection.getTicketInfo(ticket_id).ticketStatus()) {
                 throw new Exception("This ticket is already booked.");
             }
-
-
             // buy ticket here
             buyTicket(ticket_id);
         } else
@@ -321,7 +238,51 @@ public class TicketSystem {
             }
             return;
         }
+    }
 
+    public void setPassengerInformation(){
+        System.out.println("Please, enter your first name:");
+        String firstName = in.nextLine();
+        passenger.setFirstName(firstName);
+        System.out.println("Please, enter your second name:");
+        String secondName = in.nextLine();
+        passenger.setSecondName(secondName);
+        System.out.println("Please, enter your age:");
+        int age = 1;
+        try {
+            age = Integer.parseInt(in.nextLine());
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("Age must be an integer.");
+        }
+        passenger.setAge(age);
+        System.out.println("Please, enter your gender:");
+        String gender = in.nextLine();
+        passenger.setPhoneNumber(gender);
+        System.out.println("Please, enter your email address:");
+        String email = in.nextLine();
+        passenger.setEmail(email);
+        System.out.println("Please, enter your passport number:");
+        String passportNumber = in.nextLine();
+        passenger.setPassport(passportNumber);
+        //passenger = new Passenger(firstName, secondName, passportNumber, phoneNumber, email, address, passportNumber);
+    }
+
+    public void setTicketInformation(int ticketId){
+        ticket.setPassenger(passenger);
+        ticket.setTicket_id(ticketId);
+        ticket.setFlight(flight);
+        ticket.setPrice(ticket.getPrice());
+        ticket.setClassVip(ticket.getClassVip());
+        ticket.setTicketStatus(true);
+    }
+
+    public void setTicketInformation(Ticket ticket, int ticketId, Flight flight){
+        ticket.setPassenger(passenger);
+        ticket.setTicket_id(ticketId);
+        ticket.setFlight(flight);
+        ticket.setPrice(ticket.getPrice());
+        ticket.setClassVip(ticket.getClassVip());
+        ticket.setTicketStatus(true);
     }
 
     public void run() throws Exception{

@@ -9,6 +9,8 @@ public class MainTest {
 
     @Test
     public void testLoadData() throws Exception {
+        FlightCollection.flights.clear();
+        TicketCollection.tickets.clear();
         Main.loadData();
         assertEquals(FlightCollection.flights.size(), 4);
         assertEquals(TicketCollection.tickets.size(), 8);

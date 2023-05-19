@@ -24,8 +24,7 @@ public class TicketSystem {
         ticketCollection = new TicketCollection();
     }
 
-    public TicketCollection getTicketCollection()
-    {
+    public TicketCollection getTicketCollection() {
         return ticketCollection;
     }
 
@@ -46,44 +45,38 @@ public class TicketSystem {
             // select flight_id from ticket where ticket_id=" + ticket_id
 
             flight_id = validTicket.getFlight().getFlightID();
+            setPassengerInformation();
+            System.out.println("Do you want to purchase?\n 1-YES 0-NO");
+            int purchase = Integer.parseInt(in.nextLine());
+            if (purchase == 0) {
+                return;
+            } else {
 
-            try {
-                setPassengerInformation();
-                System.out.println("Do you want to purchase?\n 1-YES 0-NO");
-                int purchase = Integer.parseInt(in.nextLine());
-                if (purchase == 0) {
-                    return;
-                } else {
-
-                    flight = FlightCollection.getFlightInfo(flight_id);
+                flight = FlightCollection.getFlightInfo(flight_id);
 
 //                    int airplane_id = flight.getAirplane().getAirplaneID();
-                    Airplane airplane = flight.getAirplane();
+                Airplane airplane = flight.getAirplane();
 //                    Airplane airplane = Airplane.getAirPlaneInfo(airplane_id);
 
-                    ticket = TicketCollection.getTicketInfo(ticketId);
+                ticket = TicketCollection.getTicketInfo(ticketId);
 
-                    setTicketInformation(ticketId);
-                    if (ticket.getClassVip()) {
-                        airplane.setBusinessSitsNumber(airplane.getBusinessSitsNumber() - 1);
-                    } else {
-                        airplane.setEconomySitsNumber(airplane.getEconomySitsNumber() - 1);
-                    }
-
+                setTicketInformation(ticketId);
+                if (ticket.getClassVip()) {
+                    airplane.setBusinessSitsNumber(airplane.getBusinessSitsNumber() - 1);
+                } else {
+                    airplane.setEconomySitsNumber(airplane.getEconomySitsNumber() - 1);
                 }
-                System.out.println("Your bill: " + ticket.getPrice() + "\n");
 
-                System.out.println("Enter your card number:");
-                String cardNumber = in.nextLine();
-                passenger.setCardNumber(cardNumber);
-
-                System.out.println("Enter your security code:");
-                int securityCode = Integer.parseInt(in.nextLine());
-                passenger.setSecurityCode(securityCode);
-
-            } catch (PatternSyntaxException patternException) {
-                patternException.printStackTrace();
             }
+            System.out.println("Your bill: " + ticket.getPrice() + "\n");
+
+            System.out.println("Enter your card number:");
+            String cardNumber = in.nextLine();
+            passenger.setCardNumber(cardNumber);
+
+            System.out.println("Enter your security code:");
+            int securityCode = Integer.parseInt(in.nextLine());
+            passenger.setSecurityCode(securityCode);
         }
     }
 
@@ -111,70 +104,64 @@ public class TicketSystem {
         if (validTicketFirst == null || validTicketSecond == null) {
             System.out.println("At least one ticket does not exist.");
             return;
-        }
-        else {
+        } else {
             flightIdFirst = validTicketFirst.getFlight().getFlightID();
             flightIdSecond = validTicketFirst.getFlight().getFlightID();
 
-            try {
-                setPassengerInformation();
-                System.out.println("Do you want to purchase?\n 1-YES 0-NO");
-                int confirmCode = in.nextInt();
-                if (confirmCode == 0)
-                {
-                    return;
-                } else {
-                    // "select * from flight, airplane where flight_id=" + flight_id_first + " and
-                    // flight.airplane_id=airplane.airplane_id");
-                    Flight flightFirst = FlightCollection.getFlightInfo(flightIdFirst);
+            setPassengerInformation();
+            System.out.println("Do you want to purchase?\n 1-YES 0-NO");
+            int confirmCode = in.nextInt();
+            if (confirmCode == 0) {
+                return;
+            } else {
+                // "select * from flight, airplane where flight_id=" + flight_id_first + " and
+                // flight.airplane_id=airplane.airplane_id");
+                Flight flightFirst = FlightCollection.getFlightInfo(flightIdFirst);
 
 //                    int airplane_id_first = flight_first.getAirplane().getAirplaneID();
-                    Airplane airplaneFirst = flightFirst.getAirplane();
+                Airplane airplaneFirst = flightFirst.getAirplane();
 //                    Airplane airplane_first = Airplane.getAirPlaneInfo(airplane_id_first);
 
-                    Flight flightSecond = FlightCollection.getFlightInfo(flightIdSecond);
+                Flight flightSecond = FlightCollection.getFlightInfo(flightIdSecond);
 
 //                    int airplane_id_second = flight_second.getAirplane().getAirplaneID();
-                    Airplane airplaneSecond = flightSecond.getAirplane();
+                Airplane airplaneSecond = flightSecond.getAirplane();
 //                    Airplane airplane_second = Airplane.getAirPlaneInfo(airplane_id_second);
 
-                    Ticket ticketFirst = TicketCollection.getTicketInfo(ticketIdFirst);
+                Ticket ticketFirst = TicketCollection.getTicketInfo(ticketIdFirst);
 
-                    Ticket ticketSecond = TicketCollection.getTicketInfo(ticketIdSecond);
+                Ticket ticketSecond = TicketCollection.getTicketInfo(ticketIdSecond);
 
-                    setTicketInformation(ticketFirst, ticketIdFirst, flightFirst);
-                    if (ticketFirst.getClassVip()) {
-                        airplaneFirst.setBusinessSitsNumber(airplaneFirst.getBusinessSitsNumber() - 1);
-                    } else {
-                        airplaneFirst.setEconomySitsNumber(airplaneFirst.getEconomySitsNumber() - 1);
-                    }
-
-                    System.out.println("--*-*--");
-
-                    setTicketInformation(ticketSecond, ticketIdSecond, flightSecond);
-                    if (ticketSecond.getClassVip()) {
-                        airplaneSecond.setBusinessSitsNumber(airplaneSecond.getBusinessSitsNumber() - 1);
-                    } else {
-                        airplaneSecond.setEconomySitsNumber(airplaneSecond.getEconomySitsNumber() - 1);
-                    }
-
-                    System.out.println("--*-*--");
-
-                    ticket.setPassenger(passenger);
-                    ticket.setPrice(ticketFirst.getPrice() + ticketSecond.getPrice());
-                    System.out.println("Your bill: " + ticket.getPrice() + "\n");
-                    System.out.println("Enter your card number:");
-                    String random = in.nextLine(); // Consume newline left-over
-                    String cardNumber = in.nextLine();
-                    passenger.setCardNumber(cardNumber);
-
-                    System.out.println("Enter your security code:");
-                    int securityCode = in.nextInt();
-                    passenger.setSecurityCode(securityCode);
-
+                setTicketInformation(ticketFirst, ticketIdFirst, flightFirst);
+                if (ticketFirst.getClassVip()) {
+                    airplaneFirst.setBusinessSitsNumber(airplaneFirst.getBusinessSitsNumber() - 1);
+                } else {
+                    airplaneFirst.setEconomySitsNumber(airplaneFirst.getEconomySitsNumber() - 1);
                 }
-            } catch (PatternSyntaxException patternException) {
-                patternException.printStackTrace();
+
+                System.out.println("--*-*--");
+
+                setTicketInformation(ticketSecond, ticketIdSecond, flightSecond);
+                if (ticketSecond.getClassVip()) {
+                    airplaneSecond.setBusinessSitsNumber(airplaneSecond.getBusinessSitsNumber() - 1);
+                } else {
+                    airplaneSecond.setEconomySitsNumber(airplaneSecond.getEconomySitsNumber() - 1);
+                }
+
+                System.out.println("--*-*--");
+
+                ticket.setPassenger(passenger);
+                ticket.setPrice(ticketFirst.getPrice() + ticketSecond.getPrice());
+                System.out.println("Your bill: " + ticket.getPrice() + "\n");
+                System.out.println("Enter your card number:");
+                String random = in.nextLine(); // Consume newline left-over
+                String cardNumber = in.nextLine();
+                passenger.setCardNumber(cardNumber);
+
+                System.out.println("Enter your security code:");
+                int securityCode = in.nextInt();
+                passenger.setSecurityCode(securityCode);
+
             }
         }
 
@@ -203,9 +190,9 @@ public class TicketSystem {
                 System.out.println("Please enter a valid number");
             }
             // validate ticker here
-            if(TicketCollection.getTicketInfo(ticket_id) == null){
+            if (TicketCollection.getTicketInfo(ticket_id) == null) {
                 throw new Exception("This ticket does not exist.");
-            } else if(TicketCollection.getTicketInfo(ticket_id).ticketStatus()) {
+            } else if (TicketCollection.getTicketInfo(ticket_id).ticketStatus()) {
                 throw new Exception("This ticket is already booked.");
             }
 
@@ -248,7 +235,7 @@ public class TicketSystem {
         }
     }
 
-    public void setPassengerInformation(){
+    public void setPassengerInformation() {
         System.out.println("Please, enter your first name:");
         String firstName = in.nextLine();
         passenger.setFirstName(firstName);
@@ -278,7 +265,7 @@ public class TicketSystem {
         //passenger = new Passenger(firstName, secondName, passportNumber, phoneNumber, email, address, passportNumber);
     }
 
-    public void setTicketInformation(int ticketId){
+    public void setTicketInformation(int ticketId) {
         ticket.setPassenger(passenger);
         ticket.setTicket_id(ticketId);
         ticket.setFlight(flight);
@@ -287,7 +274,7 @@ public class TicketSystem {
         ticket.setTicketStatus(true);
     }
 
-    public void setTicketInformation(Ticket ticket, int ticketId, Flight flight){
+    public void setTicketInformation(Ticket ticket, int ticketId, Flight flight) {
         ticket.setPassenger(passenger);
         ticket.setTicket_id(ticketId);
         ticket.setFlight(flight);
@@ -296,8 +283,8 @@ public class TicketSystem {
         ticket.setTicketStatus(true);
     }
 
-    public void run() throws Exception{
-        while(true){
+    public void run() throws Exception {
+        while (true) {
             System.out.println("Welcome to the Arline Ticket Booking System!");
             System.out.println("Please, enter the departure city:");
             String departCity = in.nextLine();
@@ -307,8 +294,7 @@ public class TicketSystem {
             showTicket();
             System.out.println("Do you want to buy another tickets?\n 1-YES 0-NO");
             int confirmCode = in.nextInt();
-            if (confirmCode == 0)
-            {
+            if (confirmCode == 0) {
                 System.out.println("Thank you for using our system!");
                 break;
             }

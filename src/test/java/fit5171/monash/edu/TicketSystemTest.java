@@ -151,7 +151,7 @@ public class TicketSystemTest {
             ticketSystem.buyTicket(1);
             fail("Expected an Exception to be thrown");
         } catch (Exception e) {
-            assertEquals("Age must be a integer.", e.getMessage());
+            assertEquals("Age must be an integer.", e.getMessage());
         }
         try {
             String testInput = "ChengHan\nYu\n27\nmale\n";
@@ -244,9 +244,13 @@ public class TicketSystemTest {
     }
 
     @Test
-    public void testBuyTicketNotValidIds() {
+    public void testBuyTicketNotValidIds() throws Exception {
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
         TicketSystem ticketSystem = new TicketSystem();
-        assertThrows(RuntimeException.class, () -> ticketSystem.buyTicket(100, 200));
+        ticketSystem.buyTicket(100, 200);
+        String expectedOutput = "At least one ticket does not exist.";
+        assertEquals(true, output.toString().contains(expectedOutput));
     }
 
     @Test
@@ -254,6 +258,7 @@ public class TicketSystemTest {
         String testInput = "100\n";
         System.setIn(new ByteArrayInputStream(testInput.getBytes()));
         assertThrows(Exception.class, () -> new TicketSystem().chooseTicket("Melbourne", "Sydney"));
+
     }
 }
 

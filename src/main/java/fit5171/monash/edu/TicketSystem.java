@@ -20,8 +20,8 @@ public class TicketSystem {
         passenger = new Passenger("null", "null", 1, "Other");
         ticket = new Ticket();
         flight = new Flight();
-        FlightCollection flightCollection = new FlightCollection();
-        TicketCollection ticketCollection = new TicketCollection();
+        flightCollection = new FlightCollection();
+        ticketCollection = new TicketCollection();
     }
 
     public TicketCollection getTicketCollection()
@@ -49,39 +49,6 @@ public class TicketSystem {
 
             try {
                 setPassengerInformation();
-                System.out.println("Enter your First Name: ");
-                String firstName = in.nextLine();
-                passenger.setFirstName(firstName);
-
-                System.out.println("Enter your Second name:");
-                String secondName = in.nextLine();
-                passenger.setSecondName(secondName);
-
-                System.out.println("Enter your age:");
-                int age = 1;
-                try {
-                    age = Integer.parseInt(in.nextLine());
-                } catch (NumberFormatException e) {
-                    throw new RuntimeException("Age must be a integer.");
-                }
-                passenger.setAge(age);
-
-                System.out.println("Enter your gender: ");
-                String gender = in.nextLine();
-                passenger.setGender(gender);
-
-                System.out.println("Enter your e-mail address");
-                String email = in.nextLine();
-                passenger.setEmail(email);
-
-                System.out.println("Enter your phone number (+7):");
-                String phoneNumber = in.nextLine();
-                passenger.setPhoneNumber(phoneNumber);
-
-                System.out.println("Enter your passport number:");
-                String passportNumber = in.nextLine();
-                passenger.setPassport(passportNumber);
-
                 System.out.println("Do you want to purchase?\n 1-YES 0-NO");
                 int purchase = Integer.parseInt(in.nextLine());
                 if (purchase == 0) {
@@ -151,35 +118,6 @@ public class TicketSystem {
 
             try {
                 setPassengerInformation();
-                System.out.println("Enter your First Name: ");
-                String firstName = in.nextLine();
-                passenger.setFirstName(firstName);
-
-                System.out.println("Enter your Second name:");
-                String secondName = in.nextLine();
-                passenger.setSecondName(secondName); // setting passengers info
-
-                System.out.println("Enter your age:");
-                int age = in.nextInt();
-                in.nextLine(); // Consume newline left-over
-                passenger.setAge(age);
-
-                System.out.println("Enter your gender: ");
-                String gender = in.nextLine();
-                passenger.setGender(gender);
-
-                System.out.println("Enter your e-mail address");
-                String email = in.nextLine();
-                passenger.setEmail(email);
-
-                System.out.println("Enter your phone number (+7):");
-                String phoneNumber = in.nextLine();
-                passenger.setPhoneNumber(phoneNumber);
-
-                System.out.println("Enter your passport number:");
-                String passportNumber = in.nextLine();
-                passenger.setPassport(passportNumber);
-
                 System.out.println("Do you want to purchase?\n 1-YES 0-NO");
                 int confirmCode = in.nextInt();
                 if (confirmCode == 0)
@@ -327,10 +265,13 @@ public class TicketSystem {
         passenger.setAge(age);
         System.out.println("Please, enter your gender:");
         String gender = in.nextLine();
-        passenger.setPhoneNumber(gender);
+        passenger.setGender(gender);
         System.out.println("Please, enter your email address:");
         String email = in.nextLine();
         passenger.setEmail(email);
+        System.out.println("Please, enter your phone number:");
+        String phoneNo = in.nextLine();
+        passenger.setPhoneNumber(phoneNo);
         System.out.println("Please, enter your passport number:");
         String passportNumber = in.nextLine();
         passenger.setPassport(passportNumber);

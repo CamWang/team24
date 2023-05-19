@@ -1,11 +1,7 @@
 package fit5171.monash.edu;
 
-import fit5171.monash.edu.collection.FlightCollection;
-import fit5171.monash.edu.collection.TicketCollection;
-import fit5171.monash.edu.entity.Airplane;
-import fit5171.monash.edu.entity.Flight;
-import fit5171.monash.edu.entity.Passenger;
-import fit5171.monash.edu.entity.Ticket;
+import fit5171.monash.edu.collection.*;
+import fit5171.monash.edu.entity.*;
 
 import java.util.regex.PatternSyntaxException;
 import java.util.Scanner;

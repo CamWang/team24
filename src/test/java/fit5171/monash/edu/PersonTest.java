@@ -40,6 +40,12 @@ public class PersonTest {
     public void testValidGender() {
         person.setGender("Man");
         assertEquals("Man", person.getGender());
+        person.setGender("Woman");
+        assertEquals("Woman", person.getGender());
+        person.setGender("Prefer not to say");
+        assertEquals("Prefer not to say", person.getGender());
+        person.setGender("Other");
+        assertEquals("Other", person.getGender());
     }
 
     /**
@@ -102,5 +108,14 @@ public class PersonTest {
         } catch (IllegalArgumentException e) {
             assertEquals("Name can contain only small case and upper-case alphabet letters.", e.getMessage());
         }
+    }
+
+    @Test
+    public void testToString() {
+        person.setFirstName("Wells");
+        person.setSecondName("Yu");
+        person.setGender("Man");
+        person.setAge(27);
+        assertEquals("Passenger{ Fullname= Wells Yu ,email='null', phoneNumber='null', passport='null}", person.toString());
     }
 }

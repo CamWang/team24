@@ -12,6 +12,9 @@ public class FlightCollection {
         return flights;
     }
 
+    private FlightCollection() {
+    }
+
     public static void addFlights(ArrayList<Flight> flights) throws IllegalArgumentException {
         for (Flight flight : flights) {
             if (FlightCollection.getFlightInfo(flight.getFlightID()) != null) {

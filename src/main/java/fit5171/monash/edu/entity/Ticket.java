@@ -49,10 +49,10 @@ public class Ticket {
     }
 
     public void saleByAge(int age) {
-        int price = getPrice();
+        int currentPrice = getPrice();
         if (age < 15) {
-            price -= (int) price * 0.5;// 50% sale for children under 15
-            this.price = price;
+            currentPrice -= (int) currentPrice * 0.5;// 50% sale for children under 15
+            this.price = currentPrice;
 
         } else if (age >= 60) {
             this.price = 0; // 100% sale for elder people

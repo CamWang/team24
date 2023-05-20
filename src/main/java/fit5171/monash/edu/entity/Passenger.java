@@ -36,18 +36,22 @@ public class Passenger extends Person {
         this.email = email;
     }
 
+    @Override
     public String getFirstName() {
         return super.getFirstName();
     }
 
+    @Override
     public String getSecondName() {
         return super.getSecondName();
     }
 
+    @Override
     public void setSecondName(String secondName) {
         super.setSecondName(secondName);
     }
 
+    @Override
     public void setFirstName(String firstName) {
         super.setFirstName(firstName);
     }
@@ -56,6 +60,7 @@ public class Passenger extends Person {
         return passport;
     }
 
+    @Override
     public void setGender(String gender) {
         super.setGender(gender);
     }

@@ -22,8 +22,8 @@ public class MainTest {
     @Test
     public void testLoadData() throws Exception {
         Main.loadData();
-        assertEquals(FlightCollection.flights.size(), 4);
-        assertEquals(TicketCollection.tickets.size(), 8);
+        assertEquals(4, FlightCollection.flights.size());
+        assertEquals( 8, TicketCollection.tickets.size());
     }
 
     @Test

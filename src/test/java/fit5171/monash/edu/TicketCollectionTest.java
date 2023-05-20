@@ -20,7 +20,7 @@ public class TicketCollectionTest {
 
     @BeforeEach
     public void setUp() {
-        mockTickets = new ArrayList<Ticket>();
+        mockTickets = new ArrayList<>();
         mockTicket = mock(Ticket.class);
         mockTickets.add(mockTicket);
 
@@ -38,7 +38,7 @@ public class TicketCollectionTest {
             add(mockTicket);
         }});
 
-        assertEquals(mockTickets.size(), 2);
+        assertEquals(2, mockTickets.size());
     }
 
     /**
@@ -47,11 +47,10 @@ public class TicketCollectionTest {
     @Test
     public void testAddTicketInvalid() throws IllegalArgumentException {
         when(mockTicket.getTicket_id()).thenReturn(0);
-
+        ArrayList<Ticket> tickets = new ArrayList<>();
+        tickets.add(mockTicket);
         try {
-            TicketCollection.addTickets(new ArrayList<Ticket>() {{
-                add(mockTicket);
-            }});
+            TicketCollection.addTickets(tickets);
             fail("Expected IllegalArgumentException was not thrown");
         } catch (IllegalArgumentException e) {
             assertEquals("Invalid ticket ID: 0", e.getMessage());

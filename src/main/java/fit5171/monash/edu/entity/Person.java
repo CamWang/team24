@@ -20,7 +20,7 @@ public abstract class Person // abstract class Person
     private static final String PREFER_NOT_TO_SAY_STR = "Prefer not to say";
     private static final String OTHER_STR = "Other";
 
-    public Person(String firstName, String secondName, int age, String gender) throws IllegalArgumentException {
+    protected Person(String firstName, String secondName, int age, String gender) throws IllegalArgumentException {
         this.age = age;
         setFirstName(firstName);
         setSecondName(secondName);

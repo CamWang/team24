@@ -14,6 +14,12 @@ public abstract class Person // abstract class Person
     private int age;
     private Gender gender;
 
+    private static final String WOMAN_STR = "Woman";
+    private static final String MAN_STR = "Man";
+    private static final String NON_BINARY_STR = "Non-binary|gender diverse";
+    private static final String PREFER_NOT_TO_SAY_STR = "Prefer not to say";
+    private static final String OTHER_STR = "Other";
+
     public Person(String firstName, String secondName, int age, String gender) throws IllegalArgumentException {
         this.age = age;
         setFirstName(firstName);
@@ -30,27 +36,27 @@ public abstract class Person // abstract class Person
 
     public String getGenderString(Enum<Gender> gender) {
         if (gender.equals(WOMAN)) {
-            return "Woman";
+            return WOMAN_STR;
         } else if (gender.equals(MAN)) {
-            return "Man";
+            return MAN_STR;
         } else if (gender.equals(NON_BINARY)) {
-            return "Non-binary|gender diverse";
+            return NON_BINARY_STR;
         } else if (gender.equals(PREFER_NOT_TO_SAY)) {
-            return "Prefer not to say";
+            return PREFER_NOT_TO_SAY_STR;
         } else {
-            return "Other";
+            return OTHER_STR;
         }
     }
 
     public Gender getGenderEnum(String genderStr) {
         switch(genderStr) {
-            case "Woman":
+            case WOMAN_STR:
                 return WOMAN;
-            case "Man":
+            case MAN_STR:
                 return MAN;
-            case "Non-binary|gender diverse":
+            case NON_BINARY_STR:
                 return NON_BINARY;
-            case "Prefer not to say":
+            case PREFER_NOT_TO_SAY_STR:
                 return PREFER_NOT_TO_SAY;
             default:
                 return OTHER;
@@ -70,7 +76,7 @@ public abstract class Person // abstract class Person
     }
 
     public void setGender(String genderStr) throws IllegalArgumentException{
-        List<String> genderList = Arrays.asList("Woman", "Man", "Non-binary|gender diverse", "Prefer not to say", "Other");
+        List<String> genderList = Arrays.asList(WOMAN_STR, MAN_STR, NON_BINARY_STR, PREFER_NOT_TO_SAY_STR, OTHER_STR);
         if (!genderList.contains(genderStr)) {
             throw new IllegalArgumentException("Gender option: Woman, Man, Non-binary|gender diverse, Prefer not to say and Other.");
         }

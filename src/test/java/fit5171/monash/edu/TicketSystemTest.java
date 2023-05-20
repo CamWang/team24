@@ -42,10 +42,10 @@ public class TicketSystemTest {
         passenger = new Passenger("null", "null", 1, "Other");
         ticket = new Ticket(1, 1000, flight, false, passenger);
         ticket2 = new Ticket(2, 1000, flight2, false, passenger);
-        TicketCollection.tickets = new ArrayList<Ticket>();
+        TicketCollection.tickets = new ArrayList<>();
         ArrayList<Ticket> tickets_db = new ArrayList<>(Arrays.asList(ticket, ticket2));
         TicketCollection.addTickets(tickets_db);
-        FlightCollection.flights = new ArrayList<Flight>();
+        FlightCollection.flights = new ArrayList<>();
         ArrayList<Flight> flights_db = new ArrayList<>(Arrays.asList(flight, flight2));
         FlightCollection.addFlights(flights_db);
     }
@@ -108,7 +108,7 @@ public class TicketSystemTest {
      * 2. If a passenger chooses an already booked ticket it should display an error message.
      */
     @Test
-    public void testBookedTicket() throws Exception {
+    public void testBookedTicket() {
         String testInput = "1\n";
         System.setIn(new ByteArrayInputStream(testInput.getBytes()));
         TicketCollection.getTicketInfo(1).setTicketStatus(true);
@@ -125,7 +125,7 @@ public class TicketSystemTest {
      * 3. Appropriate checks have been implemented to validate passenger information
      */
     @Test
-    public void testBuyTicketWithInvalidPassenger() throws Exception {
+    public void testBuyTicketWithInvalidPassenger() {
         try {
             String testInput = "ChengHan123\n";
             System.setIn(new ByteArrayInputStream(testInput.getBytes()));
@@ -195,7 +195,7 @@ public class TicketSystemTest {
      * 6. A correct value is displayed to the passenger when buying a ticket.
      */
     @Test
-    public void testBuyTicketWithValidInput() throws Exception {
+    public void testBuyTicketWithValidInput() {
         String testInput = "ChengHan\nYu\n27\nMan\ncyuu0052@student.monash.com\n" +
                 "0450000000\n987654321\n1\n987654321\n987";
 
@@ -232,29 +232,23 @@ public class TicketSystemTest {
     }
 
     @Test
-    public void testGetTicketCollection() {
-        TicketSystem ticketSystem = new TicketSystem();
-        assertNotNull(ticketSystem.getTicketCollection());
-    }
-
-    @Test
     public void testBuyTicketNotValidId() {
         TicketSystem ticketSystem = new TicketSystem();
         assertThrows(RuntimeException.class, () -> ticketSystem.buyTicket(100));
     }
 
     @Test
-    public void testBuyTicketNotValidIds() throws Exception {
+    public void testBuyTicketNotValidIds() {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
         TicketSystem ticketSystem = new TicketSystem();
         ticketSystem.buyTicket(100, 200);
         String expectedOutput = "At least one ticket does not exist.";
-        assertEquals(true, output.toString().contains(expectedOutput));
+        assertTrue(output.toString().contains(expectedOutput));
     }
 
     @Test
-    public void testEnterInvalidTicketId() throws Exception {
+    public void testEnterInvalidTicketId() {
         String testInput = "100\n";
         System.setIn(new ByteArrayInputStream(testInput.getBytes()));
         assertThrows(Exception.class, () -> new TicketSystem().chooseTicket("Melbourne", "Sydney"));

@@ -74,11 +74,11 @@ public class TicketTest {
         Ticket ticket = new Ticket();
         ticket.setPassenger(mockPassenger);
         ticket.setFlight(mockFlight);
-        ticket.setTicket_id(1);
+        ticket.setTicketId(1);
         ticket.setPrice(100);
         ticket.setClassVip(false);
         ticket.setTicketStatus(true);
-        assertEquals(1, ticket.getTicket_id());
+        assertEquals(1, ticket.getTicketId());
         assertEquals(100, ticket.getPrice());
         assertEquals(mockFlight, ticket.getFlight());
         assertEquals(false, ticket.getClassVip());

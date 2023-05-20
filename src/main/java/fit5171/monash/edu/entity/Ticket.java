@@ -1,18 +1,15 @@
 package fit5171.monash.edu.entity;
 
-import fit5171.monash.edu.entity.Flight;
-import fit5171.monash.edu.entity.Passenger;
-
 public class Ticket {
-    private int ticket_id;
+    private int ticketId;
     private int price;
     Flight flight;
     private boolean classVip; // indicates if this is bussiness class ticket or not
     private boolean status; // indicates status of ticket: if it is bought by someone or not
     Passenger passenger;
 
-    public Ticket(int ticket_id, int price, Flight flight, boolean classVip, Passenger passenger) {
-        this.ticket_id = ticket_id;
+    public Ticket(int ticketId, int price, Flight flight, boolean classVip, Passenger passenger) {
+        this.ticketId = ticketId;
         this.flight = flight;
         this.classVip = classVip;
         this.status = false;
@@ -24,18 +21,18 @@ public class Ticket {
 
     }
 
-    public Ticket(int ticket_id, Flight flightFirst, boolean classVip) {
-        this.ticket_id = ticket_id;
+    public Ticket(int ticketId, Flight flightFirst, boolean classVip) {
+        this.ticketId = ticketId;
         this.flight = flightFirst;
         this.classVip = classVip;
     }
 
-    public int getTicket_id() {
-        return ticket_id;
+    public int getTicketId() {
+        return ticketId;
     }
 
-    public void setTicket_id(int ticket_id) {
-        this.ticket_id = ticket_id;
+    public void setTicketId(int ticketId) {
+        this.ticketId = ticketId;
     }
 
     public int getPrice() {

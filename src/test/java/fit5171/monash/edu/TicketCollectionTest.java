@@ -32,7 +32,7 @@ public class TicketCollectionTest {
      */
     @Test
     public void testAddTicketValid() {
-        when(mockTicket.getTicket_id()).thenReturn(1);
+        when(mockTicket.getTicketId()).thenReturn(1);
 
         TicketCollection.addTickets(new ArrayList<Ticket>() {{
             add(mockTicket);
@@ -46,7 +46,7 @@ public class TicketCollectionTest {
      */
     @Test
     public void testAddTicketInvalid() throws IllegalArgumentException {
-        when(mockTicket.getTicket_id()).thenReturn(0);
+        when(mockTicket.getTicketId()).thenReturn(0);
         ArrayList<Ticket> tickets = new ArrayList<>();
         tickets.add(mockTicket);
         try {
@@ -63,7 +63,7 @@ public class TicketCollectionTest {
     @Test
     public void testGetTicketInfoValid() {
         int ticketId = 2;
-        when(mockTicket.getTicket_id()).thenReturn(ticketId);
+        when(mockTicket.getTicketId()).thenReturn(ticketId);
 
         Ticket result = TicketCollection.getTicketInfo(ticketId);
 
@@ -76,7 +76,7 @@ public class TicketCollectionTest {
     @Test
     public void testGetTicketInfoInvalid() {
         int ticketId = 3;
-        when(mockTicket.getTicket_id()).thenReturn(4);
+        when(mockTicket.getTicketId()).thenReturn(4);
 
         Ticket result = TicketCollection.getTicketInfo(ticketId);
 

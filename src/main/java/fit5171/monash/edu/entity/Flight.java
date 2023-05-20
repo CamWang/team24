@@ -1,7 +1,5 @@
 package fit5171.monash.edu.entity;
 
-import fit5171.monash.edu.entity.Airplane;
-
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,15 +12,15 @@ public class Flight {
     private String company;
     private Timestamp dateFrom;
     private Timestamp dateTo;
-    public final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+    public final static SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
     Airplane airplane;
 
     public Flight() {
     }
 
-    public Flight(int flight_id, String departTo, String departFrom, String code, String company, String dateFrom,
+    public Flight(int flightId, String departTo, String departFrom, String code, String company, String dateFrom,
                   String dateTo, Airplane airplane) throws ParseException {
-        this.flightID = flight_id;
+        this.flightID = flightId;
         this.departTo = departTo;
         this.departFrom = departFrom;
         this.code = code;

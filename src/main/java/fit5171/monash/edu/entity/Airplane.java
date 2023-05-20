@@ -86,9 +86,4 @@ public class Airplane {
                 ", crew sits=" + getCrewSitsNumber() + '\'' +
                 '}';
     }
-
-//    public static Airplane getAirPlaneInfo(int airplaneID) {
-//        // TODO Auto-generated method stub
-//        return null;
-//    }
 }

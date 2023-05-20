@@ -2,6 +2,8 @@ package fit5171.monash.edu;
 
 import fit5171.monash.edu.collection.*;
 import fit5171.monash.edu.entity.*;
+import fit5171.monash.edu.exceptions.PassengerInfoException;
+import fit5171.monash.edu.exceptions.TicketSystemException;
 
 import java.util.Scanner;
 
@@ -28,7 +30,7 @@ public class TicketSystem {
         // if there is a valid ticket id was input then we buy it, otherwise show
         // message
         if (validTicket == null) {
-            throw new RuntimeException("This ticket does not exist.");
+            throw new TicketSystemException("This ticket does not exist.");
         } else {
             // select flightId from ticket where ticket_id=" + ticket_id
             flightId = validTicket.getFlight().getFlightID();
@@ -88,8 +90,7 @@ public class TicketSystem {
             Util.log("Do you want to purchase?\n 1-YES 0-NO");
             int confirmCode = in.nextInt();
             if (confirmCode != 0) {
-                // "select * from flight, airplane where flight_id=" + flight_id_first + " and
-                // flight.airplane_id=airplane.airplane_id");
+
                 Flight flightFirst = FlightCollection.getFlightInfo(flightIdFirst);
                 Airplane airplaneFirst = flightFirst.getAirplane();
                 Flight flightSecond = FlightCollection.getFlightInfo(flightIdSecond);
@@ -130,47 +131,47 @@ public class TicketSystem {
 
     }
 
-    public void chooseTicket(String city1, String city2) throws Exception {
+    public void chooseTicket(String city1, String city2) throws TicketSystemException {
         int counter = 1;
         int idFirst;
         int idSecond;
 
-        Flight flight = FlightCollection.getFlightInfo(city1, city2);
+        Flight currentFlight = FlightCollection.getFlightInfo(city1, city2);
 
-        if (flight != null) {
+        if (currentFlight != null) {
 
             TicketCollection.getAllTickets();
 
             Util.log("\nEnter ID of ticket you want to choose:");
-            int ticket_id = 1;
+            int ticketId = 1;
             try {
-                ticket_id = Integer.parseInt(in.nextLine());
+                ticketId = Integer.parseInt(in.nextLine());
             } catch (NumberFormatException e) {
                 Util.log("Please enter a valid number");
             }
             // validate ticker here
-            if (TicketCollection.getTicketInfo(ticket_id) == null) {
-                throw new Exception("This ticket does not exist.");
-            } else if (TicketCollection.getTicketInfo(ticket_id).ticketStatus()) {
-                throw new Exception("This ticket is already booked.");
+            if (TicketCollection.getTicketInfo(ticketId) == null) {
+                throw new TicketSystemException("This ticket does not exist.");
+            } else if (TicketCollection.getTicketInfo(ticketId).ticketStatus()) {
+                throw new TicketSystemException("This ticket is already booked.");
             }
 
 
             // buy ticket here
-            buyTicket(ticket_id);
+            buyTicket(ticketId);
         } else
         // in case there is no direct ticket from city1 to city2
         {
-            // SELECT a flight where depart_to = city2
+            // SELECT a flight where departTo = city2
 
-            Flight depart_to = FlightCollection.getFlightInfo(city2);
+            Flight departTo = FlightCollection.getFlightInfo(city2);
 
             // and search for city with depart_from as connector city
 
-            assert depart_to != null;
-            String connectCity = depart_to.getDepartFrom();
+            assert departTo != null;
+            String connectCity = departTo.getDepartFrom();
 
-            // SELECT * from flight where depart_to = '" + connectCity + "' and depart_from
+            // SELECT * from flight where departTo = '" + connectCity + "' and depart_from
             // = '" + city1+"'"
 
             Flight flightConnectingTwoCities = FlightCollection.getFlightInfo(city1, connectCity);
@@ -180,7 +181,7 @@ public class TicketSystem {
                 Util.log(
                         "There is special way to go there. And it is transfer way, like above. Way №" + counter);
 
-                idFirst = depart_to.getFlightID();
+                idFirst = departTo.getFlightID();
 
                 idSecond = flightConnectingTwoCities.getFlightID();
                 buyTicket(idFirst, idSecond); // pass two tickets and buy them
@@ -205,7 +206,7 @@ public class TicketSystem {
         try {
             age = Integer.parseInt(in.nextLine());
         } catch (NumberFormatException e) {
-            throw new RuntimeException("Age must be an integer.");
+            throw new PassengerInfoException("Age must be an integer.");
         }
         passenger.setAge(age);
         Util.log("Please, enter your gender:");
@@ -225,7 +226,7 @@ public class TicketSystem {
 
     public void setTicketInformation(int ticketId) {
         ticket.setPassenger(passenger);
-        ticket.setTicket_id(ticketId);
+        ticket.setTicketId(ticketId);
         ticket.setFlight(flight);
         ticket.setPrice(ticket.getPrice());
         ticket.setClassVip(ticket.getClassVip());
@@ -234,7 +235,7 @@ public class TicketSystem {
 
     public void setTicketInformation(Ticket ticket, int ticketId, Flight flight) {
         ticket.setPassenger(passenger);
-        ticket.setTicket_id(ticketId);
+        ticket.setTicketId(ticketId);
         ticket.setFlight(flight);
         ticket.setPrice(ticket.getPrice());
         ticket.setClassVip(ticket.getClassVip());

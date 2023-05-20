@@ -1,8 +1,11 @@
 package fit5171.monash.edu.entity;
 
-import java.util.ArrayList;
+
+
 import java.util.Arrays;
 import java.util.List;
+
+import static fit5171.monash.edu.entity.Person.Gender.*;
 
 public abstract class Person // abstract class Person
 {
@@ -10,9 +13,6 @@ public abstract class Person // abstract class Person
     private String secondName;
     private int age;
     private Gender gender;
-
-//    public Person() {
-//    }
 
     public Person(String firstName, String secondName, int age, String gender) throws IllegalArgumentException {
         this.age = age;
@@ -28,6 +28,35 @@ public abstract class Person // abstract class Person
         OTHER
     }
 
+    public String getGenderString(Enum<Gender> gender) {
+        if (gender.equals(WOMAN)) {
+            return "Woman";
+        } else if (gender.equals(MAN)) {
+            return "Man";
+        } else if (gender.equals(NON_BINARY)) {
+            return "Non-binary|gender diverse";
+        } else if (gender.equals(PREFER_NOT_TO_SAY)) {
+            return "Prefer not to say";
+        } else {
+            return "Other";
+        }
+    }
+
+    public Gender getGenderEnum(String genderStr) {
+        switch(genderStr) {
+            case "Woman":
+                return WOMAN;
+            case "Man":
+                return MAN;
+            case "Non-binary|gender diverse":
+                return NON_BINARY;
+            case "Prefer not to say":
+                return PREFER_NOT_TO_SAY;
+            default:
+                return OTHER;
+        }
+    }
+
     public int getAge() {
         return age;
     }
@@ -37,25 +66,7 @@ public abstract class Person // abstract class Person
     }
 
     public String getGender() {
-        String genderStr = "";
-        switch(gender) {
-            case WOMAN:
-                genderStr = "Woman";
-                break;
-            case MAN:
-                genderStr = "Man";
-                break;
-            case NON_BINARY:
-                genderStr = "Non-binary|gender diverse";
-                break;
-            case PREFER_NOT_TO_SAY:
-                genderStr = "Prefer not to say";
-                break;
-            case OTHER:
-                genderStr = "Other";
-                break;
-        }
-        return genderStr;
+        return getGenderString(gender);
     }
 
     public void setGender(String genderStr) throws IllegalArgumentException{
@@ -63,25 +74,7 @@ public abstract class Person // abstract class Person
         if (!genderList.contains(genderStr)) {
             throw new IllegalArgumentException("Gender option: Woman, Man, Non-binary|gender diverse, Prefer not to say and Other.");
         }
-        Gender gender = null;
-        switch(genderStr) {
-            case "Woman":
-                gender = Gender.WOMAN;
-                break;
-            case "Man":
-                gender = Gender.MAN;
-                break;
-            case "Non-binary|gender diverse":
-                gender = Gender.NON_BINARY;
-                break;
-            case "Prefer not to say":
-                gender = Gender.PREFER_NOT_TO_SAY;
-                break;
-            case "Other":
-                gender = Gender.OTHER;
-                break;
-        }
-        this.gender = gender;
+        this.gender = getGenderEnum(genderStr);
     }
 
     public String getFirstName() {

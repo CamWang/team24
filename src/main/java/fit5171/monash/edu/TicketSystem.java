@@ -152,7 +152,7 @@ public class TicketSystem {
             // validate ticker here
             if (TicketCollection.getTicketInfo(ticketId) == null) {
                 throw new TicketSystemException("This ticket does not exist.");
-            } else if (TicketCollection.getTicketInfo(ticketId).ticketStatus()) {
+            } else if (TicketCollection.getTicketInfo(ticketId).getTicketStatus()) {
                 throw new TicketSystemException("This ticket is already booked.");
             }
 

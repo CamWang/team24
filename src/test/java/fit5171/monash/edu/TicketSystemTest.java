@@ -428,6 +428,22 @@ public class TicketSystemTest {
         assertThrows(Exception.class, () -> new TicketSystem().chooseTicket("Melbourne", "Sydney"));
 
     }
+
+    @Test
+    public void testSetTicketInformation(){
+        ticket.setPassenger(passenger);
+        ticket.setTicketId(1);
+        ticket.setFlight(flight);
+        ticket.setPrice(100);
+        ticket.setClassVip(true);
+        ticket.setTicketStatus(true);
+        assertEquals(ticket.getPassenger(),passenger);
+        assertEquals(1,ticket.getTicketId());
+        assertEquals(flight,ticket.getFlight());
+        assertEquals(50,ticket.getPrice());
+        assertTrue(ticket.getClassVip());
+        assertTrue(ticket.getTicketStatus());
+    }
 }
 
 

@@ -72,7 +72,7 @@ public class Ticket {
         this.classVip = classVip;
     }
 
-    public boolean ticketStatus() {
+    public boolean getTicketStatus() {
         return status;
     }
 
@@ -81,7 +81,7 @@ public class Ticket {
     }
 
     public void serviceTax() {
-        if (ticketStatus()) {
+        if (getTicketStatus()) {
             this.price *= 1.12;
         }
     } // 12% service tax
@@ -98,6 +98,6 @@ public class Ticket {
         return "Ticket{" + '\n' +
                 "Price=" + getPrice() + "KZT, " + '\n' +
                 getFlight() + '\n' + "Vip status=" + getClassVip() + '\n' +
-                getPassenger() + '\n' + "Ticket was purchased=" + ticketStatus() + "\n}";
+                getPassenger() + '\n' + "Ticket was purchased=" + getTicketStatus() + "\n}";
     }
 }

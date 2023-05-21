@@ -32,7 +32,8 @@ public class TicketTest {
         Passenger child = mock(Passenger.class);
         when(child.getAge()).thenReturn(10);
         Ticket childTicket = new Ticket(1, 100, mockFlight, false, child);
-        assertEquals(50, childTicket.getPrice());
+        childTicket.saleByAge(14);
+        assertEquals(25, childTicket.getPrice());
     }
 
     /**
@@ -43,6 +44,7 @@ public class TicketTest {
         Passenger adult = mock(Passenger.class);
         when(adult.getAge()).thenReturn(22);
         Ticket adultTicket = new Ticket(1, 100, mockFlight, false, adult);
+        adultTicket.saleByAge(27);
         assertEquals(100, adultTicket.getPrice());
     }
 
@@ -54,6 +56,7 @@ public class TicketTest {
         Passenger senior = mock(Passenger.class);
         when(senior.getAge()).thenReturn(65);
         Ticket seniorTicket = new Ticket(1, 100, mockFlight, false, senior);
+        seniorTicket.saleByAge(70);
         assertEquals(0, seniorTicket.getPrice());
     }
 
@@ -70,6 +73,26 @@ public class TicketTest {
     }
 
     @Test
+    void testServiceTaxWithTicketStatusIsTrue() {
+        Ticket ticket = new Ticket();
+        ticket.setPassenger(mockPassenger);
+        ticket.setTicketStatus(true);
+        ticket.setPrice(100);
+        ticket.serviceTax();
+        assertEquals(125.0, ticket.getPrice());
+    }
+
+    @Test
+    void testServiceTaxWithTicketStatusIsFalse() {
+        Ticket ticket = new Ticket();
+        ticket.setPassenger(mockPassenger);
+        ticket.setTicketStatus(false);
+        ticket.setPrice(100);
+        ticket.serviceTax();
+        assertEquals(100.0, ticket.getPrice());
+    }
+
+    @Test
     public void testGettersAndSetters() {
         Ticket ticket = new Ticket();
         ticket.setPassenger(mockPassenger);
@@ -81,9 +104,19 @@ public class TicketTest {
         assertEquals(1, ticket.getTicketId());
         assertEquals(100, ticket.getPrice());
         assertEquals(mockFlight, ticket.getFlight());
-        assertEquals(false, ticket.getClassVip());
-        assertEquals(true, ticket.ticketStatus());
+        assertFalse(ticket.getClassVip());
+        assertTrue(ticket.getTicketStatus());
         assertEquals(mockPassenger, ticket.getPassenger());
+    }
+
+    @Test
+    public void testGetterAndSetterWithParam() {
+        Ticket ticket = new Ticket(1, 100, mockFlight, false, mockPassenger);
+        assertEquals(mockPassenger, ticket.getPassenger());
+        assertEquals(1, ticket.getTicketId());
+        assertEquals(mockFlight, ticket.getFlight());
+        assertEquals(100, ticket.getPrice());
+        assertFalse(ticket.getClassVip());
     }
 
     @Test

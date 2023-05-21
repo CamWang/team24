@@ -24,7 +24,7 @@ public class PersonTest {
      * 1. All fields of a Person class are required to create a person.
      */
     @Test
-    public void testAllFields() {
+    void testAllFields() {
         person = new Passenger("Wells", "Yu", 27, "Man", "cyuu0052@student.monash.com", "0450000000", "123456789", "123456789", 123);
         assertEquals("Wells", person.getFirstName());
         assertEquals("Yu", person.getSecondName());
@@ -37,7 +37,7 @@ public class PersonTest {
      * say’ and ‘Other’.
      */
     @Test
-    public void testValidGender() {
+    void testValidGender() {
         person.setGender("Man");
         assertEquals("Man", person.getGender());
         person.setGender("Woman");
@@ -53,7 +53,7 @@ public class PersonTest {
      * say’ and ‘Other’.
      */
     @Test
-    public void testInvalidGender() {
+    void testInvalidGender() {
         try {
             person.setGender("X");
             fail("Expected IllegalArgumentException to be thrown");
@@ -67,7 +67,7 @@ public class PersonTest {
      * small case and upper-case alphabet letters.
      */
     @Test
-    public void firstNameValidFormat() {
+    void firstNameValidFormat() {
         person.setFirstName("Wells");
         assertEquals("Wells", person.getFirstName());
     }
@@ -77,7 +77,7 @@ public class PersonTest {
      * small case and upper-case alphabet letters.
      */
     @Test
-    public void firstNameInvalidFormat() throws IllegalArgumentException {
+    void firstNameInvalidFormat() throws IllegalArgumentException {
         try {
             person.setFirstName("1Wells");
             fail("Expected IllegalArgumentException to be thrown");
@@ -91,7 +91,7 @@ public class PersonTest {
      * small case and upper-case alphabet letters.
      */
     @Test
-    public void secondNameValidFormat() {
+    void secondNameValidFormat() {
         person.setSecondName("Wells");
         assertEquals("Wells", person.getSecondName());
     }
@@ -101,7 +101,7 @@ public class PersonTest {
      * small case and upper-case alphabet letters.
      */
     @Test
-    public void secondNameInvalidFormat() throws IllegalArgumentException {
+    void secondNameInvalidFormat() throws IllegalArgumentException {
         try {
             person.setSecondName("1Wells");
             fail("Expected IllegalArgumentException to be thrown");
@@ -111,7 +111,7 @@ public class PersonTest {
     }
 
     @Test
-    public void testToString() {
+    void testToString() {
         person.setFirstName("Wells");
         person.setSecondName("Yu");
         person.setGender("Man");

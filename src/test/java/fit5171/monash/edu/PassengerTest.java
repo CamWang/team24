@@ -29,7 +29,7 @@ public class PassengerTest {
      * and gender following the person who is becoming a passenger
      */
     @Test
-    public void testConstructor() {
+    void testConstructor() {
         when(mockPerson.getFirstName()).thenReturn("Wells");
         when(mockPerson.getSecondName()).thenReturn("Yu");
         when(mockPerson.getAge()).thenReturn(27);
@@ -47,7 +47,7 @@ public class PassengerTest {
      * Note: Mock the behavior of the Person class while creating objects of the Passenger class for unit testing.
      */
     @Test
-    public void testSetterMethods() {
+    void testSetterMethods() {
         passenger.setFirstName("MingZe");
         passenger.setSecondName("Li");
         passenger.setAge(28);
@@ -70,7 +70,7 @@ public class PassengerTest {
     }
 
     @Test
-    public void testToStringMethod() {
+    void testToStringMethod() {
         when(mockPerson.getFirstName()).thenReturn("Wells");
         when(mockPerson.getSecondName()).thenReturn("Yu");
         String expectedString = "Passenger{ Fullname= Wells Yu ,email='cyuu0052@student.monash.com', phoneNumber='0450000000', passport='123456789}";
@@ -84,7 +84,7 @@ public class PassengerTest {
      * This is generally written as 04XX XXX XXX within Australia or as +61 4XX XXX XXX for an international audience.
      */
     @Test
-    public void phoneNumberValidFormat() {
+    void phoneNumberValidFormat() {
         passenger.setPhoneNumber("0412345678");
         assertEquals("0412345678", passenger.getPhoneNumber());
     }
@@ -96,7 +96,7 @@ public class PassengerTest {
      * This is generally written as 04XX XXX XXX within Australia or as +61 4XX XXX XXX for an international audience.
      */
     @Test
-    public void phoneNumberInvalidFormat() throws IllegalArgumentException {
+    void phoneNumberInvalidFormat() throws IllegalArgumentException {
         try {
             passenger.setPhoneNumber("041234567");
             fail("Expected IllegalArgumentException to be thrown");
@@ -121,7 +121,7 @@ public class PassengerTest {
      * 3. The email follows a valid pattern “abc@domain.com”.
      */
     @Test
-    public void emailValidFormat() {
+    void emailValidFormat() {
         passenger.setEmail("abc@domain.com");
         assertEquals("abc@domain.com", passenger.getEmail());
     }
@@ -130,7 +130,7 @@ public class PassengerTest {
      * 3. The email follows a valid pattern “abc@domain.com”.
      */
     @Test
-    public void emailInvalidFormat() throws IllegalArgumentException {
+    void emailInvalidFormat() throws IllegalArgumentException {
         try {
             passenger.setEmail("abc@domain.co");
             fail("Expected IllegalArgumentException to be thrown");
@@ -143,7 +143,7 @@ public class PassengerTest {
      * 4. The passport number should not be more than 9 characters long.
      */
     @Test
-    public void passportNumberValidFormat() {
+    void passportNumberValidFormat() {
         passenger.setPassport("123456789");
         assertEquals("123456789", passenger.getPassport());
     }
@@ -152,7 +152,7 @@ public class PassengerTest {
      * 4. The passport number should not be more than 9 characters long.
      */
     @Test
-    public void passportNumberInvalidFormat() throws IllegalArgumentException {
+    void passportNumberInvalidFormat() throws IllegalArgumentException {
         try {
             passenger.setPassport("1234567890");
             fail("Expected IllegalArgumentException to be thrown");

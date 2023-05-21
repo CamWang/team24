@@ -19,7 +19,7 @@ public class TicketCollectionTest {
     private Ticket mockTicket;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         mockTickets = new ArrayList<>();
         mockTicket = mock(Ticket.class);
         mockTickets.add(mockTicket);
@@ -31,7 +31,7 @@ public class TicketCollectionTest {
      * 1. Whenever a ticket is being added to the TicketCollection, it must be validated.
      */
     @Test
-    public void testAddTicketValid() {
+    void testAddTicketValid() {
         when(mockTicket.getTicketId()).thenReturn(1);
 
         TicketCollection.addTickets(new ArrayList<Ticket>() {{
@@ -45,7 +45,7 @@ public class TicketCollectionTest {
      * 1. Whenever a ticket is being added to the TicketCollection, it must be validated.
      */
     @Test
-    public void testAddTicketInvalid() throws IllegalArgumentException {
+    void testAddTicketInvalid() throws IllegalArgumentException {
         when(mockTicket.getTicketId()).thenReturn(0);
         ArrayList<Ticket> tickets = new ArrayList<>();
         tickets.add(mockTicket);
@@ -61,7 +61,7 @@ public class TicketCollectionTest {
      * 2. When trying to get a ticket, the correct ticket is returned.
      */
     @Test
-    public void testGetTicketInfoValid() {
+    void testGetTicketInfoValid() {
         int ticketId = 2;
         when(mockTicket.getTicketId()).thenReturn(ticketId);
 
@@ -74,7 +74,7 @@ public class TicketCollectionTest {
      * 2. When trying to get a ticket, the correct ticket is returned.
      */
     @Test
-    public void testGetTicketInfoInvalid() {
+    void testGetTicketInfoInvalid() {
         int ticketId = 3;
         when(mockTicket.getTicketId()).thenReturn(4);
 

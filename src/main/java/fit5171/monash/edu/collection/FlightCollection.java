@@ -48,10 +48,10 @@ public class FlightCollection {
 
     }
 
-    public static Flight getFlightInfo(int flight_id) {
+    public static Flight getFlightInfo(int flightId) {
         // SELECT a flight with a particular flight id
         for (Flight flight : flights) {
-            if (flight.getFlightID() == flight_id) {
+            if (flight.getFlightID() == flightId) {
                 return flight;
             }
         }

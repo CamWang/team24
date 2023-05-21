@@ -19,7 +19,7 @@ public class FlightCollectionTest {
     private Flight mockFlight;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         mockFlights = new ArrayList<Flight>();
 
         mockFlight = mock(Flight.class);
@@ -78,7 +78,7 @@ public class FlightCollectionTest {
      * 3. When trying to get flight information, a valid flight is returned.
      */
     @Test
-    public void testGetFlightInfoWithInvalidTwoCities() {
+    void testGetFlightInfoWithInvalidTwoCities() {
         when(mockFlight.getDepartFrom()).thenReturn("Melbourne");
         when(mockFlight.getDepartTo()).thenReturn("Sydney");
         Flight result = FlightCollection.getFlightInfo("123", "456");
@@ -98,7 +98,7 @@ public class FlightCollectionTest {
      * 3. When trying to get flight information, a valid flight is returned.
      */
     @Test
-    public void testGetFlightInfoWithInvalidCity() {
+    void testGetFlightInfoWithInvalidCity() {
         when(mockFlight.getDepartTo()).thenReturn("Sydney");
         Flight result = FlightCollection.getFlightInfo("123");
         assertNull(result);
@@ -117,7 +117,7 @@ public class FlightCollectionTest {
      * 3. When trying to get flight information, a valid flight is returned.
      */
     @Test
-    public void testGetFlightInfoWithInvalidFlight_id() {
+    void testGetFlightInfoWithInvalidFlight_id() {
         when(mockFlight.getFlightID()).thenReturn(1);
         Flight result = FlightCollection.getFlightInfo(9);
         assertNull(result);

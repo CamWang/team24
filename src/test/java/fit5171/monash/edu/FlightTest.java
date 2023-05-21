@@ -30,7 +30,7 @@ public class FlightTest {
     }
 
     @Test
-    public void testConstructor() {
+    void testConstructor() {
         Flight flight = new Flight();
         assertNotNull(flight);
     }
@@ -40,7 +40,7 @@ public class FlightTest {
      * Note: Mock the behaviour of the Airplane class while creating objects of the Flight class for unit testing.
      */
     @Test
-    public void testSetterMethods() throws ParseException {
+    void testSetterMethods() throws ParseException {
         flight.setFlightID(3);
         flight.setDepartTo("Melbourne");
         flight.setDepartFrom("Sydney");
@@ -61,7 +61,7 @@ public class FlightTest {
     }
 
     @Test
-    public void testToStringMethod() {
+    void testToStringMethod() {
         String expectedString = "Flight{" + mockAirplane.toString() + ", date to=08/06/23 15:00:00, ', date from='08/06/23 12:00:00', depart from='Melbourne', depart to='Sydney', company=Qantas', code=QF001'}";
         assertEquals(expectedString, flight.toString());
     }
@@ -71,7 +71,7 @@ public class FlightTest {
      * 3. Time must be in HH:MM:SS format.
      */
     @Test
-    public void dateFromInvalidFormat() throws IllegalArgumentException, ParseException {
+    void dateFromInvalidFormat() throws IllegalArgumentException, ParseException {
         try {
             flight.setDateFrom("2023-6-7 12:00:00");
             fail("Expected IllegalArgumentException to be thrown");
@@ -91,7 +91,7 @@ public class FlightTest {
      * 3. Time must be in HH:MM:SS format.
      */
     @Test
-    public void dateFromValidFormat() throws ParseException {
+    void dateFromValidFormat() throws ParseException {
         flight.setDateFrom("08/06/23 12:00:00");
         assertEquals("08/06/23 12:00:00", flight.getDateFrom());
     }
@@ -101,7 +101,7 @@ public class FlightTest {
      * 3. Time must be in HH:MM:SS format.
      */
     @Test
-    public void dateToInvalidFormat() throws IllegalArgumentException, ParseException {
+    void dateToInvalidFormat() throws IllegalArgumentException, ParseException {
         try {
             flight.setDateTo("2023-6-7 12:00:00");
             fail("Expected IllegalArgumentException to be thrown");
@@ -121,7 +121,7 @@ public class FlightTest {
      * 3. Time must be in HH:MM:SS format.
      */
     @Test
-    public void dateToValidFormat() throws ParseException {
+    void dateToValidFormat() throws ParseException {
         flight.setDateTo("08/06/23 12:00:00");
         assertEquals("08/06/23 12:00:00", flight.getDateTo());
     }

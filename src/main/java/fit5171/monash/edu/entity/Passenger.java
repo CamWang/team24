@@ -36,33 +36,8 @@ public class Passenger extends Person {
         this.email = email;
     }
 
-    @Override
-    public String getFirstName() {
-        return super.getFirstName();
-    }
-
-    @Override
-    public String getSecondName() {
-        return super.getSecondName();
-    }
-
-    @Override
-    public void setSecondName(String secondName) {
-        super.setSecondName(secondName);
-    }
-
-    @Override
-    public void setFirstName(String firstName) {
-        super.setFirstName(firstName);
-    }
-
     public String getPassport() {
         return passport;
-    }
-
-    @Override
-    public void setGender(String gender) {
-        super.setGender(gender);
     }
 
     public String getPhoneNumber() {
@@ -85,11 +60,6 @@ public class Passenger extends Person {
         this.securityCode = securityCode;
     }
 
-    @Override
-    public void setAge(int age) {
-        super.setAge(age);
-    }
-
     public void setPassport(String passport) throws IllegalArgumentException {
         if (!PASSPORT_NUMBER_PATTERN.matcher(passport).matches()) {
             throw new IllegalArgumentException("Wrong passport number format");
@@ -97,21 +67,11 @@ public class Passenger extends Person {
         this.passport = passport;
     }
 
-    @Override
-    public String getGender() {
-        return super.getGender();
-    }
-
     public void setPhoneNumber(String phoneNumber) throws IllegalArgumentException{
         if (!PHONE_NUMBER_PATTERN.matcher(phoneNumber).matches()) {
             throw new IllegalArgumentException("Wrong phone number format");
         }
         this.phoneNumber = phoneNumber;
-    }
-
-    @Override
-    public int getAge() {
-        return super.getAge();
     }
 
     @Override

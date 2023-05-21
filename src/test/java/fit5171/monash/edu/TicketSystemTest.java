@@ -31,7 +31,7 @@ public class TicketSystemTest {
     private Passenger passenger;
 
     @BeforeEach
-    public void setUp() throws ParseException {
+    void setUp() throws ParseException {
         airplane = new Airplane(1, "Boeing 747", 10, 200, 5);
         flight = new Flight(1, "Sydney", "Melbourne", "QF001", "Qantas", "08/06/23 12:00:00",
                 "08/06/23 15:00:00", airplane);
@@ -51,7 +51,7 @@ public class TicketSystemTest {
     }
 
     @Test
-    public void testValidSystem() throws Exception {
+    void testValidSystem() throws Exception {
         TicketCollection.tickets.clear();
         FlightCollection.flights.clear();
         String testInput = "Melbourne\nSydney\n1\nChengHan\nYu\n27\nMan\ncyuu0052@student.monash.com\n" +
@@ -150,7 +150,7 @@ public class TicketSystemTest {
     }
 
     @Test
-    public void testInterchangeSystem() throws Exception {
+    void testInterchangeSystem() throws Exception {
         TicketCollection.tickets.clear();
         FlightCollection.flights.clear();
         String testInput = "Melbourne\nParis\nChengHan\nYu\n27\nMan\ncyuu0052@student.monash.com\n" +
@@ -199,7 +199,7 @@ public class TicketSystemTest {
      * 1. When choosing a ticket, a valid city is used.
      */
     @Test
-    public void chooseTicketWithValidCity() throws Exception {
+    void chooseTicketWithValidCity() throws Exception {
         String testInput = "1\nChengHan\nYu\n27\nMan\ncyuu0052@student.monash.com\n" +
                 "0450000000\n987654321\n1\n987654321\n987";
         System.setIn(new ByteArrayInputStream(testInput.getBytes()));
@@ -217,7 +217,7 @@ public class TicketSystemTest {
      * 1. When choosing a ticket, a valid city is used.
      */
     @Test
-    public void chooseTicketWithTransferWay() throws Exception {
+    void chooseTicketWithTransferWay() throws Exception {
 
         String testInput = "ChengHan\nYu\n27\nMan\ncyuu0052@student.monash.com\n" +
                 "0450000000\n987654321\n1\n987654321\n987";
@@ -236,7 +236,7 @@ public class TicketSystemTest {
      * 1. When choosing a ticket, a valid city is used.
      */
     @Test
-    public void chooseTicketWithInvalidCity() throws Exception {
+    void chooseTicketWithInvalidCity() throws Exception {
         String testInput = "1\nChengHan\nYu\n27\nMan\ncyuu0052@student.monash.com\n" +
                 "0450000000\n987654321\n1\n987654321\n987";
         System.setIn(new ByteArrayInputStream(testInput.getBytes()));
@@ -253,7 +253,7 @@ public class TicketSystemTest {
      * 2. If a passenger chooses an already booked ticket it should display an error message.
      */
     @Test
-    public void testBookedTicket() {
+    void testBookedTicket() {
         String testInput = "1\n";
         System.setIn(new ByteArrayInputStream(testInput.getBytes()));
         TicketCollection.getTicketInfo(1).setTicketStatus(true);
@@ -270,7 +270,7 @@ public class TicketSystemTest {
      * 3. Appropriate checks have been implemented to validate passenger information
      */
     @Test
-    public void testBuyTicketWithInvalidPassenger() {
+    void testBuyTicketWithInvalidPassenger() {
         try {
             String testInput = "ChengHan123\n";
             System.setIn(new ByteArrayInputStream(testInput.getBytes()));
@@ -340,7 +340,7 @@ public class TicketSystemTest {
      * 6. A correct value is displayed to the passenger when buying a ticket.
      */
     @Test
-    public void testBuyTicketWithValidInput() {
+    void testBuyTicketWithValidInput() {
         String testInput = "ChengHan\nYu\n27\nMan\ncyuu0052@student.monash.com\n" +
                 "0450000000\n987654321\n1\n987654321\n987";
 
@@ -360,7 +360,7 @@ public class TicketSystemTest {
     }
 
     @Test
-    public void testBuyTicketButDontBuy() {
+    void testBuyTicketButDontBuy() {
         String testInput = "ChengHan\nYu\n27\nMan\ncyuu0052@student.monash.com\n" +
                 "0450000000\n987654321\n0";
         System.setIn(new ByteArrayInputStream(testInput.getBytes()));
@@ -370,7 +370,7 @@ public class TicketSystemTest {
 
 
     @Test
-    public void testShowTicket() {
+    void testShowTicket() {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
 
@@ -386,13 +386,13 @@ public class TicketSystemTest {
     }
 
     @Test
-    public void testBuyTicketNotValidId() {
+    void testBuyTicketNotValidId() {
         TicketSystem ticketSystem = new TicketSystem();
         assertThrows(RuntimeException.class, () -> ticketSystem.buyTicket(100));
     }
 
     @Test
-    public void testBuyTicketNotValidBothIds() {
+    void testBuyTicketNotValidBothIds() {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
         TicketSystem ticketSystem = new TicketSystem();
@@ -402,7 +402,7 @@ public class TicketSystemTest {
     }
 
     @Test
-    public void testBuyTicketNotValidFirstId() {
+    void testBuyTicketNotValidFirstId() {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
         TicketSystem ticketSystem = new TicketSystem();
@@ -412,7 +412,7 @@ public class TicketSystemTest {
     }
 
     @Test
-    public void testBuyTicketNotValidSecondId() {
+    void testBuyTicketNotValidSecondId() {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
         TicketSystem ticketSystem = new TicketSystem();
@@ -422,11 +422,10 @@ public class TicketSystemTest {
     }
 
     @Test
-    public void testEnterInvalidTicketId() {
+    void testEnterInvalidTicketId() {
         String testInput = "100\n";
         System.setIn(new ByteArrayInputStream(testInput.getBytes()));
         assertThrows(Exception.class, () -> new TicketSystem().chooseTicket("Melbourne", "Sydney"));
-
     }
 
     @Test

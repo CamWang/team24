@@ -86,7 +86,7 @@ public class TicketSystemTest {
                 "}\n" +
                 "Ticket{\n" +
                 "Price=0KZT, \n" +
-                "Flight{Airplane{model=A380', business sits=50', economy sits=300', crew sits=8'}, date to=13/06/23 19:19:19, ', date from='11/06/23 18:18:18', depart from='Sydney', depart to='Paris', company=Qantas', code=QF255'}\n" +
+                "Flight{Airplane{model=A380', business sits=50', economy sits=300', crew sits=8'}, date to=13/06/23 19:19:19, ', date from='11/06/23 18:18:18', depart from='LosAngles', depart to='Paris', company=Qantas', code=QF255'}\n" +
                 "Vip status=true\n" +
                 "null\n" +
                 "Ticket was purchased=false\n" +
@@ -107,7 +107,7 @@ public class TicketSystemTest {
                 "}\n" +
                 "Ticket{\n" +
                 "Price=0KZT, \n" +
-                "Flight{Airplane{model=A380', business sits=50', economy sits=300', crew sits=8'}, date to=13/06/23 19:19:19, ', date from='11/06/23 18:18:18', depart from='Sydney', depart to='Paris', company=Qantas', code=QF255'}\n" +
+                "Flight{Airplane{model=A380', business sits=50', economy sits=300', crew sits=8'}, date to=13/06/23 19:19:19, ', date from='11/06/23 18:18:18', depart from='LosAngles', depart to='Paris', company=Qantas', code=QF255'}\n" +
                 "Vip status=true\n" +
                 "null\n" +
                 "Ticket was purchased=false\n" +
@@ -147,6 +147,52 @@ public class TicketSystemTest {
                 "Do you want to buy another tickets?\n" +
                 " 1-YES 0-NO\n" +
                 "Thank you for using our system!\n").replace("\n", "").replace("\r", "").trim(), output.toString().replace("\r", "").replace("\n", "").trim());
+    }
+
+    @Test
+    public void testInterchangeSystem() throws Exception {
+        TicketCollection.tickets.clear();
+        FlightCollection.flights.clear();
+        String testInput = "Melbourne\nParis\nChengHan\nYu\n27\nMan\ncyuu0052@student.monash.com\n" +
+                "0450000000\n987654321\n1\n987654321\n987\n0\n";
+        System.setIn(new ByteArrayInputStream(testInput.getBytes()));
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        Main.main(new String[0]);
+        assertEquals(("Welcome to the Arline Ticket Booking System!\n" +
+                "Please, enter the departure city:\n" +
+                "Please, enter the destination city:\n" +
+                "There is special way to go there. And it is transfer way, like above. Way №1\n" +
+                "4 3\n" +
+                "Processing...\n" +
+                "Please, enter your first name:\n" +
+                "Please, enter your second name:\n" +
+                "Please, enter your age:\n" +
+                "Please, enter your gender:\n" +
+                "Please, enter your email address:\n" +
+                "Please, enter your phone number:\n" +
+                "Please, enter your passport number:\n" +
+                "Do you want to purchase?\n" +
+                " 1-YES 0-NO\n" +
+                "--*-*--\n" +
+                "--*-*--\n" +
+                "Your bill: 0\n" +
+                "\n" +
+                "Enter your card number:\n" +
+                "Enter your security code:\n" +
+                "You have bought a ticket for flight LosAngles - Paris\n" +
+                "\n" +
+                "Details:\n" +
+                "Ticket{\n" +
+                "Price=0KZT, \n" +
+                "Flight{Airplane{model=A380', business sits=49', economy sits=299', crew sits=8'}, date to=13/06/23 19:19:19, ', date from='11/06/23 18:18:18', depart from='LosAngles', depart to='Paris', company=Qantas', code=QF255'}\n" +
+                "Vip status=false\n" +
+                "Passenger{ Fullname= ChengHan Yu ,email='cyuu0052@student.monash.com', phoneNumber='0450000000', passport='987654321}\n" +
+                "Ticket was purchased=false\n" +
+                "}\n" +
+                "Do you want to buy another tickets?\n" +
+                " 1-YES 0-NO\n" +
+                "Thank you for using our system!").replace("\n", ""), output.toString().replace("\r", "").replace("\n", ""));
     }
 
     /**

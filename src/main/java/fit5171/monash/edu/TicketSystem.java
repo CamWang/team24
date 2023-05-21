@@ -114,7 +114,7 @@ public class TicketSystem {
                 }
 
                 Util.log("--*-*--");
-
+                ticket.setFlight(flightFirst);
                 ticket.setPassenger(passenger);
                 ticket.setPrice(ticketFirst.getPrice() + ticketSecond.getPrice());
                 Util.log("Your bill: " + ticket.getPrice() + "\n");

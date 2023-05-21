@@ -21,7 +21,7 @@ public class Main {
         Flight flightFirst = new Flight(1, "Sydney", "Melbourne", "QF485", FLIGHT_COMPANY, "16/07/23 12:12:12", "17/07/23 13:13:13", airplaneFirst);
         Flight flightSecond = new Flight(2, "ShangHai", "Perth", "QF075", FLIGHT_COMPANY, "02/08/23 14:14:14", "03/08/23 15:15:15", airplaneSecond);
         Flight flightThird = new Flight(3, "LosAngles", "Melbourne", "QF064", FLIGHT_COMPANY, "01/11/23 16:16:16", "02/11/23 17:17:17", airplaneFirst);
-        Flight flightFourth = new Flight(4, "Paris", "Sydney", "QF255", FLIGHT_COMPANY, "11/06/23 18:18:18", "13/06/23 19:19:19", airplaneFirst);
+        Flight flightFourth = new Flight(4, "Paris", "LosAngles", "QF255", FLIGHT_COMPANY, "11/06/23 18:18:18", "13/06/23 19:19:19", airplaneFirst);
 
         ArrayList<Flight> flights = new ArrayList<>();
         flights.add(flightFirst);

@@ -50,6 +50,105 @@ public class TicketSystemTest {
         FlightCollection.addFlights(flights_db);
     }
 
+    @Test
+    public void testValidSystem() throws Exception {
+        TicketCollection.tickets.clear();
+        FlightCollection.flights.clear();
+        String testInput = "Melbourne\nSydney\n1\nChengHan\nYu\n27\nMan\ncyuu0052@student.monash.com\n" +
+                "0450000000\n987654321\n1\n987654321\n987\n0\n";
+        System.setIn(new ByteArrayInputStream(testInput.getBytes()));
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        Main.main(new String[0]);
+        assertEquals(("Welcome to the Arline Ticket Booking System!\n" +
+                "Please, enter the departure city:\n" +
+                "Please, enter the destination city:\n" +
+                "Ticket{\n" +
+                "Price=0KZT, \n" +
+                "Flight{Airplane{model=A380', business sits=50', economy sits=300', crew sits=8'}, date to=17/07/23 13:13:13, ', date from='16/07/23 12:12:12', depart from='Melbourne', depart to='Sydney', company=Qantas', code=QF485'}\n" +
+                "Vip status=false\n" +
+                "null\n" +
+                "Ticket was purchased=false\n" +
+                "}\n" +
+                "Ticket{\n" +
+                "Price=0KZT, \n" +
+                "Flight{Airplane{model=A380', business sits=50', economy sits=300', crew sits=8'}, date to=17/07/23 13:13:13, ', date from='16/07/23 12:12:12', depart from='Melbourne', depart to='Sydney', company=Qantas', code=QF485'}\n" +
+                "Vip status=true\n" +
+                "null\n" +
+                "Ticket was purchased=false\n" +
+                "}\n" +
+                "Ticket{\n" +
+                "Price=0KZT, \n" +
+                "Flight{Airplane{model=Bowening787-MAX', business sits=30', economy sits=300', crew sits=10'}, date to=03/08/23 15:15:15, ', date from='02/08/23 14:14:14', depart from='Perth', depart to='ShangHai', company=Qantas', code=QF075'}\n" +
+                "Vip status=false\n" +
+                "null\n" +
+                "Ticket was purchased=false\n" +
+                "}\n" +
+                "Ticket{\n" +
+                "Price=0KZT, \n" +
+                "Flight{Airplane{model=A380', business sits=50', economy sits=300', crew sits=8'}, date to=13/06/23 19:19:19, ', date from='11/06/23 18:18:18', depart from='Sydney', depart to='Paris', company=Qantas', code=QF255'}\n" +
+                "Vip status=true\n" +
+                "null\n" +
+                "Ticket was purchased=false\n" +
+                "}\n" +
+                "Ticket{\n" +
+                "Price=0KZT, \n" +
+                "Flight{Airplane{model=A380', business sits=50', economy sits=300', crew sits=8'}, date to=02/11/23 17:17:17, ', date from='01/11/23 16:16:16', depart from='Melbourne', depart to='LosAngles', company=Qantas', code=QF064'}\n" +
+                "Vip status=false\n" +
+                "null\n" +
+                "Ticket was purchased=false\n" +
+                "}\n" +
+                "Ticket{\n" +
+                "Price=0KZT, \n" +
+                "Flight{Airplane{model=A380', business sits=50', economy sits=300', crew sits=8'}, date to=02/11/23 17:17:17, ', date from='01/11/23 16:16:16', depart from='Melbourne', depart to='LosAngles', company=Qantas', code=QF064'}\n" +
+                "Vip status=true\n" +
+                "null\n" +
+                "Ticket was purchased=false\n" +
+                "}\n" +
+                "Ticket{\n" +
+                "Price=0KZT, \n" +
+                "Flight{Airplane{model=A380', business sits=50', economy sits=300', crew sits=8'}, date to=13/06/23 19:19:19, ', date from='11/06/23 18:18:18', depart from='Sydney', depart to='Paris', company=Qantas', code=QF255'}\n" +
+                "Vip status=true\n" +
+                "null\n" +
+                "Ticket was purchased=false\n" +
+                "}\n" +
+                "Ticket{\n" +
+                "Price=0KZT, \n" +
+                "Flight{Airplane{model=A380', business sits=50', economy sits=300', crew sits=8'}, date to=17/07/23 13:13:13, ', date from='16/07/23 12:12:12', depart from='Melbourne', depart to='Sydney', company=Qantas', code=QF485'}\n" +
+                "Vip status=false\n" +
+                "null\n" +
+                "Ticket was purchased=false\n" +
+                "}\n" +
+                "\n" +
+                "Enter ID of ticket you want to choose:\n" +
+                "Please, enter your first name:\n" +
+                "Please, enter your second name:\n" +
+                "Please, enter your age:\n" +
+                "Please, enter your gender:\n" +
+                "Please, enter your email address:\n" +
+                "Please, enter your phone number:\n" +
+                "Please, enter your passport number:\n" +
+                "Do you want to purchase?\n" +
+                " 1-YES 0-NO\n" +
+                "Your bill: 0\n" +
+                "\n" +
+                "Enter your card number:\n" +
+                "Enter your security code:\n" +
+                "You have bought a ticket for flight Melbourne - Sydney\n" +
+                "\n" +
+                "Details:\n" +
+                "Ticket{\n" +
+                "Price=0KZT, \n" +
+                "Flight{Airplane{model=A380', business sits=50', economy sits=299', crew sits=8'}, date to=17/07/23 13:13:13, ', date from='16/07/23 12:12:12', depart from='Melbourne', depart to='Sydney', company=Qantas', code=QF485'}\n" +
+                "Vip status=false\n" +
+                "Passenger{ Fullname= ChengHan Yu ,email='cyuu0052@student.monash.com', phoneNumber='0450000000', passport='987654321}\n" +
+                "Ticket was purchased=true\n" +
+                "}\n" +
+                "Do you want to buy another tickets?\n" +
+                " 1-YES 0-NO\n" +
+                "Thank you for using our system!\n").replace("\n", "").replace("\r", "").trim(), output.toString().replace("\r", "").replace("\n", "").trim());
+    }
+
     /**
      * 1. When choosing a ticket, a valid city is used.
      */

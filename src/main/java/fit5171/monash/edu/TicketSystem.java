@@ -75,7 +75,7 @@ public class TicketSystem {
 
         Util.log(ticketIdFirst + " " + ticketIdSecond);
         Ticket validTicketFirst = TicketCollection.getTicketInfo(ticketIdFirst);
-        Ticket validTicketSecond = TicketCollection.getTicketInfo(ticketIdFirst);
+        Ticket validTicketSecond = TicketCollection.getTicketInfo(ticketIdSecond);
         Util.log("Processing...");
 
         // if there is a valid ticket id was input then we buy it, otherwise show
@@ -221,7 +221,6 @@ public class TicketSystem {
         Util.log("Please, enter your passport number:");
         String passportNumber = in.nextLine();
         passenger.setPassport(passportNumber);
-        //passenger = new Passenger(firstName, secondName, passportNumber, phoneNumber, email, address, passportNumber);
     }
 
     public void setTicketInformation(int ticketId) {
@@ -242,7 +241,7 @@ public class TicketSystem {
         ticket.setTicketStatus(true);
     }
 
-    public void run() throws Exception {
+    public void run() {
         while (true) {
             Util.log("Welcome to the Arline Ticket Booking System!");
             Util.log("Please, enter the departure city:");

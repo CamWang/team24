@@ -214,6 +214,15 @@ public class TicketSystemTest {
         assertEquals(987, ticket.getPassenger().getSecurityCode());
     }
 
+    @Test
+    public void testBuyTicketButDontBuy() {
+        String testInput = "ChengHan\nYu\n27\nMan\ncyuu0052@student.monash.com\n" +
+                "0450000000\n987654321\n0";
+        System.setIn(new ByteArrayInputStream(testInput.getBytes()));
+        TicketSystem ticketSystem = new TicketSystem();
+        assertDoesNotThrow(() -> ticketSystem.buyTicket(1));
+    }
+
 
     @Test
     public void testShowTicket() {
@@ -238,11 +247,31 @@ public class TicketSystemTest {
     }
 
     @Test
-    public void testBuyTicketNotValidIds() {
+    public void testBuyTicketNotValidBothIds() {
         ByteArrayOutputStream output = new ByteArrayOutputStream();
         System.setOut(new PrintStream(output));
         TicketSystem ticketSystem = new TicketSystem();
         ticketSystem.buyTicket(100, 200);
+        String expectedOutput = "At least one ticket does not exist.";
+        assertTrue(output.toString().contains(expectedOutput));
+    }
+
+    @Test
+    public void testBuyTicketNotValidFirstId() {
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        TicketSystem ticketSystem = new TicketSystem();
+        ticketSystem.buyTicket(100, 1);
+        String expectedOutput = "At least one ticket does not exist.";
+        assertTrue(output.toString().contains(expectedOutput));
+    }
+
+    @Test
+    public void testBuyTicketNotValidSecondId() {
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(output));
+        TicketSystem ticketSystem = new TicketSystem();
+        ticketSystem.buyTicket(1, 200);
         String expectedOutput = "At least one ticket does not exist.";
         assertTrue(output.toString().contains(expectedOutput));
     }
